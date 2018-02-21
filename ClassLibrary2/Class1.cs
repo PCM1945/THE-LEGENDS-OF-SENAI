@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mapa
+namespace ClassLibrary2
 {
-    enum EItens
+    public class Class1
     {
-       consumivel,
-       equipavel,
     }
 }

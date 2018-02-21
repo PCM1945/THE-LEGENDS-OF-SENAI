@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Mapa
 {
-    class Mapa
+    public class Mapa
     {
-        // Casa { get; set; } //Item está na casa
+        IEnumerable<Casa> casa { get; set; } //Item está na casa
+        int dimX { get; set; }
+        int dimY { get; set; }
         
     }
 }

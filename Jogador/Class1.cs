@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mapa
+namespace Jogador
 {
-    enum EItens
+    public class Class1
     {
-       consumivel,
-       equipavel,
+       
     }
 }
