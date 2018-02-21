@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mapa
 {
-    enum EItens
+    public enum EItens
     {
        Consumivel,
        Equipavel,

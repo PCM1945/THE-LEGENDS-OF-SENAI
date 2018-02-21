@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mapa
 {
-    class Casa
+    public class Casa
     {
         public bool Andavel { get; set; }
         public int PosX { get; set; }
@@ -15,8 +15,5 @@ namespace Mapa
         public Item Item { get; set; }
 
         // fazer o metodo de alteração aleatoria 
-        
-
-
     }
 }
