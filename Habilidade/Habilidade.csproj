@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EE3459E6-67FA-440C-811E-879880842A94}</ProjectGuid>
+    <ProjectGuid>{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Jogador</RootNamespace>
-    <AssemblyName>Jogador</AssemblyName>
+    <RootNamespace>Habilidade</RootNamespace>
+    <AssemblyName>Habilidade</AssemblyName>
     <DefaultLanguage>pt-BR</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
@@ -106,20 +106,15 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Jogador.cs" />
+    <Compile Include="Habilidade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\Jogador.rd.xml" />
+    <Compile Include="TipoHabilidade.cs" />
+    <EmbeddedResource Include="Properties\Habilidade.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.6</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Habilidade\Habilidade.csproj">
-      <Project>{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}</Project>
-      <Name>Habilidade</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

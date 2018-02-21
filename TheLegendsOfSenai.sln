@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Personagem", "Personagem\Pe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jogador", "Jogador\Jogador.csproj", "{EE3459E6-67FA-440C-811E-879880842A94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Habilidade", "Habilidade\Habilidade.csproj", "{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +111,22 @@ Global
 		{EE3459E6-67FA-440C-811E-879880842A94}.Release|x64.Build.0 = Release|x64
 		{EE3459E6-67FA-440C-811E-879880842A94}.Release|x86.ActiveCfg = Release|x86
 		{EE3459E6-67FA-440C-811E-879880842A94}.Release|x86.Build.0 = Release|x86
+		{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}.Debug|ARM.ActiveCfg = Debug|ARM
+		{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}.Debug|ARM.Build.0 = Debug|ARM
+		{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}.Debug|x64.ActiveCfg = Debug|x64
+		{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}.Debug|x64.Build.0 = Debug|x64
+		{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}.Debug|x86.ActiveCfg = Debug|x86
+		{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}.Debug|x86.Build.0 = Debug|x86
+		{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}.Release|ARM.ActiveCfg = Release|ARM
+		{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}.Release|ARM.Build.0 = Release|ARM
+		{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}.Release|x64.ActiveCfg = Release|x64
+		{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}.Release|x64.Build.0 = Release|x64
+		{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}.Release|x86.ActiveCfg = Release|x86
+		{AD5569A2-1FE2-4FB2-A836-BDDD9DC4A557}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
