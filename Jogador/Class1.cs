@@ -8,6 +8,5 @@ namespace Jogador
 {
     public class Class1
     {
-       
     }
 }

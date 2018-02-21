@@ -8,11 +8,11 @@ namespace Mapa
 {
     class Casa
     {
-        public bool andavel { get; set; }
-        public int posX { get; set; }
-        public int posY { get; set; }
-        public Personagem personagem { get; set; }
-        public Item item { get; set; }
+        public bool Andavel { get; set; }
+        public int PosX { get; set; }
+        public int PosY { get; set; }
+        public Personagem Personagem { get; set; }
+        public Item Item { get; set; }
 
         // fazer o metodo de alteração aleatoria 
         

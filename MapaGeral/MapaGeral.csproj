@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E8215E7B-2D26-4A8E-A2A9-CB319FA74C81}</ProjectGuid>
+    <ProjectGuid>{9A9C376E-5752-4066-8021-1124A155EC86}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mapa</RootNamespace>
-    <AssemblyName>Mapa</AssemblyName>
+    <RootNamespace>MapaGeral</RootNamespace>
+    <AssemblyName>MapaGeral</AssemblyName>
     <DefaultLanguage>pt-BR</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
@@ -110,9 +110,13 @@
     <Compile Include="EItens.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Mapa.cs" />
-    <Compile Include="Personagem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\Mapa.rd.xml" />
+    <EmbeddedResource Include="Properties\MapaGeral.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.0.6</Version>
+    </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

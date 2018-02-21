@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E3F2D39C-2DA8-40AC-BD14-CDC0DD453CA8}</ProjectGuid>
+    <ProjectGuid>{F1F6C029-D5C5-487C-B83E-BFB25AA3F3B4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Personagem</RootNamespace>
@@ -106,7 +106,11 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Habilidade.cs" />
+    <Compile Include="Movimento.cs" />
+    <Compile Include="Personagem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoHabilidade.cs" />
     <EmbeddedResource Include="Properties\Personagem.rd.xml" />
   </ItemGroup>
   <ItemGroup>

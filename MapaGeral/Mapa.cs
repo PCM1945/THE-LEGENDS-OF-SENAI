@@ -8,9 +8,9 @@ namespace Mapa
 {
     public class Mapa
     {
-        IEnumerable<Casa> casa { get; set; } //Item está na casa
-        int dimX { get; set; }
-        int dimY { get; set; }
+        IEnumerable<Casa> Casa { get; set; } //Item está na casa
+        int DimX { get; set; }
+        int DimY { get; set; }
         
     }
 }
