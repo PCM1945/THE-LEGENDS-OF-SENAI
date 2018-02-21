@@ -4,8 +4,8 @@ namespace Mapa
 {
     public class Item
     {
-        public string nome { get; set; }
-        List<object> stats { get; set; }
-        EItens tipo { get; set; }
+        public string Nome { get; set; }
+        List<object> Stats { get; set; }
+        EItens Tipo { get; set; }
     } 
 }
