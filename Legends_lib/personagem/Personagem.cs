@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Legends_lib.personagem
+namespace Legends_lib
 {
     public class Personagem
     {
@@ -17,11 +17,11 @@ namespace Legends_lib.personagem
         public string Classe { get; set; }
         public Habilidade Habilidade { get; set; }
 
-        public void Movimento()
+       /* public void Movimento()
         {
 
 
-        }
+        }*/
 
 
     }

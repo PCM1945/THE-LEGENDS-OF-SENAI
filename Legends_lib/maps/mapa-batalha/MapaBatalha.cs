@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Legends_lib
 {
-    class MapaBatalha
+    public class MapaBatalha
     {
         public List<Personagem> Alunos { get; set; }
         public List<Personagem> Professores { get; set; }

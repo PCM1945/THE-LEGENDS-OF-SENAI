@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Legends_lib.mapa_geral
-{
-    class Casa
+namespace Legends_lib
+{ 
+    public class Casa
     {
         public bool Andavel { get; set; }
         public int PosX { get; set; }

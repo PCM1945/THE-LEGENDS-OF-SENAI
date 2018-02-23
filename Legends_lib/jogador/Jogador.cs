@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Legends_lib
 {
-    class Jogador
+    public  class Jogador
     {
     
    

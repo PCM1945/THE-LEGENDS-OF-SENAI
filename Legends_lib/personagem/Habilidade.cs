@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Legends_lib
 {
-    class Habilidade
+    public  class Habilidade
     {
         public string Nome { get; set; }
         public List<string> Efeitos { get; set; }

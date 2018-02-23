@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Legends_lib.personagem
-{
+namespace Legends_lib
+{ 
     public enum Movimento
     {
         Frente,
