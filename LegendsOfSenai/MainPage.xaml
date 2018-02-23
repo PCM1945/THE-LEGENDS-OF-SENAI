@@ -34,6 +34,9 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Canvas Grid.ColumnSpan="10" HorizontalAlignment="Left" Height="100" Margin="0,0,-100,-100" Grid.RowSpan="10" VerticalAlignment="Top" Width="100"/>
+
+
 
     </Grid>
 
