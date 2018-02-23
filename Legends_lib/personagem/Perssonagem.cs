@@ -1,6 +1,10 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Mapa
+namespace Legends_lib.personagem
 {
     public class Personagem
     {
@@ -13,7 +17,8 @@ namespace Mapa
         public string Classe { get; set; }
         public Habilidade Habilidade { get; set; }
 
-        public void  Movimento(){
+        public void Movimento()
+        {
 
 
         }

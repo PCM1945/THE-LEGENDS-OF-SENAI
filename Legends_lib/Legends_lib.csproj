@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F1F6C029-D5C5-487C-B83E-BFB25AA3F3B4}</ProjectGuid>
+    <ProjectGuid>{779CA5FF-2A81-4FC1-A733-103EDB60CBA7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Personagem</RootNamespace>
-    <AssemblyName>Personagem</AssemblyName>
+    <RootNamespace>Legends_lib</RootNamespace>
+    <AssemblyName>Legends_lib</AssemblyName>
     <DefaultLanguage>pt-BR</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
@@ -106,10 +106,19 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Movimento.cs" />
-    <Compile Include="Personagem.cs" />
+    <Compile Include="mapa_geral\Casa.cs" />
+    <Compile Include="mapa_geral\Eitem.cs" />
+    <Compile Include="mapa_geral\Mapa.cs" />
+    <Compile Include="personagem\Habilidade.cs" />
+    <Compile Include="Item\Item.cs" />
+    <Compile Include="jogador\Jogador.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="mapa-batalha\MapaBatalha.cs" />
+    <Compile Include="personagem\Movimento.cs" />
+    <Compile Include="personagem\Perssonagem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\Personagem.rd.xml" />
+    <Compile Include="personagem\TipoHabilidade.cs" />
+    <EmbeddedResource Include="Properties\Legends_lib.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
