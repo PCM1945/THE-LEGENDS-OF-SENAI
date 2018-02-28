@@ -11,9 +11,10 @@ namespace Legends_lib
         //criar metodo padrão de movimento
 
         //criar habilidade
-
+        //VIDA ATAQ
         public string Nome { get; set; }
-        public Movimento Movimento { get; set; }
+        //  public Movimento Movimento { get; set; }
+        public int QuantidadeDEMovimento { get; set; }
         public string Classe { get; set; }
         public Habilidade Habilidade { get; set; }
 

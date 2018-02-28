@@ -14,12 +14,8 @@ namespace Legends_lib
         public Personagem Personagem { get; set; }
         public Item Item { get; set; }
 
-        Casa(bool anda,int X, int Y)
-        {
-            PosX = X;
-            PosY = Y;
-            Andavel = anda;
-        }
+        
+
         // fazer o metodo de alteração aleatoria 
     }
 }

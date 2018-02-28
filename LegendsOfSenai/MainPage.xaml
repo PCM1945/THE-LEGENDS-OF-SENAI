@@ -10,8 +10,8 @@
 
 
 
-    <Canvas x:Name="mapa" Background="White" ManipulationMode="All"  ManipulationDelta="mover" Margin="0,0,0,0" Width="1000">
-        <Image Name="cavaleiro" Width="200" Height="200" Source="Assets/cavaleiro.jpg" RequestedTheme="Dark" AutomationProperties.PositionInSet="-7" VerticalAlignment="Center" HorizontalAlignment="Center" Canvas.Left="500" Canvas.Top="500" />
+    <Canvas x:Name="mapa" Background="White" ManipulationMode="All"  ManipulationDelta="mover" Margin="0,0,0,0" Width="1000" Height="1000">
+        <Image Name="cavaleiro" Width="200" Height="200" Source="Assets/cavaleiro.jpg" RequestedTheme="Dark" AutomationProperties.PositionInSet="-7" VerticalAlignment="Center" HorizontalAlignment="Center" Canvas.Left="292" Canvas.Top="191" />
     </Canvas>
 
 
