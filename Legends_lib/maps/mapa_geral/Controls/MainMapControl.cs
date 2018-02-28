@@ -18,18 +18,20 @@ namespace Legends_lib.maps.mapa_geral.Controls
 
          private Item GeraItem(int posX, int posY)
         {
-            if (PodeAndar(posX, posY))
+            if (PodeAndar(posX, posY)==true)
                 return new Item();
             else
                 return null;
         }
 
-         public int Metrica(float tamX , float tamY, int fator = 5, float sizeCanvas = 1000) //CALCULO PARA QUANTIDADE DE QUADRADOS NO MAPA
+         public float Metrica(int fator = 5, float sizeCanvas = 1000) //CALCULO PARA TAMANHO DAS CASAS NO MAPA
         {
-            return 0;
+            float size_canvas_casa = sizeCanvas / fator;
+
+            return size_canvas_casa;
         }
 
-        public Mapa InciarMapa()//iniciar o back do mapa
+        public Mapa InciarMapa(float metrica)
         {
             Mapa mapa = new Mapa();
             //logica de criacao do mapa
