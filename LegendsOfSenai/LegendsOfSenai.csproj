@@ -139,6 +139,12 @@
       <Version>6.0.6</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Legends_lib\Legends_lib.csproj">
+      <Project>{779ca5ff-2a81-4fc1-a733-103edb60cba7}</Project>
+      <Name>Legends_lib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -49,5 +49,18 @@ namespace LegendsOfSenai
             Window.Current.Activate();
         });  
         }
+
+        private async void anyEVent(object sender, RoutedEventArgs e)
+        {
+            var a = new Legends_lib.Personagem();
+
+            a.Nome = "NAME";
+            a.Classe = "Classe";
+
+            var b = new Legends_lib.maps.mapa_geral.Controls.MainMapControl();
+            b.MetricaX(this.ActualWidth);
+
+
+        }
     }
 }

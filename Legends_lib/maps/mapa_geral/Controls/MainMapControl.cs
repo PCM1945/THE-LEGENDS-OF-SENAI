@@ -35,19 +35,20 @@ namespace Legends_lib.maps.mapa_geral.Controls
             return gera;
         }
 
-        public float MetricaX(float tamX, int fator , float sizeCanvas) //CALCULO PARA O TAMANHO DAS CASAS NO MAPA(CANVAS) 
+        public double MetricaX(int CasaAtual ,double sizeCanvasX, double fator = 5) //CALCULO PARA O TAMANHO DAS CASAS NO MAPA(CANVAS) 
                                                                         //E CALCULO DA POSIÇÃO 'X' RELATIVA NO CANVAS
         {
-            float tam_canvas_casa = sizeCanvas / fator;
-            float cordX = tamX * tam_canvas_casa;
+            CasaAtual = new Personagem().DimXCasa;
+            double tam_canvas_casa = sizeCanvasX / fator;
+            double cordX = tam_canvas_casa * CasaAtual /*controllerX * tam_canvas_casa*/;
               return cordX;
         }
 
-        public float MetricaY(float tamY , int fator , float sizeCanvas)//CALCULO PARA O TAMANHO DAS CASAS NO MAPA(CANVAS) E
+        public float MetricaY(float controllerY , int fator , float sizeCanvasY)//CALCULO PARA O TAMANHO DAS CASAS NO MAPA(CANVAS) E
                                                                         //E CALCULO DA POSIÇÃO 'Y' RELATIVA NO CANVAS
         {
-            float tam_canvas_casa = sizeCanvas / fator;
-            float cordY = tamY * tam_canvas_casa;
+            float tam_canvas_casa = sizeCanvasY / fator;
+            float cordY = controllerY * tam_canvas_casa;
                 return cordY;
         }
 

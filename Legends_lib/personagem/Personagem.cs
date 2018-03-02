@@ -17,12 +17,13 @@ namespace Legends_lib
         public int QuantidadeDEMovimento { get; set; }
         public string Classe { get; set; }
         public Habilidade Habilidade { get; set; }
+        public int DimXCasa { get; set; }
+        public int DimYCasa { get; set; }
+        /* public void Movimento()
+         {
 
-       /* public void Movimento()
-        {
 
-
-        }*/
+         }*/
 
 
     }
