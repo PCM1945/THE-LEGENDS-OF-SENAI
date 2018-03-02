@@ -8,11 +8,27 @@
     mc:Ignorable="d">
 
 
-
-
-    <Canvas x:Name="mapa" Background="White" ManipulationMode="All"  ManipulationDelta="mover" Margin="0,0,0,0" Width="1000" Height="1000">
-        <Image Name="cavaleiro" Width="200" Height="200" Source="Assets/cavaleiro.jpg" RequestedTheme="Dark" AutomationProperties.PositionInSet="-7" VerticalAlignment="Center" HorizontalAlignment="Center" Canvas.Left="292" Canvas.Top="191" />
+    <Canvas HorizontalAlignment="Left" Height="1000" VerticalAlignment="Top" Width="1500" Background="White">
+        <Button Name="Start_Button" Content="Start" FontSize="40"  Height="128" Width="165" Canvas.Left="644" Canvas.Top="428" Click="Start_Button_ClickAsync" FontFamily="Adobe Myungjo Std M" FontWeight="Bold" >
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFFB0000" Offset="0.235"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </Canvas>
+
+
+
+
+
+
+
+    <!-- <Canvas x:Name="mapa" Background="White"  ManipulationMode="All" ManipulationDelta="mover" Margin="0,0,0,0" Width="1000" Height="1000">
+       
+         <Image Name="cavaleiro" Width="200" Height="200" Source="Assets/cavaleiro.jpg" RequestedTheme="Dark" AutomationProperties.PositionInSet="-7" VerticalAlignment="Center" HorizontalAlignment="Center" Canvas.Left="292" Canvas.Top="191" />
+    </Canvas> -->
 
 
 
