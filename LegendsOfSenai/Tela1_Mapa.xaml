@@ -11,11 +11,16 @@
         <Image Name="cavaleiro"  Width="200" Height="200" Source="Assets/cavaleiro.jpg" 
                RequestedTheme="Dark"  VerticalAlignment="Center" HorizontalAlignment="Center" 
                Canvas.Left="292" Canvas.Top="191" />
+        <Button Content="Back" Canvas.Left="540" Canvas.Top="282" Click="Button_Click" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <Button.RenderTransform>
+                <CompositeTransform Rotation="-10.568"/>
+            </Button.RenderTransform>
+        </Button>
     </Canvas>
 
     <!-- <Canvas x:Name="mapa" Background="White"  ManipulationMode="All" ManipulationDelta="mover" Margin="0,0,0,0" Width="1000" Height="1000">
        
          <Image Name="cavaleiro"  Width="200" Height="200" Source="Assets/cavaleiro.jpg" RequestedTheme="Dark" AutomationProperties.PositionInSet="-7" VerticalAlignment="Center" HorizontalAlignment="Center" Canvas.Left="292" Canvas.Top="191" />
     </Canvas>-->
-    
+
 </Page>

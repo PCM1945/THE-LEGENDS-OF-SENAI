@@ -26,9 +26,11 @@ namespace LegendsOfSenai
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        int x=20;
         public MainPage()
         {
             this.InitializeComponent();
+            Debug.WriteLine(x);
         }
 
         private void Start_Button_Click(object sender, RoutedEventArgs e)
@@ -42,6 +44,12 @@ namespace LegendsOfSenai
               */
             this.Frame.Navigate(typeof(Tela1_Mapa));
          
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            x += 5;
+            Debug.WriteLine(x);
         }
     }
 }

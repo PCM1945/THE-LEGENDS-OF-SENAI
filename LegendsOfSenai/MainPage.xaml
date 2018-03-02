@@ -19,6 +19,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
+        <Button Content="Button" Canvas.Left="428" Canvas.Top="168" Click="Button_Click"/>
     </Canvas>
 
 
