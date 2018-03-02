@@ -35,11 +35,22 @@ namespace Legends_lib.maps.mapa_geral.Controls
             return gera;
         }
 
-
-        public int Metrica(float tamX , float tamY, int fator = 5, float sizeCanvas = 1000) //CALCULO PARA QUANTIDADE DE QUADRADOS NO MAPA
+        public float MetricaX(float tamX, int fator , float sizeCanvas) //CALCULO PARA O TAMANHO DAS CASAS NO MAPA(CANVAS) 
+                                                                        //E CALCULO DA POSIÇÃO 'X' RELATIVA NO CANVAS
         {
-            return 0;
+            float tam_canvas_casa = sizeCanvas / fator;
+            float cordX = tamX * tam_canvas_casa;
+              return cordX;
         }
+
+        public float MetricaY(float tamY , int fator , float sizeCanvas)//CALCULO PARA O TAMANHO DAS CASAS NO MAPA(CANVAS) E
+                                                                        //E CALCULO DA POSIÇÃO 'Y' RELATIVA NO CANVAS
+        {
+            float tam_canvas_casa = sizeCanvas / fator;
+            float cordY = tamY * tam_canvas_casa;
+                return cordY;
+        }
+
 
         public static Mapa InciarMapa()//iniciar o back do mapa
         {
