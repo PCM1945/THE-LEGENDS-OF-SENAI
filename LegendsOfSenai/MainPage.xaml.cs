@@ -26,28 +26,30 @@ namespace LegendsOfSenai
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        int x=20;
         public MainPage()
         {
             this.InitializeComponent();
+            Debug.WriteLine(x);
         }
 
-        private async void Start_Button_ClickAsync(object sender, RoutedEventArgs e)
+        private void Start_Button_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("aaaaaaaaaaaa");
 
-            CoreApplicationView newCoreView = CoreApplication.CreateNewView();
-            ApplicationView newAppView = null;
-            int mainViewId = ApplicationView.GetApplicationViewIdForWindow(CoreApplication.MainView.CoreWindow);
+            /*  Tela1_Mapa TelaMapa = new Tela1_Mapa();
+              var host = new Window();
+              host.Content =  TelaMapa;
+              host.Show();
+              */
+            this.Frame.Navigate(typeof(Tela1_Mapa));
+         
+        }
 
-            await newCoreView.Dispatcher.RunAsync(
-             CoreDispatcherPriority.Normal,
-             () =>
-                 {
-             newAppView = ApplicationView.GetForCurrentView();
-                 Window.Current.Content = new Frame();
-                (Window.Current.Content as Frame).Navigate(typeof(Tela1_Mapa));
-            Window.Current.Activate();
-        });  
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            x += 5;
+            Debug.WriteLine(x);
         }
 
         private async void anyEVent(object sender, RoutedEventArgs e)
