@@ -41,13 +41,14 @@ namespace Legends_lib.maps.mapa_geral.Controls
             return 0;
         }
 
-        public Mapa InciarMapa()//iniciar o back do mapa
+        public static Mapa InciarMapa()//iniciar o back do mapa
         {
-
-            Mapa mapa = new Mapa();
+            Mapa mapa=null;
+            //Mapa mapa = new Mapa(); FALTA PEGAR AS DIMENSOES DE MAPA
             Random rnd = new Random();//utilizar o rnd ao criar um item no mapa
             //logica de criacao do mapa
             return mapa;
+            
         }
 
         

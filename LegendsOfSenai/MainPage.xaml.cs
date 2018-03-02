@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,6 +29,25 @@ namespace LegendsOfSenai
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private async void Start_Button_ClickAsync(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("aaaaaaaaaaaa");
+
+            CoreApplicationView newCoreView = CoreApplication.CreateNewView();
+            ApplicationView newAppView = null;
+            int mainViewId = ApplicationView.GetApplicationViewIdForWindow(CoreApplication.MainView.CoreWindow);
+
+            await newCoreView.Dispatcher.RunAsync(
+             CoreDispatcherPriority.Normal,
+             () =>
+                 {
+             newAppView = ApplicationView.GetForCurrentView();
+                 Window.Current.Content = new Frame();
+                (Window.Current.Content as Frame).Navigate(typeof(Tela1_Mapa));
+            Window.Current.Activate();
+        });  
         }
     }
 }
