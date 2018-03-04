@@ -19,6 +19,8 @@ namespace Legends_lib
         public Habilidade Habilidade { get; set; }
         public int DimXCasa { get; set; }
         public int DimYCasa { get; set; }
+        public int Experiencia { get; set; }
+        public int Gold { get; set; }
         /* public void Movimento()
          {
 
