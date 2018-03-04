@@ -110,6 +110,7 @@
     <Compile Include="Item\Eitens.cs" />
     <Compile Include="maps\mapa_geral\Controls\MainMapControl.cs" />
     <Compile Include="maps\mapa_geral\Mapa.cs" />
+    <Compile Include="personagem\Controls\ControlsHabilidade.cs" />
     <Compile Include="personagem\Habilidade.cs" />
     <Compile Include="Item\Item.cs" />
     <Compile Include="jogador\Jogador.cs" />
