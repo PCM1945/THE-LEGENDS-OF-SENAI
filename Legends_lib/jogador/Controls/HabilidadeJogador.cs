@@ -9,7 +9,7 @@ namespace Legends_lib.jogador.Controls
     public class HabilidadeJogador
     {
         public void MudaNivelHabilidade(Jogador j, char activity) //DESSE JEITO TODAS AS HABILIDADES PASSIVAS 
-        {                                                         //SÃO MODIFICADAS AO MESMO TEMPO QUEREMOS ISSO ?
+        {                                                          //SÃO MODIFICADAS AO MESMO TEMPO QUEREMOS ISSO ?
             foreach (Habilidade h in j.Habilidades)
             {
                 if (activity == '+')

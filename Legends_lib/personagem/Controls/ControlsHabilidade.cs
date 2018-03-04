@@ -30,7 +30,6 @@ namespace Legends_lib.personagem.Controls
         public void RecarregaHabilidade(Personagem p)
         {
             //IMPLEMENTAR CONTAGEM DE TURNO COMO VALIDAÇÃO DESTE
-
             p.Habilidade.Status = true;
         }
 
