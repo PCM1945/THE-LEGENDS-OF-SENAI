@@ -45,11 +45,6 @@ namespace LegendsOfSenai
          
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            x += 5;
-            Debug.WriteLine(x);
-        }
 
       
     }

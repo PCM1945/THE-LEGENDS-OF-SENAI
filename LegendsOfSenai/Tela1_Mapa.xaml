@@ -11,9 +11,9 @@
         <Image Name="cavaleiro"  Width="200" Height="200" Source="Assets/cavaleiro.jpg" 
                RequestedTheme="Dark"  VerticalAlignment="Center" HorizontalAlignment="Center" 
                Canvas.Left="292" Canvas.Top="191" />
-        <Button Content="Back" Canvas.Left="540" Canvas.Top="282" Click="Button_Click" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+        <Button Content="Back" Canvas.Left="944" Canvas.Top="960" Click="Button_Click" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
             <Button.RenderTransform>
-                <CompositeTransform Rotation="-10.568"/>
+                <CompositeTransform Rotation="0.537"/>
             </Button.RenderTransform>
         </Button>
     </Canvas>
