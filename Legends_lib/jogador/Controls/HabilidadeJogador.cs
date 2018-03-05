@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Legends_lib.jogador.Controls
+namespace Legends_lib
 {
     public class HabilidadeJogador
     {

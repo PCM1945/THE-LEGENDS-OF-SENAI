@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // O modelo de item de Página em Branco está documentado em https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x416
@@ -31,7 +32,18 @@ namespace LegendsOfSenai
         {
             this.InitializeComponent();
             Debug.WriteLine(x);
+
+        //    MainCanvas.Background = Image_Loaded(object sender);
         }
+
+     /*   void Image_Loaded(object sender)
+        {
+            Image BgImage =  new Image;
+            BitmapImage bitmapImage = new BitmapImage();
+            BgImage.Width = bitmapImage.DecodePixelWidth =520; //natural px width of image source
+                                                        
+            bitmapImage.UriSource = new Uri(BgImage.BaseUri, "Assets/Zeldao.gif");
+        }*/
 
         private void Start_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -54,13 +66,13 @@ namespace LegendsOfSenai
 
         private async void anyEVent(object sender, RoutedEventArgs e)
         {
-            var a = new Legends_lib.Personagem();
+           /* var a = new Legends_lib.Personagem();
 
             a.Nome = "NAME";
             a.Classe = "Classe";
 
             var b = new Legends_lib.maps.mapa_geral.Controls.MainMapControl();
-            b.MetricaX(this.ActualWidth);
+            b.MetricaX(this.ActualWidth);*/
 
 
         }
