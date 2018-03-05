@@ -106,19 +106,21 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="jogador\Controls\HabilidadeJogador.cs" />
     <Compile Include="maps\mapa_geral\Casa.cs" />
-    <Compile Include="Itens De Jogo\Item\Eitens.cs" />
+    <Compile Include="Item\Eitens.cs" />
     <Compile Include="maps\mapa_geral\Controls\MainMapControl.cs" />
     <Compile Include="maps\mapa_geral\Mapa.cs" />
-    <Compile Include="Itens De Jogo\personagem\Habilidade.cs" />
-    <Compile Include="Itens De Jogo\Item\Item.cs" />
+    <Compile Include="personagem\Controls\ControlsHabilidade.cs" />
+    <Compile Include="personagem\Habilidade.cs" />
+    <Compile Include="Item\Item.cs" />
     <Compile Include="jogador\Jogador.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="maps\mapa-batalha\MapaBatalha.cs" />
-    <Compile Include="Itens De Jogo\personagem\Movimento.cs" />
-    <Compile Include="Itens De Jogo\personagem\Personagem.cs" />
+    <Compile Include="personagem\Movimento.cs" />
+    <Compile Include="personagem\Personagem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Itens De Jogo\personagem\TipoHabilidade.cs" />
+    <Compile Include="personagem\TipoHabilidade.cs" />
     <EmbeddedResource Include="Properties\Legends_lib.rd.xml" />
   </ItemGroup>
   <ItemGroup>

@@ -44,11 +44,12 @@ namespace Legends_lib.maps.mapa_geral.Controls
               return cordX;
         }
 
-        public float MetricaY(float controllerY , int fator , float sizeCanvasY)//CALCULO PARA O TAMANHO DAS CASAS NO MAPA(CANVAS) E
-                                                                        //E CALCULO DA POSIÇÃO 'Y' RELATIVA NO CANVAS
+        public double MetricaY(int CasaAtual, double sizeCanvasY, double fator = 5)//CALCULO PARA O TAMANHO DAS CASAS NO MAPA(CANVAS) E
+                                                                      //E CALCULO DA POSIÇÃO 'Y' RELATIVA NO CANVAS
         {
-            float tam_canvas_casa = sizeCanvasY / fator;
-            float cordY = controllerY * tam_canvas_casa;
+            CasaAtual = new Personagem().DimYCasa;
+            double tam_canvas_casa = sizeCanvasY / fator;
+            double cordY = tam_canvas_casa * CasaAtual;
                 return cordY;
         }
 
