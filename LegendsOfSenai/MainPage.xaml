@@ -5,7 +5,7 @@
     xmlns:local="using:LegendsOfSenai"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Height="473" Width="520">
+    mc:Ignorable="d" Height="484.254" Width="526.328">
 
 
     <Canvas x:Name="MainCanvas"  Height="473" Width="520"  Background="White" Margin="0,8,0,0">
