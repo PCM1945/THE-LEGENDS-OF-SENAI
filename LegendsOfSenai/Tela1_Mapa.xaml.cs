@@ -22,6 +22,7 @@ namespace LegendsOfSenai
             {
                 this.InitializeComponent();
             pointers = new Dictionary<uint, Pointer>();
+         
             
             // Declare the pointer event handlers.
         /*    Target.PointerPressed +=

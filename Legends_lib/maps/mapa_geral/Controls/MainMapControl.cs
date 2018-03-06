@@ -57,7 +57,7 @@ namespace Legends_lib
         public static Mapa InciarMapa()//iniciar o back do mapa
         {
             Mapa mapa=null;
-            Mapa M = new Mapa;
+            //Mapa M = new Mapa;
 
             //Mapa mapa = new Mapa(); FALTA PEGAR AS DIMENSOES DE MAPA
             Random rnd = new Random();//utilizar o rnd ao criar um item no mapa

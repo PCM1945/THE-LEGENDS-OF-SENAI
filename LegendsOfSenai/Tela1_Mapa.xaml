@@ -5,22 +5,15 @@
     xmlns:local="using:LegendsOfSenai"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Width="1017">
-    <Canvas x:Name="mapa" Background="White" Margin="0,0,0,0" Width="1000" Height="1000" PointerPressed="Target_PointerPressed">
+    mc:Ignorable="d" Width="2000" Height="2000" >
+    
+    <Canvas x:Name="mapa" Background="White" Margin="14,-49,3.2,49" Width="2000" Height="2000" PointerPressed="Target_PointerPressed">
 
-        <Image Name="cavaleiro"  Width="200" Height="200" Source="Assets/cavaleiro.jpg" 
+        <Image Name="Mege"  Width="200" Height="200" Source="Assets/cavaleiro" 
                RequestedTheme="Dark"  VerticalAlignment="Center" HorizontalAlignment="Center" 
-               Canvas.Left="292" Canvas.Top="191" />
-        <Button Content="Back" Canvas.Left="944" Canvas.Top="960" Click="Button_Click" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-            <Button.RenderTransform>
-                <CompositeTransform Rotation="0.537"/>
-            </Button.RenderTransform>
-        </Button>
+               Canvas.Left="592" Canvas.Top="403" NineGrid="0,1,0,0" Canvas.ZIndex="10" />
+
+        <Image Name="open_map" Width="2000" Height="2000
+               " Source="Assets/telas/open_map.png"/>
     </Canvas>
-
-    <!-- <Canvas x:Name="mapa" Background="White"  ManipulationMode="All" ManipulationDelta="mover" Margin="0,0,0,0" Width="1000" Height="1000">
-       
-         <Image Name="cavaleiro"  Width="200" Height="200" Source="Assets/cavaleiro.jpg" RequestedTheme="Dark" AutomationProperties.PositionInSet="-7" VerticalAlignment="Center" HorizontalAlignment="Center" Canvas.Left="292" Canvas.Top="191" />
-    </Canvas>-->
-
 </Page>
