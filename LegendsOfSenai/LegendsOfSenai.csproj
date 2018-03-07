@@ -114,6 +114,7 @@
     <Content Include="Assets\cavaleiro.jpg" />
     <Content Include="Assets\charters\Mage_spt\mage.png" />
     <Content Include="Assets\charters\Mage_spt\mage_frente%3b_parado.png" />
+    <Content Include="Assets\charters\Warrrior_spt\guerreiro.png" />
     <Content Include="Assets\telas\open_map.png" />
     <Content Include="Assets\charters\Warrrior_spt\warriorpng.png" />
     <Content Include="Assets\telas\Zeldao.gif" />
