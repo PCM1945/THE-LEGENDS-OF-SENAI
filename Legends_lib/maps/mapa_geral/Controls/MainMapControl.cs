@@ -67,11 +67,14 @@ namespace Legends_lib
 
         private void GerarCasas(Mapa mapa)
         {
+            int posX = 0;
+            int posY = 0;
          foreach (IEnumerable<Casa> lista in mapa.Casa)
             {
                 foreach (Casa casa in lista)
                 {
-              //      casa = new Casa();
+                    casa = new Casa(true, posX, posY);
+
                 }
 
             }   
