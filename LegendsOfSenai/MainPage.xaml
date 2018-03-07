@@ -5,21 +5,25 @@
     xmlns:local="using:LegendsOfSenai"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Height="388" Width="664">
+    mc:Ignorable="d" Height="484.254" Width="526.328">
 
 
-    <Canvas x:Name="MainCanvas" HorizontalAlignment="Left" Height="372" VerticalAlignment="Top" Width="652"  Background="White" Margin="0,8,0,0">
-        <Button Name="Start_Button" Content="Start" FontSize="40"  Height="128" Width="165" 
-                Canvas.Left="240" Canvas.Top="132" Click="Start_Button_Click" FontFamily="Adobe Myungjo Std M"
-                FontWeight="Bold" >
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="#FFFB0000" Offset="0.235"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-       
+    <Canvas x:Name="MainCanvas"  Height="473" Width="520"  Background="White" Margin="0,8,0,0">
+        <Image Name="BackGround" Source="Assets/telas/Zeldao.gif"  Width="520" Height="473" 
+               VerticalAlignment="Center" HorizontalAlignment="Center" />
+        
+        <Button Name="Start_Button" Content="Start" FontSize="20"  Height="30" Width="95" 
+                Canvas.Left="204" Canvas.Top="304" Click="Start_Button_Click" FontFamily="Microsoft Himalaya"
+                FontWeight="Bold" Background="#FFFFCEC5" />
+        
+        <Rectangle Height="66" Width="293" Canvas.Left="108" Canvas.Top="119" Fill="#FFFFCEC5"/>
+        
+        <TextBlock Canvas.Left="179" Canvas.Top="124" Text="SENAI" TextWrapping="Wrap" Width="284" FontSize="72"  FontFamily="Microsoft Himalaya"/>
+        
+        <Rectangle Height="25" Width="132" Canvas.Left="304" Canvas.Top="262" Fill="#FFFFCEC5"/>
+        
+        <TextBlock Canvas.Left="329" Canvas.Top="254" Text="Nois" TextWrapping="Wrap" Height="53" Width="95" FontSize="24"/>
+
     </Canvas>
 
 

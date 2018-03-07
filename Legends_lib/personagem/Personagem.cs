@@ -12,7 +12,7 @@ namespace Legends_lib
         public int DimXCasa { get; set; }
         public int DimYCasa { get; set; }
         public int Experiencia { get; set; }
-        public int Gold { get; set; }
+        public int Custo_Gold { get; set; }
 
         Personagem(int x, int y, int e, int g, Habilidade h)
         {

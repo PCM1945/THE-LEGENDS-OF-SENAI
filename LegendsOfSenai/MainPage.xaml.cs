@@ -33,48 +33,19 @@ namespace LegendsOfSenai
             this.InitializeComponent();
             Debug.WriteLine(x);
 
-        //    MainCanvas.Background = Image_Loaded(object sender);
+     
         }
 
-     /*   void Image_Loaded(object sender)
-        {
-            Image BgImage =  new Image;
-            BitmapImage bitmapImage = new BitmapImage();
-            BgImage.Width = bitmapImage.DecodePixelWidth =520; //natural px width of image source
-                                                        
-            bitmapImage.UriSource = new Uri(BgImage.BaseUri, "Assets/Zeldao.gif");
-        }*/
+  
 
         private void Start_Button_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("aaaaaaaaaaaa");
-
-            /*  Tela1_Mapa TelaMapa = new Tela1_Mapa();
-              var host = new Window();
-              host.Content =  TelaMapa;
-              host.Show();
-              */
             this.Frame.Navigate(typeof(Tela1_Mapa));
          
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            x += 5;
-            Debug.WriteLine(x);
-        }
 
-        private async void anyEVent(object sender, RoutedEventArgs e)
-        {
-           /* var a = new Legends_lib.Personagem();
-
-            a.Nome = "NAME";
-            a.Classe = "Classe";
-
-            var b = new Legends_lib.maps.mapa_geral.Controls.MainMapControl();
-            b.MetricaX(this.ActualWidth);*/
-
-
-        }
+      
     }
 }

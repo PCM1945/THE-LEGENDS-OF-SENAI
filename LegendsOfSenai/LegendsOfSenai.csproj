@@ -110,8 +110,14 @@
     <None Include="LegendsOfSenai_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\charters\Arqueiro_spt\arquiero.png" />
     <Content Include="Assets\cavaleiro.jpg" />
-    <Content Include="Assets\Zeldao.gif" />
+    <Content Include="Assets\charters\Mage_spt\mage.png" />
+    <Content Include="Assets\charters\Mage_spt\mage_frente%3b_parado.png" />
+    <Content Include="Assets\charters\Warrrior_spt\guerreiro.png" />
+    <Content Include="Assets\telas\open_map.png" />
+    <Content Include="Assets\charters\Warrrior_spt\warriorpng.png" />
+    <Content Include="Assets\telas\Zeldao.gif" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

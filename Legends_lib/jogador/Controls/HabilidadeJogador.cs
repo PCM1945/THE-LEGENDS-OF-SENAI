@@ -39,9 +39,9 @@ namespace Legends_lib
 
         public string GanhaGold(Jogador j, Personagem enemy)
         {
-            j.Gold = enemy.Gold; //EXPERIÊNCIA DO OPONENTE É ADQUIRIDA PELO JOGADOR
+            j.Gold = enemy.Custo_Gold; //EXPERIÊNCIA DO OPONENTE É ADQUIRIDA PELO JOGADOR
                                                // INIMIGO CARREGA EXPERIÊNCIA EM SEUS ATRIBUTOS
-            return "Adquiriu " + enemy.Gold;
+            return "Adquiriu " + enemy.Custo_Gold;
         }
 
         public string GanhaItem(Jogador j, Item i)
