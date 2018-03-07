@@ -5,7 +5,7 @@
     xmlns:local="using:LegendsOfSenai"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Width="2000" Height="2000" >
+    mc:Ignorable="d" Width="2012" Height="1946" >
 
     <Canvas x:Name="mapa" Background="White" Margin="14,-49,3.2,49" Width="2000" Height="2000" PointerPressed="Target_PointerPressed">
 

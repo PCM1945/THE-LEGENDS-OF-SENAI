@@ -11,11 +11,12 @@ namespace Legends_lib
     {
         public IEnumerable<IEnumerable<Casa>> Casa { get; set; } //Item está na casa
         public int DimX { get; set; }
+        //FON
         public int DimY { get; set; }
-        Mapa(int dimx,int dimy)
+       public Mapa()
         {
-            this.DimX = dimx;
-            this.DimX = dimy;
+            this.DimX = 20;
+            this.DimX = 20;
         }
     }
 }

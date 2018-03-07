@@ -38,7 +38,7 @@ namespace Legends_lib
         public double MetricaX(int CasaAtual ,double sizeCanvasX, double fator = 5) //CALCULO PARA O TAMANHO DAS CASAS NO MAPA(CANVAS) 
                                                                         //E CALCULO DA POSIÇÃO 'X' RELATIVA NO CANVAS
         {
-            CasaAtual = new Personagem().DimXCasa;
+            CasaAtual = ObjetoDeJogo.DimXCasa;
             double tam_canvas_casa = sizeCanvasX / fator;
             double cordX = tam_canvas_casa * CasaAtual /*controllerX * tam_canvas_casa*/;
               return cordX;
@@ -47,18 +47,17 @@ namespace Legends_lib
         public double MetricaY(int CasaAtual, double sizeCanvasY, double fator = 5)//CALCULO PARA O TAMANHO DAS CASAS NO MAPA(CANVAS) 
                                                                       //E CALCULO DA POSIÇÃO 'Y' RELATIVA NO CANVAS
         {
-            CasaAtual = new Personagem().DimYCasa;
+            CasaAtual = ObjetoDeJogo.DimYCasa;
             double tam_canvas_casa = sizeCanvasY / fator;
             double cordY = tam_canvas_casa * CasaAtual;
                 return cordY;
         }
 
 
-        public static Mapa InciarMapa()//iniciar o back do mapa
+        public  Mapa InciarMapa()//iniciar o back do mapa
         {
-            Mapa mapa=null;
-            //Mapa M = new Mapa;
-
+            Mapa mapa = new Mapa();
+            GerarCasas(mapa);
             //Mapa mapa = new Mapa(); FALTA PEGAR AS DIMENSOES DE MAPA
             Random rnd = new Random();//utilizar o rnd ao criar um item no mapa
             //logica de criacao do mapa
@@ -66,7 +65,17 @@ namespace Legends_lib
             
         }
 
-        
+        private void GerarCasas(Mapa mapa)
+        {
+         foreach (IEnumerable<Casa> lista in mapa.Casa)
+            {
+                foreach (Casa casa in lista)
+                {
+              //      casa = new Casa();
+                }
+
+            }   
+        }
 
     }
 }

@@ -22,26 +22,6 @@ namespace LegendsOfSenai
             {
                 this.InitializeComponent();
             pointers = new Dictionary<uint, Pointer>();
-         
-            
-            // Declare the pointer event handlers.
-        /*    Target.PointerPressed +=
-                new PointerEventHandler(Target_PointerPressed);
-            Target.PointerEntered +=
-                new PointerEventHandler(Target_PointerEntered);
-            Target.PointerReleased +=
-                new PointerEventHandler(Target_PointerReleased);
-            Target.PointerExited +=
-                new PointerEventHandler(Target_PointerExited);
-            Target.PointerCanceled +=
-                new PointerEventHandler(Target_PointerCanceled);
-            Target.PointerCaptureLost +=
-                new PointerEventHandler(Target_PointerCaptureLost);
-            Target.PointerMoved +=
-                new PointerEventHandler(Target_PointerMoved);
-            Target.PointerWheelChanged +=
-                new PointerEventHandler(Target_PointerWheelChanged);
-                */
           
         }
 
