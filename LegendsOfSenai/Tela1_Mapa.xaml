@@ -9,16 +9,19 @@
 
     <Canvas x:Name="mapa" Background="White" Width="1000" Height="1000" PointerPressed="Target_PointerPressed">
 
-        <Image Name="Mege"  Width="50" Height="50" Source="Assets/charters/Warrrior_spt/guerreiro.png" 
-               RequestedTheme="Dark"  VerticalAlignment="Center" HorizontalAlignment="Center" 
-               Canvas.Left="500" Canvas.Top="450" NineGrid="0,0,0,0" Canvas.ZIndex="10" RenderTransformOrigin="0.5,0.5" >
+        <Image Name="cavaleiro"  Width="50" Height="50" Source="Assets/charters/Warrrior_spt/guerreiro.png" 
+               Canvas.Left="500" Canvas.Top="450"  Canvas.ZIndex="10" >
             <Image.RenderTransform>
                 <CompositeTransform Rotation="0"/>
             </Image.RenderTransform>
         </Image>
-        
-        <Image Name="mago" Width="50" Height="50" Source="Assets/charters/mage_spt/mage_frente_parado.png" Canvas.ZIndex="10" Canvas.Left="400" Canvas.Top="400">
-            
+
+        <Image Name="mago" Width="50" Height="50" Source="Assets/charters/mage_spt/mage_frente_parado.png" 
+               Canvas.ZIndex="10" Canvas.Left="750" Canvas.Top="400" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <CompositeTransform Rotation="-90"/>
+            </Image.RenderTransform>
+
         </Image>
 
         <Image Name="open_map" Width="1000" Height="1000
