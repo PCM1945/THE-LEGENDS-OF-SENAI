@@ -5,19 +5,23 @@
     xmlns:local="using:LegendsOfSenai"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Width="2012" Height="1946" >
+    mc:Ignorable="d" Width="1000" Height="1000" >
 
-    <Canvas x:Name="mapa" Background="White" Margin="14,-49,3.2,49" Width="2000" Height="2000" PointerPressed="Target_PointerPressed">
+    <Canvas x:Name="mapa" Background="White" Width="1000" Height="1000" PointerPressed="Target_PointerPressed">
 
-        <Image Name="Mege"  Width="100" Height="100" Source="Assets/charters/Warrrior_spt/guerreiro.png" 
+        <Image Name="Mege"  Width="50" Height="50" Source="Assets/charters/Warrrior_spt/guerreiro.png" 
                RequestedTheme="Dark"  VerticalAlignment="Center" HorizontalAlignment="Center" 
-               Canvas.Left="592" Canvas.Top="403" NineGrid="0,0,0,0" Canvas.ZIndex="10" RenderTransformOrigin="0.5,0.5" >
+               Canvas.Left="500" Canvas.Top="450" NineGrid="0,0,0,0" Canvas.ZIndex="10" RenderTransformOrigin="0.5,0.5" >
             <Image.RenderTransform>
-                <CompositeTransform Rotation="-89.65"/>
+                <CompositeTransform Rotation="0"/>
             </Image.RenderTransform>
         </Image>
+        
+        <Image Name="mago" Width="50" Height="50" Source="Assets/charters/mage_spt/mage_frente_parado.png" Canvas.ZIndex="10" Canvas.Left="400" Canvas.Top="400">
+            
+        </Image>
 
-        <Image Name="open_map" Width="2000" Height="2000
+        <Image Name="open_map" Width="1000" Height="1000
                " Source="Assets/telas/open_map.png"/>
     </Canvas>
 </Page>
