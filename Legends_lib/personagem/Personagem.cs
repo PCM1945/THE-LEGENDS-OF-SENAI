@@ -12,13 +12,13 @@ namespace Legends_lib
        
         public int Experiencia { get; set; }
         public int Custo_Gold { get; set; }
-
+        public int qtCasa { get; set; }
         Personagem(int e, int g, Habilidade h)
         {
             this.Habilidade = h;
             this.Custo_Gold = g;
             this.Experiencia = e;
-            
+            this.Casa_atual = new Casa(true,x,y);
         }
 
        public void Mover(int xf, int yf)//f = destino
