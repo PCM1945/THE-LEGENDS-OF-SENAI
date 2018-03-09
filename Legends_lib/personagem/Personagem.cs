@@ -18,7 +18,7 @@ namespace Legends_lib
             this.Habilidade = h;
             this.Custo_Gold = g;
             this.Experiencia = e;
-            this.Casa_atual = new Casa(true,x,y);
+           // this.Casa_atual = new Casa(true,x,y);
         }
 
        public void Mover(int xf, int yf)//f = destino
