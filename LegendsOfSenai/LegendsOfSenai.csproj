@@ -111,7 +111,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\charters\Arqueiro_spt\arquiero.png" />
-    <Content Include="Assets\cavaleiro.jpg" />
     <Content Include="Assets\charters\Mage_spt\mage.png" />
     <Content Include="Assets\charters\Mage_spt\mage_frente_parado.png" />
     <Content Include="Assets\charters\Warrrior_spt\guerreiro.png" />
