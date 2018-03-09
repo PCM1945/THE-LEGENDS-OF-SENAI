@@ -80,7 +80,7 @@ namespace Legends_lib
                 for (int y = 0; y < mapa.DimY; y++)
                 {
 
-                    mapa.Casa[x][y] = new Casa(EhAdavel(x, y, new List<int[]>()), x, y);
+                    mapa.Casa[x][y] = new Casa(EhAdavel(x, y, CasasNaoAndaveis), x, y);
                 }
             }
 
