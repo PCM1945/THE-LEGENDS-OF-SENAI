@@ -9,7 +9,7 @@ namespace Legends_lib
 { 
     public class Mapa
     {
-        public IEnumerable<IEnumerable<Casa>> Casa { get; set; } //Item está na casa
+        public Casa[][] Casa { get; set; } //Item está na casa
         public int DimX { get; set; }
         //FON
         public int DimY { get; set; }
