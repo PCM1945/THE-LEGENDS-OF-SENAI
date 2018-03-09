@@ -2,10 +2,12 @@
 
 namespace Legends_lib
 {
-    public class Item
+    public class Item : ObjetoDeJogo
     {
         public string Nome { get; set; }
         public EItens Tipo { get; set; }
-       // public {
+        public List<string> Efeitos { get; set; }
+
+        
     } 
 }

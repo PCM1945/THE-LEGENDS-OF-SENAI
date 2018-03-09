@@ -23,10 +23,10 @@ namespace Legends_lib
 
        public void Mover(int xf, int yf)//f = destino
        {
-            Casa final = new Casa(true, xf, yf);//ainda não faz a consideração de ser andável ou não
+            Casa final = new Casa(true, xf, yf);
             Casa_atual = final;
        }
-
+        //public void PegarItem()
 
     }
 }
