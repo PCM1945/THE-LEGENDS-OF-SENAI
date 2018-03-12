@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Legends_lib
 {
-    public class MainMapControl
+    public  class MainMapControl
     {
         private const int ProbilidadeItem = 30;
 
@@ -20,7 +20,7 @@ namespace Legends_lib
 
         private bool PodeAndar(int posX, int posY, Mapa mapa)
         {
-            return mapa.Casa.ElementAt(posX).ElementAt(posY).Andavel;
+            return mapa.casa.ElementAt(posX).ElementAt(posY).Andavel;
         }//checar se a casa pode ser ocupada Na geracao
 
 
@@ -80,7 +80,7 @@ namespace Legends_lib
                 for (int y = 0; y < mapa.DimY; y++)
                 {
 
-                    mapa.Casa[x][y] = new Casa(EhAdavel(x, y, CasasNaoAndaveis), x, y);
+                    mapa.casa[x][y] = new Casa(EhAdavel(x, y, CasasNaoAndaveis), x, y);
                 }
             }
 

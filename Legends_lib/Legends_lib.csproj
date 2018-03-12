@@ -111,6 +111,7 @@
     <Compile Include="jogador\Controls\HabilidadeJogador.cs" />
     <Compile Include="maps\mapa_geral\Casa.cs" />
     <Compile Include="Item\Eitens.cs" />
+    <Compile Include="maps\mapa_geral\Controls\calcCasa.cs" />
     <Compile Include="maps\mapa_geral\Controls\MainMapControl.cs" />
     <Compile Include="maps\mapa_geral\Mapa.cs" />
     <Compile Include="personagem\Controls\ControlsHabilidade.cs" />
