@@ -26,5 +26,10 @@ namespace LegendsOfSenai
         {
             this.InitializeComponent();
         }
+
+        private void botao_batalha_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

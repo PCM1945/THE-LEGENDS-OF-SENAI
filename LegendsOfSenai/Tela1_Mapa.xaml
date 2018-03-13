@@ -15,6 +15,9 @@
 
         <Image Name="mago" Width="40" Height="40" Source="Assets/charters/mage_spt/mage_frente_parado.png" Canvas.ZIndex="10"
                Canvas.Left="400" Canvas.Top="400">
+            <Image.RenderTransform>
+                <CompositeTransform Rotation="-90"/>
+            </Image.RenderTransform>
 
         </Image>
 
