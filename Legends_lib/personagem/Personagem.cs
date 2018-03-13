@@ -1,5 +1,7 @@
 ﻿
 
+using System.Collections.Generic;
+
 namespace Legends_lib
 {
     public class Personagem : ObjetoDeJogo
@@ -9,7 +11,11 @@ namespace Legends_lib
         //criar habilidade
         public Casa Casa_atual { get; set; }
         public Habilidade Habilidade { get; set; }
-       
+        public List<object> ItemEquipado { get; set; }
+
+        public int Atq { get; set; }
+        public int Vida { get; set; }
+
         public int Experiencia { get; set; }
         public int Custo_Gold { get; set; }
         public int QtCasa { get; set; }

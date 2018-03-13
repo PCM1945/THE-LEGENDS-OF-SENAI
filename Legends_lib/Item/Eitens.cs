@@ -10,6 +10,7 @@ namespace Legends_lib
     {
        Consumivel,
        Equipavel,
+       NaoUtilizavel
     }
 
     
