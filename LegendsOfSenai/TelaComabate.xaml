@@ -19,7 +19,7 @@
         </Image>
 
         <Button x:Name = "botao_batalha" Content ="batalha em desenvolvimento" Canvas.ZIndex="10" Canvas.Left="405" 
-                Canvas.Top="242" Height="70" Width="230" Background="Gold"  >
+                Canvas.Top="242" Height="70" Width="230" Background="Gold" Click= "botao_batalha_Click">
 
         </Button>
     </Canvas>

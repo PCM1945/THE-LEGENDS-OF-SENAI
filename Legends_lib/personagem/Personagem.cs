@@ -12,7 +12,7 @@ namespace Legends_lib
        
         public int Experiencia { get; set; }
         public int Custo_Gold { get; set; }
-        public int qtCasa { get; set; }
+        public int QtCasa { get; set; }
         Personagem(int e, int g, Habilidade h)
         {
             this.Habilidade = h;
