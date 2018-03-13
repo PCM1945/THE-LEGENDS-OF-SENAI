@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Legends_lib;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -17,19 +18,33 @@ namespace LegendsOfSenai
         /// </summary>
         public sealed partial class Tela1_Mapa : Page
         {
+
+        Jogador Jogador1,Jogador2;
+
         Dictionary<uint, Windows.UI.Xaml.Input.Pointer> pointers;
             public Tela1_Mapa()
             {
                 this.InitializeComponent();
             pointers = new Dictionary<uint, Pointer>();
-          
+            Jogador1 = new Jogador();
+            Jogador2 = new Jogador();
+            IniciarCastelos();
         }
 
-        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void IniciarCastelos()
         {
-            this.Frame.GoBack();
+            Jogador1.Castelos.Add(new Castelo(1,7));
+            Jogador1.Castelos.Add(new Castelo(2,7));
+            Jogador1.Castelos.Add(new Castelo(1,8));
+            Jogador1.Castelos.Add(new Castelo(2,8));
 
+            Jogador2.Castelos.Add(new Castelo(17,7));
+            Jogador2.Castelos.Add(new Castelo(18,7));
+            Jogador2.Castelos.Add(new Castelo(17,8));
+            Jogador2.Castelos.Add(new Castelo(18,8));
         }
+
+      
 
         private void Target_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
