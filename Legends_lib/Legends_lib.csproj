@@ -108,16 +108,16 @@
   <ItemGroup>
     <Compile Include="Habilidade\Habilidade.cs" />
     <Compile Include="Habilidade\TipoHabilidade.cs" />
-    <Compile Include="Item\Controls\ItemControl.cs" />
+    <Compile Include="item\Controls\ItemControl.cs" />
     <Compile Include="jogador\Castelo.cs" />
     <Compile Include="jogador\Controls\HabilidadeJogador.cs" />
     <Compile Include="maps\mapa_geral\Casa.cs" />
-    <Compile Include="Item\Eitens.cs" />
+    <Compile Include="item\Eitens.cs" />
     <Compile Include="maps\mapa_geral\Controls\calcCasa.cs" />
     <Compile Include="maps\mapa_geral\Controls\MainMapControl.cs" />
     <Compile Include="maps\mapa_geral\Mapa.cs" />
     <Compile Include="personagem\Controls\ControlsHabilidade.cs" />
-    <Compile Include="Item\Item.cs" />
+    <Compile Include="item\Item.cs" />
     <Compile Include="jogador\Jogador.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="maps\mapa-batalha\MapaBatalha.cs" />

@@ -17,6 +17,13 @@ namespace Legends_lib
         new int[2] { 15,8}, new int[2] { 15,9},new int[2] { 16,9},new int[2] { 18,9},new int[2] { 19,9}
         };
 
+        public List<Item.Item> Itens = //LISTA DE ITENS DISPONÍVEIS PARA SEREM COLOCADOS NA CASA
+            new List<Item.Item>() {
+                new Item.Item { Descricao = "DESCRIÇÃO 1", Nome = "NOME 1", Tipo = EItens.Consumivel},
+                new Item.Item { Descricao = "DESCRIÇÃO 2", Nome = "NOME 2", Tipo = EItens.Equipavel},
+                new Item.Item { Descricao = "DESCRIÇÃO 3", Nome = "NOME 3", Tipo = EItens.NaoUtilizavel},
+            };
+
 
         private bool PodeAndar(int posX, int posY, Mapa mapa)
         {
@@ -24,10 +31,10 @@ namespace Legends_lib
         }//checar se a casa pode ser ocupada Na geracao
 
 
-        private Item GeraItem(int posX, int posY, Mapa mapa)
+        private Item.Item GeraItem(int posX, int posY, Mapa mapa)
         {
             if (PodeAndar(posX, posY, mapa))
-                return new Item();
+                return new Item.Item();
             else
                 return null;
         }

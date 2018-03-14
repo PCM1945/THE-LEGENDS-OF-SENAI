@@ -12,7 +12,7 @@ namespace Legends_lib
         public int PosX { get; set; }
         public int PosY { get; set; }
         public Personagem Personagem { get; set; }
-        public Item Item { get; set; }
+        public Item.Item Item { get; set; }
         public string local_imagem { get; set; }
 
         public Casa(bool andavel,int posX,int posY)
