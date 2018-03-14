@@ -19,9 +19,10 @@ namespace Legends_lib
 
         public List<Item.Item> Itens = //LISTA DE ITENS DISPONÍVEIS PARA SEREM COLOCADOS NA CASA
             new List<Item.Item>() {
-                new Item.Item { Descricao = "DESCRIÇÃO 1", Nome = "NOME 1", Tipo = EItens.Consumivel},
-                new Item.Item { Descricao = "DESCRIÇÃO 2", Nome = "NOME 2", Tipo = EItens.Equipavel},
-                new Item.Item { Descricao = "DESCRIÇÃO 3", Nome = "NOME 3", Tipo = EItens.NaoUtilizavel},
+                /** para a primeira entrega manter apenas um item não utilizavel */
+               // new Item.Item { Descricao = "DESCRIÇÃO 1", Nome = "NOME 1", Tipo = EItens.Consumivel},
+               // new Item.Item { Descricao = "DESCRIÇÃO 2", Nome = "NOME 2", Tipo = EItens.Equipavel},
+                 new Item.Item { Descricao = "DESCRIÇÃO 3", Nome = "NOME 3", Tipo = EItens.NaoUtilizavel},
             };
 
 

@@ -25,9 +25,10 @@ namespace Legends_lib
             }
         }
 
+        /** turno  será contado no jogo*/
         public int ContaTurno(Jogador j)
         {
-            return j.Turno += 1;
+            return j.Turno_movimento += 1;
         }
 
         public string GanhaExp(Jogador j, Personagem enemy)
