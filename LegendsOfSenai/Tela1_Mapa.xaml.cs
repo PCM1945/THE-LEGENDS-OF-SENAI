@@ -25,7 +25,7 @@ namespace LegendsOfSenai
         public Mapa map= new MainMapControl().InciarMapa();
         public Personagem selecionado;
         public bool selecionou=false;
-
+        private bool InventarioAberto = false;
         Jogador Jogador1,Jogador2;
 
         Dictionary<uint, Windows.UI.Xaml.Input.Pointer> pointers;
@@ -100,7 +100,16 @@ namespace LegendsOfSenai
 
         private void inventario_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            Inventario.Opacity = 100;
+            if (InventarioAberto) { 
+                Inventario.Opacity = 0;
+            InventarioAberto = false;
+            }
+            else
+            {
+                Inventario.Opacity = 100;
+                InventarioAberto = true;
+            }
+           
         }
 
         private void UpdateEventLog(string v)

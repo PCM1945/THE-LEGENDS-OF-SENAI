@@ -16,23 +16,26 @@
 
             <Image Name="mago" Width="40" Height="40" Source="Assets/charters/mage_spt/mage_frente_parado.png" Canvas.ZIndex="10"
                Canvas.Left="400" Canvas.Top="400">
-            <Image.RenderTransform>
-                <CompositeTransform Rotation="-90"/>
-            </Image.RenderTransform>
-        </Image>
+                <Image.RenderTransform>
+                    <CompositeTransform Rotation="-90"/>
+                </Image.RenderTransform>
+            </Image>
 
             <Image Name="open_map" Width="800" Height="800"
-                Source="Assets/telas/open_map.png" Canvas.Left="1" Canvas.Top="-4"/>
-            <ListView Name="Invetario_list" Canvas.Top="10" Canvas.Left="10">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Nome}"></TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <StackPanel Name="Inventario" Height="297"   Canvas.Left="-34" Canvas.Top="371" Width="100" Visibility="Visible" Opacity="0" Background="Black"/>
+                Source="Assets/telas/open_map.png" Canvas.Left="5" Canvas.Top="-4"/>
+            
+            <StackPanel Name="Inventario" Height="647"    Canvas.Left="-98" Width="100" Visibility="Visible" Opacity="0" Background="BurlyWood">
+                <TextBlock Text="Inventario"></TextBlock>
+                <ListView Name="Invetario_list" Canvas.Top="10" Canvas.Left="10">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Nome}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
             <Button x:Name="Inventario_button" Content="BAG" Background="Blue" Canvas.Left="11" Canvas.Top="744" Height="38" Width="58" Click="inventario_Click"/>
 
         </Canvas>
