@@ -14,7 +14,7 @@ namespace Legends_lib
         public List<object> Inventario { get; set; }
         public List<Personagem> Personagens { get; set; }
         public List<Castelo> Castelos {get; set;}
-        public int Turno { get; set; }
+        public int Turno_movimento { get; set; }
         public Jogador()
         {
             Castelos = new List<Castelo>();
