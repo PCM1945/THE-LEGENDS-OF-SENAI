@@ -10,6 +10,8 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Legends_lib;
 using Legends_lib.maps.mapa_geral.Controls;
+using Legends_lib.Item;
+
 namespace LegendsOfSenai
 {
    
@@ -34,6 +36,13 @@ namespace LegendsOfSenai
             Jogador1 = new Jogador();
             Jogador2 = new Jogador();
             IniciarCastelos();
+
+            //Setando o data biding
+            Jogador1.Inventario = new List<Item>();
+            Jogador1.Inventario.Add(new Item {Nome = "item" });
+            Jogador1.Inventario.Add(new Item { Nome = "item2" });
+            Jogador1.Inventario.Add(new Item { Nome = "item3" });
+            Invetario_list.ItemsSource = Jogador1.Inventario;
         }
 
         private void IniciarCastelos()

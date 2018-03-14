@@ -11,7 +11,7 @@ namespace Legends_lib
         public Int64 Gold { get; set; }
         public Int64 Experiencia { get; set; }
         public List<Habilidade> Habilidades { get; set; }
-        public List<object> Inventario { get; set; }
+        public List<Item.Item> Inventario { get; set; }//Iobservable collection
         public List<Personagem> Personagens { get; set; }
         public List<Castelo> Castelos {get; set;}
         public int Turno_movimento { get; set; }
