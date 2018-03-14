@@ -5,22 +5,28 @@
     xmlns:local="using:LegendsOfSenai"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Width="900" Height="800" >
+    mc:Ignorable="d" Width="1000" Height="800" >
 
-    <Canvas x:Name="mapa" Background="White" Width="800" Height="800" PointerPressed="Target_PointerPressed">
+    <ScrollViewer Height="650" >
+        <Canvas x:Name="mapa" Background="White" Width="800" Height="800" PointerPressed="Target_PointerPressed">
 
-        <Image Name="cavaleiro"  Width="40" Height="40" Source="Assets/charters/Warrrior_spt/guerreiro.png" 
+            <Image Name="cavaleiro"  Width="40" Height="40" Source="Assets/charters/Warrrior_spt/guerreiro.png" 
                Canvas.Left="440" Canvas.Top="440" Canvas.ZIndex="10">
-        </Image>
+            </Image>
 
-        <Image Name="mago" Width="40" Height="40" Source="Assets/charters/mage_spt/mage_frente_parado.png" Canvas.ZIndex="10"
+            <Image Name="mago" Width="40" Height="40" Source="Assets/charters/mage_spt/mage_frente_parado.png" Canvas.ZIndex="10"
                Canvas.Left="400" Canvas.Top="400">
             <Image.RenderTransform>
                 <CompositeTransform Rotation="-90"/>
             </Image.RenderTransform>
         </Image>
 
-        <Image Name="open_map" Width="800" Height="800"
-                Source="Assets/telas/open_map.png"/>
-    </Canvas>
+            <Image Name="open_map" Width="800" Height="800"
+                Source="Assets/telas/open_map.png" Canvas.Left="1" Canvas.Top="-4"/>
+            <StackPanel Name="Inventario" Height="297"   Canvas.Left="-34" Canvas.Top="371" Width="100" Visibility="Visible" Opacity="0" Background="Black"/>
+            <Button x:Name="Inventario_button" Content="BAG" Background="Blue" Canvas.Left="11" Canvas.Top="744" Height="38" Width="58" Click="inventario_Click"/>
+
+        </Canvas>
+    </ScrollViewer>
+
 </Page>

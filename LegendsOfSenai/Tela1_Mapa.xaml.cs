@@ -57,7 +57,12 @@ namespace LegendsOfSenai
             e.Handled = true;
 
             PointerPoint ptrPt = e.GetCurrentPoint(mapa);
-            if (selecionou == false)
+            Debug.WriteLine("pos X: " + ptrPt.Position.X);
+
+            Debug.WriteLine("pos Y: " + ptrPt.Position.Y);
+
+            Debug.WriteLine(calcCasa.getPosCasa((int)ptrPt.Position.X));
+        /*    if (selecionou == false)
             {
                 if (map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X)][calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null)
                 {
@@ -74,12 +79,19 @@ namespace LegendsOfSenai
                     map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X)][calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem=selecionado;
                     // map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X)][calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem = null;
                 }
-            }
+            }*/
            
-             Debug.WriteLine("pos X: " + ptrPt.Position.X);
+            
+        }
 
-             Debug.WriteLine("pos Y: " + ptrPt.Position.Y);
+        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
 
+        }
+
+        private void inventario_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            Inventario.Opacity = 100;
         }
 
         private void UpdateEventLog(string v)

@@ -21,6 +21,7 @@ namespace Legends_lib.maps.mapa_geral.Controls
                 else
                 {
                     count++;
+                    pos += 40;
                 }
             }
             return count;
