@@ -44,7 +44,7 @@ namespace Legends_lib
             return "Adquiriu " + enemy.Custo_Gold;
         }
 
-        public string GanhaItem(Jogador j, Item i)
+        public string GanhaItem(Jogador j, Item.Item i)
         {
             if(j.Inventario.Count < 10)
             {
