@@ -24,19 +24,20 @@ namespace Legends_lib.Item.Controls
             }
             else if(EItens.Equipavel.Equals(i.Tipo))//O EQUIPAVEL AUMENTA 1 DE ATK
             {
-                if (p.ItemEquipado.Contains(i))
+                if (p.ItemEquipado.Contains(i)) // VERIFICA SE O EQUIPÁVEL JÁ ESTÁ EQUIPADO
                 {
-                    p.ItemEquipado.Remove(i);
+                    p.ItemEquipado.Remove(i); // SE ESTIVER DESEQUIPA
+                    p.Atq -= 1; //DIMINUI O ATQ
                 }
                 else 
                 {
-                    p.ItemEquipado.Add(i);
-                    p.Atq += 1;
+                    p.ItemEquipado.Add(i);// SE NÃO ESTIVER EQUIPA
+                    p.Atq += 1;// AUMENTA O ATQ
                 }
             }
             else if (EItens.NaoUtilizavel.Equals(i.Tipo))
             {
-                return;
+                return;// NADA FAZ SE FOR NÃO UTILIZAVEL -- PS ISSO NEM PRECISA AQUI, MAS BOTEI ASSIM MESMO
             }
 
         }
