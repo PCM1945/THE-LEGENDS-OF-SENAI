@@ -29,7 +29,7 @@ namespace LegendsOfSenai
 
         private void botao_batalha_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(Tela1_Mapa));
         }
     }
 }
