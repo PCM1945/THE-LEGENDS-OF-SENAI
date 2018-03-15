@@ -25,7 +25,6 @@ namespace LegendsOfSenai
         public Mapa map= new MainMapControl().InciarMapa();
         public Personagem selecionado;
         public bool selecionou=false;
-        private bool InventarioAberto = false;
         Jogador Jogador1,Jogador2;
 
         Dictionary<uint, Windows.UI.Xaml.Input.Pointer> pointers;
@@ -35,14 +34,18 @@ namespace LegendsOfSenai
             pointers = new Dictionary<uint, Pointer>();
             Jogador1 = new Jogador();
             Jogador2 = new Jogador();
+            
             IniciarCastelos();
 
             //Setando o data biding
+
+
             Jogador1.Inventario = new List<Item>();
-            Jogador1.Inventario.Add(new Item {Nome = "item" });
-            Jogador1.Inventario.Add(new Item { Nome = "item2" });
-            Jogador1.Inventario.Add(new Item { Nome = "item3" });
+            Jogador1.Inventario.Add(new Item {Nome = "item1", Tipo = EItens.Consumivel });
+            Jogador1.Inventario.Add(new Item { Nome = "item2", Tipo = EItens.Equipavel});
+            Jogador1.Inventario.Add(new Item { Nome = "item3", Tipo = EItens.NaoUtilizavel });
             Invetario_list.ItemsSource = Jogador1.Inventario;
+            Player_info.ItemsSource = new List<Jogador>() { Jogador1};
         }
 
         private void IniciarCastelos()
@@ -98,16 +101,14 @@ namespace LegendsOfSenai
 
         }
 
-        private void inventario_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void Inventario_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            if (InventarioAberto) { 
+            if (Inventario.Opacity != 0) {
                 Inventario.Opacity = 0;
-            InventarioAberto = false;
             }
             else
             {
                 Inventario.Opacity = 100;
-                InventarioAberto = true;
             }
            
         }

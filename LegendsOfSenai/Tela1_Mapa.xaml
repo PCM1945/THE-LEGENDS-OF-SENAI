@@ -23,21 +23,48 @@
 
             <Image Name="open_map" Width="800" Height="800"
                 Source="Assets/telas/open_map.png" Canvas.Left="5" Canvas.Top="-4"/>
-            
-            <StackPanel Name="Inventario" Height="647"    Canvas.Left="-98" Width="100" Visibility="Visible" Opacity="0" Background="BurlyWood">
+            <!-- INVENTARIO-->
+            <StackPanel Name="Inventario" Height="250"    Canvas.Left="-96" Width="100" Visibility="Visible" Opacity="0" Background="BurlyWood" Canvas.Top="128">
                 <TextBlock Text="Inventario"></TextBlock>
-                <ListView Name="Invetario_list" Canvas.Top="10" Canvas.Left="10">
+                <ScrollViewer Height="230" Width="100">
+                    <ListView Name="Invetario_list" Canvas.Top="10" Canvas.Left="10" >
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <!-- STACK DE ITENS-->
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding Nome}"/>
+                                    <TextBlock Text="{Binding Tipo}"/>
+                                </StackPanel>
+                                <!-- STACK DE ITENS-->
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollViewer>
+            </StackPanel>
+            <!-- INVENTARIO-->
+            <Button x:Name="Inventario_button" Content="BAG" Background="Beige" Canvas.Left="11" Canvas.Top="744" Height="38" Width="58" Click="Inventario_Click"/>
+
+            <!-- Player Info-->
+            <StackPanel Name="InfoPlayerBox" Height="101"    Canvas.Left="-96" Width="100" Visibility="Visible" Opacity="100" Background="Aqua" Canvas.Top="8">
+
+                <ListView Name="Player_info" Canvas.Top="10" Canvas.Left="10" >
+
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Nome}"></TextBlock>
+
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Gold:"/>
+                                <TextBlock Text="{Binding Gold}"/>
+                                
                             </StackPanel>
+
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </StackPanel>
-            <Button x:Name="Inventario_button" Content="BAG" Background="Blue" Canvas.Left="11" Canvas.Top="744" Height="38" Width="58" Click="inventario_Click"/>
 
+            </StackPanel>
+            <!-- Player Info-->
         </Canvas>
     </ScrollViewer>
 
