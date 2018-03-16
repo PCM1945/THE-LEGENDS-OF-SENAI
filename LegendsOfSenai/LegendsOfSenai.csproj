@@ -117,6 +117,8 @@
     <Content Include="Assets\charters\Mago_spt\mago_lado_esq.png" />
     <Content Include="Assets\charters\Mago_spt\mage_frente_parado.png" />
     <Content Include="Assets\charters\Warrrior_spt\guerreiro.png" />
+    <Content Include="Assets\itens\pedra.png" />
+    <Content Include="Assets\itens\pedra_do_mal.jpg" />
     <Content Include="Assets\telas\battle_BKv2.0.jpg" />
     <Content Include="Assets\telas\open_map.png" />
     <Content Include="Assets\charters\Warrrior_spt\warrior.png" />
