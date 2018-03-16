@@ -11,6 +11,8 @@ using Windows.UI.Xaml.Input;
 using Legends_lib;
 using Legends_lib.maps.mapa_geral.Controls;
 using Legends_lib.Item;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml;
 
 namespace LegendsOfSenai
 {
@@ -22,7 +24,7 @@ namespace LegendsOfSenai
         public sealed partial class Tela1_Mapa : Page
         {
 
-        public Mapa map= new MainMapControl().InciarMapa();
+        public Mapa Map= new MainMapControl().InciarMapa();
         public Personagem selecionado;
         public bool selecionou=false;
         Jogador Jogador1,Jogador2;
@@ -112,7 +114,24 @@ namespace LegendsOfSenai
             }
            
         }
-
+        private void Recrutamento(object sender, RoutedEventArgs e)
+        {
+            foreach (Castelo cast in Jogador1.Castelos) {
+                if (Map.casa[cast.Cordx][cast.Cordy].Personagem == null)
+                {
+                    Personagem person = new Guerreiro(cast.Cordx,cast.Cordy);
+                    Map.casa[cast.Cordx][cast.Cordy].Personagem = person;
+                    Jogador1.Personagens.Add(person);
+                    Image imgPer = new Image();
+                   // imgPer.Source = person.UrlImage; FAZENDO
+                }
+            }
+         //   Personagem person = new Guerreiro();
+        }
+        private void AbreRecrutamento(object sender, TappedRoutedEventArgs e)
+        {
+            FlyoutBase.ShowAttachedFlyout((FrameworkElement) sender);
+        }
         private void UpdateEventLog(string v)
         {
             throw new NotImplementedException();
