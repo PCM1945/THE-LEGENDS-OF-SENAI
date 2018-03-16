@@ -113,24 +113,27 @@
     <None Include="LegendsOfSenai_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\charters\Arqueiro_spt\arquiero.png" />
-    <Content Include="Assets\charters\Mago_spt\mago_lado_esq.png" />
-    <Content Include="Assets\charters\Mago_spt\mage_frente_parado.png" />
-    <Content Include="Assets\charters\Warrrior_spt\guerreiro.png" />
+    <Content Include="Assets\characters\Arqueiro_spt\esqueleto\skeleton_archer - Copia.png" />
+    <Content Include="Assets\characters\Arqueiro_spt\huamno\arquiero.png" />
+    <Content Include="Assets\characters\Mago_spt\esqueleto\skeleton_necromancer.png" />
+    <Content Include="Assets\characters\Mago_spt\humano\mago_lado_esq.png" />
+    <Content Include="Assets\characters\Mago_spt\humano\mage_frente_parado.png" />
+    <Content Include="Assets\characters\Warrrior_spt\humano\guerreiro.png" />
+    <Content Include="Assets\characters\Warrrior_spt\esqueleto\soldado_esqueleto.png" />
     <Content Include="Assets\itens\pedra.png" />
     <Content Include="Assets\itens\pedra_do_mal.jpg" />
     <Content Include="Assets\telas\battle_BKv2.0.jpg" />
     <Content Include="Assets\telas\open_map.png" />
-    <Content Include="Assets\charters\Warrrior_spt\warrior.png" />
+    <Content Include="Assets\characters\Warrrior_spt\humano\warrior.png" />
     <Content Include="Assets\telas\Zeldao.gif" />
     <Content Include="Properties\Default.rd.xml" />
-    <Content Include="Assets\LockScreenLogo.scale-200.png" />
-    <Content Include="Assets\SplashScreen.scale-200.png" />
-    <Content Include="Assets\Square150x150Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
-    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Assets\basicos-nao-usados\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\basicos-nao-usados\SplashScreen.scale-200.png" />
+    <Content Include="Assets\basicos-nao-usados\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\basicos-nao-usados\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\basicos-nao-usados\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\basicos-nao-usados\StoreLogo.png" />
+    <Content Include="Assets\basicos-nao-usados\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -161,6 +164,7 @@
       <Name>Legends_lib</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

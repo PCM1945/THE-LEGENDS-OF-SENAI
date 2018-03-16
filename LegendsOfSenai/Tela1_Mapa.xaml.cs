@@ -1,4 +1,4 @@
-﻿using Legends_lib;//fwfwfwfwwwwwwwwwwwwwwwww
+﻿using Legends_lib;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
