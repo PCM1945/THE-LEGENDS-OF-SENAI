@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,8 @@ namespace Legends_lib
 {
     public  class MainMapControl
     {
+        public const int DimX = 20;
+        public const int DimY = 20;
         private const int ProbilidadeItem = 30;
 
         public List<int[]> CasasNaoAndaveis = new List<int[]>() {
@@ -74,40 +77,41 @@ namespace Legends_lib
         {
             Mapa mapa = new Mapa();
             GerarCasas(mapa);
-            //Mapa mapa = new Mapa(); FALTA PEGAR AS DIMENSOES DE MAPA
+            Debug.WriteLine(mapa.casa[2][2].PosX);
+            Debug.WriteLine(mapa.casa[2][2].Andavel);
+           
             Random rnd = new Random();//utilizar o rnd ao criar um item no mapa
-            //logica de criacao do mapa
             return mapa;
 
         }
 
         private void GerarCasas(Mapa mapa)
         {
-            for (int x = 0; x < mapa.DimX; x++)
+            Debug.WriteLine("AQUI");
+            Debug.WriteLine(mapa.DimX);
+            for (int x = 0; x < DimX; x++)
             {
-                for (int y = 0; y < mapa.DimY; y++)
+                for (int y = 0; y < DimY; y++, Debug.WriteLine("FDDDDDDDD"))
                 {
-
-                    mapa.casa[x][y] = new Casa(EhAdavel(x, y, CasasNaoAndaveis), x, y);
+                    Debug.WriteLine("FDDDDDDDD");
+                    mapa.casa[x][y] = new Casa(EhAdavel(x, y, CasasNaoAndaveis), x, y);          
                 }
             }
 
-
-
+            Debug.WriteLine(mapa.casa[2][2].PosX);
+            Debug.WriteLine(mapa.casa[2][2].Andavel);
         }
+
         private bool EhAdavel(int x, int y, List<int[]> lista)
         {
 
             int[] coord = new int[2];
             coord[0] = y;
             coord[1] = x;
-            return lista.Contains(coord);
+            return !lista.Contains(coord);
 
         }
 
-        private void TESTE()
-        {
-            CasasNaoAndaveis.Add(new int[2] { 1, 2 });
-        }
+       
     }
 }

@@ -24,34 +24,38 @@ namespace LegendsOfSenai
         public sealed partial class Tela1_Mapa : Page
         {
 
-        public Mapa Map= new MainMapControl().InciarMapa();
+        public Mapa Map = new MainMapControl().InciarMapa();
         public Personagem selecionado;
         public bool selecionou=false;
         Jogador Jogador1,Jogador2;
 
         Dictionary<uint, Windows.UI.Xaml.Input.Pointer> pointers;
-            public Tela1_Mapa()
-            {
-                this.InitializeComponent();
+        public Tela1_Mapa()
+        {
+            this.InitializeComponent();
             pointers = new Dictionary<uint, Pointer>();
             Jogador1 = new Jogador();
             Jogador2 = new Jogador();
-            
+
             IniciarCastelos();
 
             //Setando o data biding
 
 
             Jogador1.Inventario = new List<Item>();
-            Jogador1.Inventario.Add(new Item {Nome = "item1", Tipo = EItens.Consumivel });
-            Jogador1.Inventario.Add(new Item { Nome = "item2", Tipo = EItens.Equipavel});
+            Jogador1.Inventario.Add(new Item { Nome = "item1", Tipo = EItens.Consumivel });
+            Jogador1.Inventario.Add(new Item { Nome = "item2", Tipo = EItens.Equipavel });
             Jogador1.Inventario.Add(new Item { Nome = "item3", Tipo = EItens.NaoUtilizavel });
             Invetario_list.ItemsSource = Jogador1.Inventario;
-            Player_info.ItemsSource = new List<Jogador>() { Jogador1};
+            Player_info.ItemsSource = new List<Jogador>() { Jogador1 };
+
+            //TESTANDO O MAPA
         }
 
         private void IniciarCastelos()
         {
+            Debug.WriteLine("Iniciando Castelos");
+
             Jogador1.Castelos.Add(new Castelo(1,7));
             Jogador1.Castelos.Add(new Castelo(2,7));
             Jogador1.Castelos.Add(new Castelo(1,8));
@@ -118,14 +122,26 @@ namespace LegendsOfSenai
         {
             Debug.WriteLine("trewwwwwwwwwwwwqqqqqq");
             foreach (Castelo cast in Jogador1.Castelos) {
-                if (Map.casa[calcCasa.getPosCasa(cast.Cordx)][calcCasa.getPosCasa(cast.Cordy)].Personagem == null)
+                //       try
+                //     {
+                if (Map.casa[cast.Cordx][cast.Cordy].Personagem == null)
+                //if (Map.casa[5][5] != null)
                 {
-                    Personagem person = new Guerreiro(cast.Cordx,cast.Cordy);
-                    Map.casa[cast.Cordx][cast.Cordy].Personagem = person;
-                    Jogador1.Personagens.Add(person);
-                    Image imgPer = new Image();
-                   // imgPer.Source = person.UrlImage; FAZENDO
-                }
+
+                        Debug.WriteLine("Entrou no if");
+                        /* Personagem person = new Guerreiro(cast.Cordx,cast.Cordy);
+                         Map.casa[cast.Cordx][cast.Cordy].Personagem = person;
+                         Jogador1.Personagens.Add(person);
+                         Image imgPer = new Image();*/
+                        // imgPer.Source = person.UrlImage; FAZENDO
+                    }
+             ///   }
+                /*catch (Exception)
+                {
+                    Debug.WriteLine("esta NULL")
+                    throw;
+                }*/
+                
             }
          //   Personagem person = new Guerreiro();
         }
