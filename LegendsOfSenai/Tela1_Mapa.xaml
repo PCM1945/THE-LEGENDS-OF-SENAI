@@ -8,7 +8,7 @@
     mc:Ignorable="d" Width="1000" Height="800" >
 
     <ScrollViewer Height="650" >
-        <Canvas x:Name="mapa" Background="White" Width="800" Height="800" PointerPressed="Target_PointerPressed">
+        <Canvas x:Name="mapa" Background="White" Width="800" Height="800"   PointerPressed="Target_PointerPressed">
 
             <Image Name="cavaleiro"  Width="40" Height="40" Source="Assets/charters/Warrrior_spt/guerreiro.png" 
                Canvas.Left="440" Canvas.Top="440" Canvas.ZIndex="10">

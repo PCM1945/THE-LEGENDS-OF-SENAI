@@ -9,6 +9,8 @@ using Legends_lib.maps.mapa_geral.Controls;
 using Legends_lib.Item;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml;
+using Windows.Media.Playback;
+using Windows.Media.Core;
 
 namespace LegendsOfSenai
 {
@@ -24,15 +26,18 @@ namespace LegendsOfSenai
         public Personagem selecionado;
         public bool selecionou=false;
         Jogador Jogador1,Jogador2;
-
+        
         Dictionary<uint, Windows.UI.Xaml.Input.Pointer> pointers;
         public Tela1_Mapa()
         {
             this.InitializeComponent();
             pointers = new Dictionary<uint, Pointer>();
             Jogador1 = new Jogador();
-            Jogador2 = new Jogador();
-
+            Jogador2 = new Jogador();/*
+            MediaPlayer mediaPlayer = new MediaPlayer();
+            mediaPlayer.Source = MediaSource.CreateFromUri(new Uri("C:\\Users\\aluno\\Source\\Repos\\THE-LEGENDS-OF-SENAI\\LegendsOfSenai\\Assets\\MusicaMain.mp3"));
+            mediaPlayer.Play();*/
+            BtnPlayWav();
             IniciarCastelos();
 
             //Setando o data biding
@@ -47,7 +52,17 @@ namespace LegendsOfSenai
 
             //TESTANDO O MAPA
         }
-
+        private async void BtnPlayWav()
+        {
+            MediaElement mysong = new MediaElement();
+            Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
+            Windows.Storage.StorageFile file = await folder.GetFileAsync("MusicaMain.mp3");
+            var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+            mysong.SetSource(stream, file.ContentType);
+           
+           // mysong.Volume = 100;
+            mysong.Play();
+        }
         private void IniciarCastelos()
         {
             Debug.WriteLine("Iniciando Castelos");

@@ -13,7 +13,7 @@
                VerticalAlignment="Center" HorizontalAlignment="Center" />
         
         <Button Name="Start_Button" Content="Start" FontSize="20"  Height="30" Width="95" 
-                Canvas.Left="204" Canvas.Top="304" Click="Start_Button_Click" FontFamily="Microsoft Himalaya"
+                Canvas.Left="204" Canvas.Top="304" Click="Start_Button_Click"  FontFamily="Microsoft Himalaya"
                 FontWeight="Bold" Background="#FFFFCEC5" />
         
         <Rectangle Height="66" Width="293" Canvas.Left="108" Canvas.Top="119" Fill="#FFFFCEC5"/>
