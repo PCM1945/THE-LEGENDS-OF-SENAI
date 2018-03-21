@@ -39,7 +39,7 @@ namespace Legends_lib
         private Item.Item GeraItem(int posX, int posY, Mapa mapa)
         {
             if (PodeAndar(posX, posY, mapa))
-                return new Item.Item();
+                return Itens.First();//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
             else
                 return null;
         }
@@ -95,7 +95,8 @@ namespace Legends_lib
                 for (int y = 0; y < DimY; y++, Debug.WriteLine("FDDDDDDDD"))
                 {
                     Debug.WriteLine("FDDDDDDDD");
-                    mapa.casa[x,y] = new Casa(EhAdavel(x, y, CasasNaoAndaveis), x, y);          
+                    mapa.casa[x,y] = new Casa(EhAdavel(x, y, CasasNaoAndaveis), x, y);
+                    GeraItemNaCasa(x, y, mapa);
                 }
             }
 
@@ -113,6 +114,10 @@ namespace Legends_lib
 
         }
 
-       
+        public void GeraItemNaCasa(int x, int y, Mapa map)
+        {
+            if (new Random().Next(0, 50) < 20)
+                GeraItem(x, y, map);
+        }
     }
 }
