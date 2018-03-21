@@ -131,28 +131,27 @@ namespace LegendsOfSenai
         }
         private void Recrutamento(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("trewwwwwwwwwwwwqqqqqq");
             foreach (Castelo cast in Jogador1.Castelos) {
-                //       try
-                //     {
+              
                 if (Map.casa[cast.Cordx, cast.Cordy].Personagem == null)
-                //if (Map.casa[5][5] != null)
                 {
-
-                        Debug.WriteLine("Entrou no if");
-                        /* Personagem person = new Guerreiro(cast.Cordx,cast.Cordy);
-                         Map.casa[cast.Cordx][cast.Cordy].Personagem = person;
-                         Jogador1.Personagens.Add(person);
-                         Image imgPer = new Image();*/
-                        // imgPer.Source = person.UrlImage; FAZENDO
+                    Personagem person = new Guerreiro(cast.Cordx, cast.Cordy);
+                    Image ImgPerson = new Image();
+                    ImgPerson.Width = person.bitmap.DecodePixelWidth = ObjetoDeJogo.DimXCasa;
+                    ImgPerson.Height = person.bitmap.DecodePixelHeight = ObjetoDeJogo.DimYCasa;
+                   
+                   // person.bitmap.UriSource = new Uri(ImgPerson.BaseUri,person.UrlImage);
+                    person.bitmap.UriSource = new Uri(person.UrlImage);
+                    ImgPerson.Source = person.bitmap;
+                    mapa.Children.Add(ImgPerson);
+                    Canvas.SetLeft(ImgPerson, cast.Cordx * 40);
+                    Canvas.SetTop(ImgPerson, cast.Cordy * 40);
+                  
+                    Map.casa[cast.Cordx, cast.Cordy].Personagem = person;
+                    Jogador1.Personagens.Add(person);
+                    break;
                     }
-             ///   }
-                /*catch (Exception)
-                {
-                    Debug.WriteLine("esta NULL")
-                    throw;
-                }*/
-                
+               
             }
          //   Personagem person = new Guerreiro();
         }

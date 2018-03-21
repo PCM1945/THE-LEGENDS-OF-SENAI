@@ -13,7 +13,7 @@ namespace Legends_lib
         public Castelo(int x,int y)
         {
             this.Cordx = x;
-            this.Cordx = y;
+            this.Cordy = y;
         }
     }
 }
