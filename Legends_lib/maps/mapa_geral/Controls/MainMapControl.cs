@@ -88,20 +88,18 @@ namespace Legends_lib
 
         private void GerarCasas(Mapa mapa)
         {
-            Debug.WriteLine("AQUI");
-            Debug.WriteLine(mapa.DimX);
+         
             for (int x = 0; x < DimX; x++)
             {
-                for (int y = 0; y < DimY; y++, Debug.WriteLine("FDDDDDDDD"))
+                for (int y = 0; y < DimY; y++)
                 {
-                    Debug.WriteLine("FDDDDDDDD");
+                  
                     mapa.casa[x,y] = new Casa(EhAdavel(x, y, CasasNaoAndaveis), x, y);
                     GeraItemNaCasa(x, y, mapa);
                 }
             }
 
-            Debug.WriteLine(mapa.casa[2,2].PosX);
-            Debug.WriteLine(mapa.casa[2,2].Andavel);
+         
         }
 
         private bool EhAdavel(int x, int y, List<int[]> lista)

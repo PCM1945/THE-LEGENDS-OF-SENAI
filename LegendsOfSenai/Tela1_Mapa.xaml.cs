@@ -122,16 +122,16 @@ namespace LegendsOfSenai
                 {
                     Personagem person = new Guerreiro(cast.Cordx, cast.Cordy);
                     Image ImgPerson = new Image();
-                    ImgPerson.Width = person.bitmap.DecodePixelWidth = 40;
+                    ImgPerson.Width = person.bitmap.DecodePixelWidth = ObjetoDeJogo.DimXCasa;
                     ImgPerson.Height = person.bitmap.DecodePixelHeight = ObjetoDeJogo.DimYCasa;
                    
                    // person.bitmap.UriSource = new Uri(ImgPerson.BaseUri,person.UrlImage);
-                    person.bitmap.UriSource = new Uri("ms-appx:///Assets/characters/Warrrior_spt/humano/guerreiro.png");
+                    person.bitmap.UriSource = new Uri(person.UrlImage);
                     ImgPerson.Source = person.bitmap;
                     mapa.Children.Add(ImgPerson);
                     Canvas.SetLeft(ImgPerson, cast.Cordx * 40);
                     Canvas.SetTop(ImgPerson, cast.Cordy * 40);
-                    Debug.WriteLine("criou guerreiro "+ cast.Cordy);
+                  
                     Map.casa[cast.Cordx, cast.Cordy].Personagem = person;
                     Jogador1.Personagens.Add(person);
                     break;

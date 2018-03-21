@@ -11,7 +11,7 @@ namespace Legends_lib
     {
         
         public Guerreiro(int corx,int cordy) : base() {
-            UrlImage = @"\Assets\characters\Warrrior_spt\humano\guerreiro.png";
+            UrlImage = "ms-appx:///Assets/characters/Warrrior_spt/humano/guerreiro.png";
             Custo_Gold = 200;
             Atq = 20;
             Vida = 100;

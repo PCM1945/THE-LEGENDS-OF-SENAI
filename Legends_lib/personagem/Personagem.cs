@@ -23,6 +23,7 @@ namespace Legends_lib
         public Personagem()
         {
             bitmap = new BitmapImage();
+
         }
 
        public void Mover(int xf, int yf)//f = destino
