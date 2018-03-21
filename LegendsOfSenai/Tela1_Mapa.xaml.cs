@@ -2,13 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Input;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
-using Legends_lib;
 using Legends_lib.maps.mapa_geral.Controls;
 using Legends_lib.Item;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -124,7 +120,7 @@ namespace LegendsOfSenai
             foreach (Castelo cast in Jogador1.Castelos) {
                 //       try
                 //     {
-                if (Map.casa[cast.Cordx][cast.Cordy].Personagem == null)
+                if (Map.casa[cast.Cordx, cast.Cordy].Personagem == null)
                 //if (Map.casa[5][5] != null)
                 {
 

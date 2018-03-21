@@ -31,7 +31,8 @@ namespace Legends_lib
 
         private bool PodeAndar(int posX, int posY, Mapa mapa)
         {
-            return mapa.casa.ElementAt(posX).ElementAt(posY).Andavel;
+            // return mapa.casa[ElementAt(posX),ElementAt(posY)].Andavel;
+            return true;
         }//checar se a casa pode ser ocupada Na geracao
 
 
@@ -77,8 +78,8 @@ namespace Legends_lib
         {
             Mapa mapa = new Mapa();
             GerarCasas(mapa);
-            Debug.WriteLine(mapa.casa[2][2].PosX);
-            Debug.WriteLine(mapa.casa[2][2].Andavel);
+            Debug.WriteLine(mapa.casa[2,2].PosX);
+            Debug.WriteLine(mapa.casa[2,2].Andavel);
            
             Random rnd = new Random();//utilizar o rnd ao criar um item no mapa
             return mapa;
@@ -94,12 +95,12 @@ namespace Legends_lib
                 for (int y = 0; y < DimY; y++, Debug.WriteLine("FDDDDDDDD"))
                 {
                     Debug.WriteLine("FDDDDDDDD");
-                    mapa.casa[x][y] = new Casa(EhAdavel(x, y, CasasNaoAndaveis), x, y);          
+                    mapa.casa[x,y] = new Casa(EhAdavel(x, y, CasasNaoAndaveis), x, y);          
                 }
             }
 
-            Debug.WriteLine(mapa.casa[2][2].PosX);
-            Debug.WriteLine(mapa.casa[2][2].Andavel);
+            Debug.WriteLine(mapa.casa[2,2].PosX);
+            Debug.WriteLine(mapa.casa[2,2].Andavel);
         }
 
         private bool EhAdavel(int x, int y, List<int[]> lista)

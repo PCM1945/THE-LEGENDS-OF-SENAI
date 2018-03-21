@@ -9,13 +9,14 @@ namespace Legends_lib
 {
     public class Mapa
     {
-        public Casa[][] casa { get; set; } //Item está na casa
+        public Casa[,] casa { get; set; } //Item está na casa
         public int DimX { get; set; }
         //FON
         public int DimY { get; set; }
         
        public Mapa()
         {
+            casa = new Casa[20,20];
             this.DimX = 20;
             this.DimX = 20;
         }
