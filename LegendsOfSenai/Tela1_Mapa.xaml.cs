@@ -24,12 +24,13 @@ namespace LegendsOfSenai
 
         public Mapa Map = new MainMapControl().InciarMapa();
         public Personagem selecionado;
-        public bool selecionou=false;
+        public bool selecionou;
         Jogador Jogador1,Jogador2;
         
         Dictionary<uint, Windows.UI.Xaml.Input.Pointer> pointers;
         public Tela1_Mapa()
         {
+            selecionou = false;
             this.InitializeComponent();
             pointers = new Dictionary<uint, Pointer>();
             Jogador1 = new Jogador();
@@ -91,26 +92,30 @@ namespace LegendsOfSenai
             Debug.WriteLine("pos Y: " + ptrPt.Position.Y);
 
             Debug.WriteLine(calcCasa.getPosCasa((int)ptrPt.Position.X));
-        /*    if (selecionou == false)
+            if(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null){
+                Debug.WriteLine("TEM PERSONAGEM AQUI");
+            }
+            if (selecionou == false)
             {
-                if (map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X)][calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null)
+                Debug.WriteLine("entrou");
+                if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null)
                 {
                     selecionou = true;
-                    selecionado = map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X)][calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem;
+                    selecionado = Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem;
                    // map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X)][calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem = null;
                 }
             }
             else
             {
-                if (map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X)][calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem == null)
+                if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem == null)
                 {
                     selecionou =false;
-                    map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X)][calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem=selecionado;
+                    Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem=selecionado;
                     // map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X)][calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem = null;
                 }
-            }*/
-           
-            
+            }
+
+
         }
 
         private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -155,6 +160,7 @@ namespace LegendsOfSenai
             }
          //   Personagem person = new Guerreiro();
         }
+       
         private void AbreRecrutamento(object sender, TappedRoutedEventArgs e)
         {
             FlyoutBase.ShowAttachedFlyout((FrameworkElement) sender);
