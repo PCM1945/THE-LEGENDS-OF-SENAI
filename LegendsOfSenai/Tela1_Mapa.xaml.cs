@@ -34,11 +34,9 @@ namespace LegendsOfSenai
             this.InitializeComponent();
             pointers = new Dictionary<uint, Pointer>();
             Jogador1 = new Jogador();
-            Jogador2 = new Jogador();/*
-            MediaPlayer mediaPlayer = new MediaPlayer();
-            mediaPlayer.Source = MediaSource.CreateFromUri(new Uri("C:\\Users\\aluno\\Source\\Repos\\THE-LEGENDS-OF-SENAI\\LegendsOfSenai\\Assets\\MusicaMain.mp3"));
-            mediaPlayer.Play();*/
-            BtnPlayWav();
+            Jogador2 = new Jogador();
+           
+          //  BtnPlayWav(); MUSICA
             IniciarCastelos();
 
             //Setando o data biding
@@ -51,7 +49,7 @@ namespace LegendsOfSenai
             Invetario_list.ItemsSource = Jogador1.Inventario;
             Player_info.ItemsSource = new List<Jogador>() { Jogador1 };
 
-            //TESTANDO O MAPA
+           
         }
         private async void BtnPlayWav()
         {
@@ -107,10 +105,17 @@ namespace LegendsOfSenai
             }
             else
             {
-                if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem == null)
+                if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem == null && Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel)
                 {
-                    selecionou =false;
+                    Debug.WriteLine(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel);
+                    selecionou = false;
                     Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem=selecionado;
+                    Map.casa[selecionado.PosX, selecionado.PosY].Personagem = null;
+                    selecionado.PosX = calcCasa.getPosCasa((int)ptrPt.Position.X);
+                    selecionado.PosY = calcCasa.getPosCasa((int)ptrPt.Position.Y);
+                    Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.X)) * 40);
+                    Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.Y)) * 40);
+                    
                     // map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X)][calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem = null;
                 }
             }
@@ -141,17 +146,10 @@ namespace LegendsOfSenai
                 if (Map.casa[cast.Cordx, cast.Cordy].Personagem == null)
                 {
                     Personagem person = new Guerreiro(cast.Cordx, cast.Cordy);
-                    Image ImgPerson = new Image();
-                    ImgPerson.Width = person.bitmap.DecodePixelWidth = ObjetoDeJogo.DimXCasa;
-                    ImgPerson.Height = person.bitmap.DecodePixelHeight = ObjetoDeJogo.DimYCasa;
-                   
-                   // person.bitmap.UriSource = new Uri(ImgPerson.BaseUri,person.UrlImage);
-                    person.bitmap.UriSource = new Uri(person.UrlImage);
-                    ImgPerson.Source = person.bitmap;
-                    mapa.Children.Add(ImgPerson);
-                    Canvas.SetLeft(ImgPerson, cast.Cordx * 40);
-                    Canvas.SetTop(ImgPerson, cast.Cordy * 40);
-                  
+                    person.CriarImagem();
+                    mapa.Children.Add(person.Imagem);
+                    Canvas.SetLeft(person.Imagem, cast.Cordx * 40);
+                    Canvas.SetTop(person.Imagem, cast.Cordy * 40);
                     Map.casa[cast.Cordx, cast.Cordy].Personagem = person;
                     Jogador1.Personagens.Add(person);
                     break;

@@ -29,10 +29,10 @@ namespace Legends_lib
             };
 
 
-        private bool PodeAndar(int posX, int posY, Mapa mapa)
+        private  bool PodeAndar(int posX, int posY, Mapa mapa)
         {
-            // return mapa.casa[ElementAt(posX),ElementAt(posY)].Andavel;
-            return true;
+            return mapa.casa[posX,posY].Andavel;
+            //return true;
         }//checar se a casa pode ser ocupada Na geracao
 
 
@@ -78,8 +78,7 @@ namespace Legends_lib
         {
             Mapa mapa = new Mapa();
             GerarCasas(mapa);
-            Debug.WriteLine(mapa.casa[2,2].PosX);
-            Debug.WriteLine(mapa.casa[2,2].Andavel);
+          
            
             Random rnd = new Random();//utilizar o rnd ao criar um item no mapa
             return mapa;
@@ -88,13 +87,17 @@ namespace Legends_lib
 
         private void GerarCasas(Mapa mapa)
         {
+            foreach (int[] casa in CasasNaoAndaveis){
+                Debug.WriteLine(" "+casa[0] + "  " + casa[1]);
+            }
          
             for (int x = 0; x < DimX; x++)
             {
                 for (int y = 0; y < DimY; y++)
                 {
                   
-                    mapa.casa[x,y] = new Casa(EhAdavel(x, y, CasasNaoAndaveis), x, y);
+                    mapa.casa[x,y] = new Casa( x, y);
+                    EhAdavel(mapa.casa[x,y],CasasNaoAndaveis);
                     GeraItemNaCasa(x, y, mapa);
                 }
             }
@@ -102,13 +105,20 @@ namespace Legends_lib
          
         }
 
-        private bool EhAdavel(int x, int y, List<int[]> lista)
+        private void EhAdavel(Casa casa, List<int[]> lista)
         {
-
-            int[] coord = new int[2];
-            coord[0] = y;
-            coord[1] = x;
-            return !lista.Contains(coord);
+            int x = casa.PosX;
+            int y = casa.PosY;
+            foreach (int[] cord in lista)
+            {
+                if(y == cord[0] && x == cord[1])
+                {
+                    Debug.WriteLine("FALSEE");
+                    casa.Andavel = false;
+                    return;
+                }
+            }
+            
 
         }
 

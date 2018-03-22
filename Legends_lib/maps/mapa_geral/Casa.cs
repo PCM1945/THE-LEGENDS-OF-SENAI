@@ -15,9 +15,9 @@ namespace Legends_lib
         public Item.Item Item { get; set; }
         public string local_imagem { get; set; }
 
-        public Casa(bool andavel,int posX,int posY)
+        public Casa(int posX,int posY)
         {
-            this.Andavel = andavel;
+            this.Andavel = true;
             this.PosX = posX;
             this.PosY = posY;
             this.Personagem = null;
