@@ -118,14 +118,18 @@ namespace LegendsOfSenai
                 {
                     Debug.WriteLine(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel);
                     selecionou = false;
+                    //Adiciona o personagem no back atual
                     Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem=selecionado;
+                    //Remove o personagem do back na pos antiga
                     Map.casa[selecionado.PosX, selecionado.PosY].Personagem = null;
+                    //Muda as cordenadas no Jogador
                     selecionado.PosX = calcCasa.getPosCasa((int)ptrPt.Position.X);
                     selecionado.PosY = calcCasa.getPosCasa((int)ptrPt.Position.Y);
+                    //Reposiciona ele no canvas (passando a imagem dele, e a posicao relativa)
                     Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.X)) * 40);
                     Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.Y)) * 40);
                     
-                    // map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X)][calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem = null;
+                    
                 }
             }
 
@@ -152,21 +156,20 @@ namespace LegendsOfSenai
         private void Recrutamento(object sender, RoutedEventArgs e)
         {
             foreach (Castelo cast in JogadorAtual.Castelos) {
-              
+              //Acessa as casas cujo o jogador pode add persongens
                 if (Map.casa[cast.Cordx, cast.Cordy].Personagem == null)
-                {
+                {//chca se a casa esta vazia
                     Personagem person = new Guerreiro(cast.Cordx, cast.Cordy);
-                    person.CriarImagem();
-                    mapa.Children.Add(person.Imagem);
-                    Canvas.SetLeft(person.Imagem, cast.Cordx * 40);
+                    person.CriarImagem();//Utiliza os metodos do Xaml (inicia o bitmap da imagem && coloca ele na imagem)
+                    mapa.Children.Add(person.Imagem);//Adiciona no canvas
+                    Canvas.SetLeft(person.Imagem, cast.Cordx * 40);//posiciona
                     Canvas.SetTop(person.Imagem, cast.Cordy * 40);
-                    Map.casa[cast.Cordx, cast.Cordy].Personagem = person;
-                    JogadorAtual.Personagens.Add(person);
+                    Map.casa[cast.Cordx, cast.Cordy].Personagem = person;//add no back
+                    JogadorAtual.Personagens.Add(person);//add na lista do jogador
                     break;
                     }
                
             }
-         //   Personagem person = new Guerreiro();
         }
        
         private void AbreRecrutamento(object sender, TappedRoutedEventArgs e)
@@ -178,10 +181,7 @@ namespace LegendsOfSenai
             throw new NotImplementedException();
         }
 
-        private void Button_Turno_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
     }
     
 }
