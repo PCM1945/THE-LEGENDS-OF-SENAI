@@ -81,6 +81,9 @@
             </Rectangle>
             <TextBlock x:Name="RecrutamentoText" Text="Recrutamento" Canvas.Left="5" IsHitTestVisible="False"/>
             <!--- Flyout Recrutamento -->
+            <Button Content="Turno" Name="Button_Turno" Click="Button_Mudar_Turno"
+                    
+                    Canvas.Left="-66" Canvas.Top="593"/>
 
             <!-- Player Info-->
         </Canvas>

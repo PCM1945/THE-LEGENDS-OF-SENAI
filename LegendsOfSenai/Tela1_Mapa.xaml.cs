@@ -21,11 +21,12 @@ namespace LegendsOfSenai
         /// </summary>
         public sealed partial class Tela1_Mapa : Page
         {
-
+        
         public Mapa Map = new MainMapControl().InciarMapa();
         public Personagem selecionado;
         public bool selecionou;
-        Jogador Jogador1,Jogador2;
+        Queue<Jogador> FilaJogador;
+        Jogador JogadorAtual;
         
         Dictionary<uint, Windows.UI.Xaml.Input.Pointer> pointers;
         public Tela1_Mapa()
@@ -33,8 +34,10 @@ namespace LegendsOfSenai
             selecionou = false;
             this.InitializeComponent();
             pointers = new Dictionary<uint, Pointer>();
-            Jogador1 = new Jogador();
-            Jogador2 = new Jogador();
+            FilaJogador = new Queue<Jogador>();
+            FilaJogador.Enqueue(new Jogador());
+            FilaJogador.Enqueue(new Jogador());
+            JogadorAtual = FilaJogador.Dequeue();
            
           //  BtnPlayWav(); MUSICA
             IniciarCastelos();
@@ -42,12 +45,12 @@ namespace LegendsOfSenai
             //Setando o data biding
 
 
-            Jogador1.Inventario = new List<Item>();
-            Jogador1.Inventario.Add(new Item { Nome = "item1", Tipo = EItens.Consumivel });
-            Jogador1.Inventario.Add(new Item { Nome = "item2", Tipo = EItens.Equipavel });
-            Jogador1.Inventario.Add(new Item { Nome = "item3", Tipo = EItens.NaoUtilizavel });
-            Invetario_list.ItemsSource = Jogador1.Inventario;
-            Player_info.ItemsSource = new List<Jogador>() { Jogador1 };
+            JogadorAtual.Inventario = new List<Item>();
+            JogadorAtual.Inventario.Add(new Item { Nome = "item1", Tipo = EItens.Consumivel });
+            JogadorAtual.Inventario.Add(new Item { Nome = "item2", Tipo = EItens.Equipavel });
+            JogadorAtual.Inventario.Add(new Item { Nome = "item3", Tipo = EItens.NaoUtilizavel });
+            Invetario_list.ItemsSource = JogadorAtual.Inventario;
+            Player_info.ItemsSource = new List<Jogador>() { JogadorAtual };
 
            
         }
@@ -66,15 +69,21 @@ namespace LegendsOfSenai
         {
             Debug.WriteLine("Iniciando Castelos");
 
-            Jogador1.Castelos.Add(new Castelo(1,7));
-            Jogador1.Castelos.Add(new Castelo(2,7));
-            Jogador1.Castelos.Add(new Castelo(1,8));
-            Jogador1.Castelos.Add(new Castelo(2,8));
+            JogadorAtual.Castelos.Add(new Castelo(1,7));
+            JogadorAtual.Castelos.Add(new Castelo(2,7));
+            JogadorAtual.Castelos.Add(new Castelo(1,8));
+            JogadorAtual.Castelos.Add(new Castelo(2,8));
 
-            Jogador2.Castelos.Add(new Castelo(17,7));
-            Jogador2.Castelos.Add(new Castelo(18,7));
-            Jogador2.Castelos.Add(new Castelo(17,8));
-            Jogador2.Castelos.Add(new Castelo(18,8));
+            FilaJogador.Enqueue(JogadorAtual);
+            JogadorAtual = FilaJogador.Dequeue();
+
+            JogadorAtual.Castelos.Add(new Castelo(17,7));
+            JogadorAtual.Castelos.Add(new Castelo(18,7));
+            JogadorAtual.Castelos.Add(new Castelo(17,8));
+            JogadorAtual.Castelos.Add(new Castelo(18,8));
+
+            FilaJogador.Enqueue(JogadorAtual);
+            JogadorAtual = FilaJogador.Dequeue();
         }
 
       
@@ -123,9 +132,10 @@ namespace LegendsOfSenai
 
         }
 
-        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void Button_Mudar_Turno(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-
+            FilaJogador.Enqueue(JogadorAtual);
+            JogadorAtual = FilaJogador.Dequeue();
         }
 
         private void Inventario_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -141,7 +151,7 @@ namespace LegendsOfSenai
         }
         private void Recrutamento(object sender, RoutedEventArgs e)
         {
-            foreach (Castelo cast in Jogador1.Castelos) {
+            foreach (Castelo cast in JogadorAtual.Castelos) {
               
                 if (Map.casa[cast.Cordx, cast.Cordy].Personagem == null)
                 {
@@ -151,7 +161,7 @@ namespace LegendsOfSenai
                     Canvas.SetLeft(person.Imagem, cast.Cordx * 40);
                     Canvas.SetTop(person.Imagem, cast.Cordy * 40);
                     Map.casa[cast.Cordx, cast.Cordy].Personagem = person;
-                    Jogador1.Personagens.Add(person);
+                    JogadorAtual.Personagens.Add(person);
                     break;
                     }
                
@@ -166,6 +176,11 @@ namespace LegendsOfSenai
         private void UpdateEventLog(string v)
         {
             throw new NotImplementedException();
+        }
+
+        private void Button_Turno_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
     
