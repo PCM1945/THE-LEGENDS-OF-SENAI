@@ -38,8 +38,10 @@ namespace Legends_lib
 
         private Item.Item GeraItem(int posX, int posY, Mapa mapa)
         {
-            if (PodeAndar(posX, posY, mapa))
+            if (PodeAndar(posX, posY, mapa)) {
+                
                 return Itens.First();//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+            }
             else
                 return null;
         }
@@ -124,7 +126,7 @@ namespace Legends_lib
 
         public void GeraItemNaCasa(int x, int y, Mapa map)
         {
-            if (new Random().Next(0, 50) < 20)
+            if (new Random().Next(0, 50) < 29)
             {
                 foreach (Casa c in map.casa)
                 {

@@ -165,6 +165,13 @@ namespace LegendsOfSenai
                     selecionado = null;
                     casaSelecionado.Personagem = null;
                 }
+                else if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null &&
+                    !JogadorAtual.Personagens.Contains(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem))
+                {
+                    this.Frame.Navigate(typeof(BlankPage1));
+
+
+                }
               
                
             }
@@ -223,11 +230,14 @@ namespace LegendsOfSenai
         private void ObtemItem(object sender, RoutedEventArgs e)
         {
             foreach(Casa c in this.Map.casa)
-            {//(selecionado != null) &&
-                if ( (c.PosX == selecionado.PosX && c.PosY == selecionado.PosY)  && JogadorAtual.Inventario.Count < 8) //O JOGADOR SÓ OBTEM O ITEM SE ESTIVER NA MESMA CASA QUE ELE
+            {//
+                if ((selecionado != null) && (c.PosX == selecionado.PosX && c.PosY == selecionado.PosY)  && JogadorAtual.Inventario.Count < 8) //O JOGADOR SÓ OBTEM O ITEM SE ESTIVER NA MESMA CASA QUE ELE
                 {
                     JogadorAtual.Inventario.Add(Itens[0]); //NECESSÁRIO REFAZER PARA "DINAMICIDADE"
-                    /*Invetario_list.ItemsSource = JogadorAtual.Inventario;*/
+                                                           /*Invetario_list.ItemsSource = JogadorAtual.Inventario;*/
+                  //  Debug.WriteLine("ITEM");
+                  //  Debug.WriteLine(c.Item.Nome);
+                    //c.Item.Imagem = null;   
                     c.Item = null;
                     return;
                 }

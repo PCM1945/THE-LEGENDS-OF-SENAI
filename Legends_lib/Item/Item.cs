@@ -14,7 +14,7 @@ namespace Legends_lib.Item
         public Image Imagem { get; set; }
         public int PosX { get; set; }
         public int PosY { get; set; }
-
+        
         public void CriarImagem()
         {
             bitmap = new BitmapImage();
