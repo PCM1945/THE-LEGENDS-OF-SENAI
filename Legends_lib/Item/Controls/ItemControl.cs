@@ -11,8 +11,7 @@ namespace Legends_lib.Item.Controls
         private const int MaxInvSize = 8;
         public bool PodeObter(Jogador j, Item i)
         {
-            j.Inventario.Add(i);
-            return j.Inventario.Count > MaxInvSize;
+            return j.Inventario.Count < MaxInvSize;
         }
 
         public void UsaItem(Jogador j, Item i, Personagem p)

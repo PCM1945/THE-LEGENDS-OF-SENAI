@@ -21,37 +21,44 @@ namespace LegendsOfSenai
         /// </summary>
         public sealed partial class Tela1_Mapa : Page
         {
-
+        
         public Mapa Map = new MainMapControl().InciarMapa();
         public Personagem selecionado;
         public bool selecionou;
-        Jogador Jogador1,Jogador2;
-        
+        Queue<Jogador> FilaJogador;
+        Jogador JogadorAtual;
+
+
+        public List<Item> Itens = //LISTA DE ITENS DISPONÍVEIS PARA SEREM COLOCADOS NA CASA
+            new List<Item>() {
+                /** para a primeira entrega manter apenas um item não utilizavel */
+               // new Item.Item { Descricao = "DESCRIÇÃO 1", Nome = "NOME 1", Tipo = EItens.Consumivel},
+               // new Item.Item { Descricao = "DESCRIÇÃO 2", Nome = "NOME 2", Tipo = EItens.Equipavel},
+                 new Item { Descricao = "Não utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png"},
+            };
+
         Dictionary<uint, Windows.UI.Xaml.Input.Pointer> pointers;
         public Tela1_Mapa()
         {
             selecionou = false;
             this.InitializeComponent();
             pointers = new Dictionary<uint, Pointer>();
-            Jogador1 = new Jogador();
-            Jogador2 = new Jogador();/*
-            MediaPlayer mediaPlayer = new MediaPlayer();
-            mediaPlayer.Source = MediaSource.CreateFromUri(new Uri("C:\\Users\\aluno\\Source\\Repos\\THE-LEGENDS-OF-SENAI\\LegendsOfSenai\\Assets\\MusicaMain.mp3"));
-            mediaPlayer.Play();*/
-            BtnPlayWav();
+            FilaJogador = new Queue<Jogador>();
+            FilaJogador.Enqueue(new Jogador());
+            FilaJogador.Enqueue(new Jogador());
+            JogadorAtual = FilaJogador.Dequeue();
+           
+          //  BtnPlayWav(); MUSICA
             IniciarCastelos();
+            PosicionarItens();
 
             //Setando o data biding
 
 
-            Jogador1.Inventario = new List<Item>();
-            Jogador1.Inventario.Add(new Item { Nome = "item1", Tipo = EItens.Consumivel });
-            Jogador1.Inventario.Add(new Item { Nome = "item2", Tipo = EItens.Equipavel });
-            Jogador1.Inventario.Add(new Item { Nome = "item3", Tipo = EItens.NaoUtilizavel });
-            Invetario_list.ItemsSource = Jogador1.Inventario;
-            Player_info.ItemsSource = new List<Jogador>() { Jogador1 };
+            Invetario_list.ItemsSource = JogadorAtual.Inventario;
+            Player_info.ItemsSource = new List<Jogador>() { JogadorAtual };
 
-            //TESTANDO O MAPA
+           
         }
         private async void BtnPlayWav()
         {
@@ -68,17 +75,39 @@ namespace LegendsOfSenai
         {
             Debug.WriteLine("Iniciando Castelos");
 
-            Jogador1.Castelos.Add(new Castelo(1,7));
-            Jogador1.Castelos.Add(new Castelo(2,7));
-            Jogador1.Castelos.Add(new Castelo(1,8));
-            Jogador1.Castelos.Add(new Castelo(2,8));
+            JogadorAtual.Castelos.Add(new Castelo(1,7));
+            JogadorAtual.Castelos.Add(new Castelo(2,7));
+            JogadorAtual.Castelos.Add(new Castelo(1,8));
+            JogadorAtual.Castelos.Add(new Castelo(2,8));
 
-            Jogador2.Castelos.Add(new Castelo(17,7));
-            Jogador2.Castelos.Add(new Castelo(18,7));
-            Jogador2.Castelos.Add(new Castelo(17,8));
-            Jogador2.Castelos.Add(new Castelo(18,8));
+            FilaJogador.Enqueue(JogadorAtual);
+            JogadorAtual = FilaJogador.Dequeue();
+
+            JogadorAtual.Castelos.Add(new Castelo(17,7));
+            JogadorAtual.Castelos.Add(new Castelo(18,7));
+            JogadorAtual.Castelos.Add(new Castelo(17,8));
+            JogadorAtual.Castelos.Add(new Castelo(18,8));
+
+            FilaJogador.Enqueue(JogadorAtual);
+            JogadorAtual = FilaJogador.Dequeue();
         }
 
+        private void PosicionarItens()
+        {
+            //Debug.WriteLine("ANTES DO FOREACH");
+            foreach (Casa c in this.Map.casa)
+            {
+                //Debug.WriteLine("ITEM: (DENTRO DO FOREACH)" + c.Item.Nome);
+                if (c.Item != null)
+                {
+                    Debug.WriteLine("DENTRO DO IF DO FOREACH");
+                    c.Item.CriarImagem();
+                    mapa.Children.Add(c.Item.Imagem);
+                    Canvas.SetLeft(c.Item.Imagem, c.Item.PosX * 40);//posiciona X
+                    Canvas.SetTop(c.Item.Imagem, c.Item.PosY * 40);//posiciona Y
+                }
+            }
+        }
       
 
         private void Target_PointerPressed(object sender, PointerRoutedEventArgs e)
@@ -90,9 +119,10 @@ namespace LegendsOfSenai
             Debug.WriteLine("pos X: " + ptrPt.Position.X);
 
             Debug.WriteLine("pos Y: " + ptrPt.Position.Y);
-
+            Debug.WriteLine("POSICAO NA MATRIZ");
             Debug.WriteLine(calcCasa.getPosCasa((int)ptrPt.Position.X));
-            if(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null){
+            Debug.WriteLine(calcCasa.getPosCasa((int)ptrPt.Position.Y));
+            if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null){
                 Debug.WriteLine("TEM PERSONAGEM AQUI");
             }
             if (selecionou == false)
@@ -107,20 +137,47 @@ namespace LegendsOfSenai
             }
             else
             {
-                if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem == null)
+                if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem == null && 
+                    Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel   &&
+                    PodeMover(calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)))
                 {
-                    selecionou =false;
+                    Debug.WriteLine(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel);
+                    selecionou = false;
+                    //Adiciona o personagem no back atual
                     Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem=selecionado;
-                    // map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X)][calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem = null;
+                    //Remove o personagem do back na pos antiga
+                    Map.casa[selecionado.PosX, selecionado.PosY].Personagem = null;
+                    //Muda as cordenadas no Jogador
+                    selecionado.PosX = calcCasa.getPosCasa((int)ptrPt.Position.X);
+                    selecionado.PosY = calcCasa.getPosCasa((int)ptrPt.Position.Y);
+                    //Reposiciona ele no canvas (passando a imagem dele, e a posicao relativa)
+                    Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.X)) * 40);
+                    Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.Y)) * 40);
+                    selecionado = null;
                 }
+              
+               
             }
 
 
         }
+        /// <summary>
+        /// Checa se o personagem eh do jogador atual e se ele tem Range para o movimento
+        /// </summary>
+        /// <returns></returns>
+        private bool PodeMover(int cordx,int cordy) {
+            Debug.WriteLine(JogadorAtual.Personagens.Contains(selecionado));
+            return (JogadorAtual.Personagens.Contains(selecionado)  && ((Math.Abs(selecionado.PosX - cordx) <= (selecionado.MovRange)
+                && (Math.Abs(selecionado.PosY - cordy) <= (selecionado.MovRange) ))));
+        }
 
-        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void Button_Mudar_Turno(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-
+            JogadorAtual.ResetarPerson();
+            FilaJogador.Enqueue(JogadorAtual);
+            JogadorAtual = FilaJogador.Dequeue();
+            Invetario_list.ItemsSource = JogadorAtual.Inventario;
+         
         }
 
         private void Inventario_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -136,30 +193,37 @@ namespace LegendsOfSenai
         }
         private void Recrutamento(object sender, RoutedEventArgs e)
         {
-            foreach (Castelo cast in Jogador1.Castelos) {
-              
+            foreach (Castelo cast in JogadorAtual.Castelos) {
+              //Acessa as casas cujo o jogador pode add persongens
                 if (Map.casa[cast.Cordx, cast.Cordy].Personagem == null)
-                {
+                {//chca se a casa esta vazia
                     Personagem person = new Guerreiro(cast.Cordx, cast.Cordy);
-                    Image ImgPerson = new Image();
-                    ImgPerson.Width = person.bitmap.DecodePixelWidth = ObjetoDeJogo.DimXCasa;
-                    ImgPerson.Height = person.bitmap.DecodePixelHeight = ObjetoDeJogo.DimYCasa;
-                   
-                   // person.bitmap.UriSource = new Uri(ImgPerson.BaseUri,person.UrlImage);
-                    person.bitmap.UriSource = new Uri(person.UrlImage);
-                    ImgPerson.Source = person.bitmap;
-                    mapa.Children.Add(ImgPerson);
-                    Canvas.SetLeft(ImgPerson, cast.Cordx * 40);
-                    Canvas.SetTop(ImgPerson, cast.Cordy * 40);
-                  
-                    Map.casa[cast.Cordx, cast.Cordy].Personagem = person;
-                    Jogador1.Personagens.Add(person);
+                    person.CriarImagem();//Utiliza os metodos do Xaml (inicia o bitmap da imagem && coloca ele na imagem)
+                    mapa.Children.Add(person.Imagem);//Adiciona no canvas
+                    Canvas.SetLeft(person.Imagem, cast.Cordx * 40);//posiciona
+                    Canvas.SetTop(person.Imagem, cast.Cordy * 40);
+                    Map.casa[cast.Cordx, cast.Cordy].Personagem = person;//add no back
+                    JogadorAtual.Personagens.Add(person);//add na lista do jogador
                     break;
-                    }
+                }
                
             }
-         //   Personagem person = new Guerreiro();
         }
+
+        private void ObtemItem(object sender, RoutedEventArgs e)
+        {
+            foreach(Casa c in this.Map.casa)
+            {
+                if ((selecionado != null) && (c.PosX == selecionado.PosX && c.PosY == selecionado.PosY)  && JogadorAtual.Inventario.Count < 8) //O JOGADOR SÓ OBTEM O ITEM SE ESTIVER NA MESMA CASA QUE ELE
+                {
+                    JogadorAtual.Inventario.Add(Itens[0]); //NECESSÁRIO REFAZER PARA "DINAMICIDADE"
+                    /*Invetario_list.ItemsSource = JogadorAtual.Inventario;*/
+                    c.Item = null;
+                    return;
+                }
+            }
+        }
+
        
         private void AbreRecrutamento(object sender, TappedRoutedEventArgs e)
         {
@@ -169,6 +233,8 @@ namespace LegendsOfSenai
         {
             throw new NotImplementedException();
         }
+
+      
     }
     
 }

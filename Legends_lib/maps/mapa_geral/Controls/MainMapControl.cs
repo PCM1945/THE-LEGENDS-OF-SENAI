@@ -25,14 +25,14 @@ namespace Legends_lib
                 /** para a primeira entrega manter apenas um item não utilizavel */
                // new Item.Item { Descricao = "DESCRIÇÃO 1", Nome = "NOME 1", Tipo = EItens.Consumivel},
                // new Item.Item { Descricao = "DESCRIÇÃO 2", Nome = "NOME 2", Tipo = EItens.Equipavel},
-                 new Item.Item { Descricao = "DESCRIÇÃO 3", Nome = "NOME 3", Tipo = EItens.NaoUtilizavel},
+                 new Item.Item { Descricao = "Não Utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage="ms-appx:///Assets/itens/pedra.png"},
             };
 
 
-        private bool PodeAndar(int posX, int posY, Mapa mapa)
+        private  bool PodeAndar(int posX, int posY, Mapa mapa)
         {
-            // return mapa.casa[ElementAt(posX),ElementAt(posY)].Andavel;
-            return true;
+            return mapa.casa[posX,posY].Andavel;
+            //return true;
         }//checar se a casa pode ser ocupada Na geracao
 
 
@@ -78,23 +78,26 @@ namespace Legends_lib
         {
             Mapa mapa = new Mapa();
             GerarCasas(mapa);
-            Debug.WriteLine(mapa.casa[2,2].PosX);
-            Debug.WriteLine(mapa.casa[2,2].Andavel);
+          
            
-            Random rnd = new Random();//utilizar o rnd ao criar um item no mapa
+            //Random rnd = new Random();//utilizar o rnd ao criar um item no mapa
             return mapa;
 
         }
 
         private void GerarCasas(Mapa mapa)
         {
+            foreach (int[] casa in CasasNaoAndaveis){
+                Debug.WriteLine(" "+casa[0] + "  " + casa[1]);
+            }
          
             for (int x = 0; x < DimX; x++)
             {
                 for (int y = 0; y < DimY; y++)
                 {
                   
-                    mapa.casa[x,y] = new Casa(EhAdavel(x, y, CasasNaoAndaveis), x, y);
+                    mapa.casa[x,y] = new Casa( x, y);
+                    EhAdavel(mapa.casa[x,y],CasasNaoAndaveis);
                     GeraItemNaCasa(x, y, mapa);
                 }
             }
@@ -102,20 +105,39 @@ namespace Legends_lib
          
         }
 
-        private bool EhAdavel(int x, int y, List<int[]> lista)
+        private void EhAdavel(Casa casa, List<int[]> lista)
         {
-
-            int[] coord = new int[2];
-            coord[0] = y;
-            coord[1] = x;
-            return !lista.Contains(coord);
+            int x = casa.PosX;
+            int y = casa.PosY;
+            foreach (int[] cord in lista)
+            {
+                if(y == cord[0] && x == cord[1])
+                {
+                    Debug.WriteLine("FALSEE");
+                    casa.Andavel = false;
+                    return;
+                }
+            }
+            
 
         }
 
         public void GeraItemNaCasa(int x, int y, Mapa map)
         {
             if (new Random().Next(0, 50) < 20)
-                GeraItem(x, y, map);
+            {
+                foreach (Casa c in map.casa)
+                {
+                    c.Item = GeraItem(x, y, map);
+                    if(c.Item != null)
+                    {
+                        c.Item.PosX = x;
+                        c.Item.PosY = y;
+                        break;
+                    }
+                    break;
+                }
+            }
         }
     }
 }
