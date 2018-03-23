@@ -29,13 +29,13 @@ namespace LegendsOfSenai
         Jogador JogadorAtual;
 
 
-        //public List<Item> Itens = //LISTA DE ITENS DISPONÍVEIS PARA SEREM COLOCADOS NA CASA
-        //    new List<Item>() {
-        //        /** para a primeira entrega manter apenas um item não utilizavel */
-        //       // new Item.Item { Descricao = "DESCRIÇÃO 1", Nome = "NOME 1", Tipo = EItens.Consumivel},
-        //       // new Item.Item { Descricao = "DESCRIÇÃO 2", Nome = "NOME 2", Tipo = EItens.Equipavel},
-        //         new Item { Descricao = "Não utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png"},
-        //    };
+        public List<Item> Itens = //LISTA DE ITENS DISPONÍVEIS PARA SEREM COLOCADOS NA CASA
+            new List<Item>() {
+                /** para a primeira entrega manter apenas um item não utilizavel */
+               // new Item.Item { Descricao = "DESCRIÇÃO 1", Nome = "NOME 1", Tipo = EItens.Consumivel},
+               // new Item.Item { Descricao = "DESCRIÇÃO 2", Nome = "NOME 2", Tipo = EItens.Equipavel},
+                 new Item { Descricao = "Não utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png"},
+            };
 
         Dictionary<uint, Windows.UI.Xaml.Input.Pointer> pointers;
         public Tela1_Mapa()
@@ -103,8 +103,8 @@ namespace LegendsOfSenai
                     Debug.WriteLine("DENTRO DO IF DO FOREACH");
                     c.Item.CriarImagem();
                     mapa.Children.Add(c.Item.Imagem);
-                    Canvas.SetLeft(c.Item.Imagem, c.Item.PosX);//posiciona X
-                    Canvas.SetTop(c.Item.Imagem, c.Item.PosY);//posiciona Y
+                    Canvas.SetLeft(c.Item.Imagem, c.Item.PosX * 40);//posiciona X
+                    Canvas.SetTop(c.Item.Imagem, c.Item.PosY * 40);//posiciona Y
                 }
             }
         }
@@ -214,7 +214,7 @@ namespace LegendsOfSenai
         {
             foreach(Casa c in this.Map.casa)
             {
-                if ((c.PosX == selecionado.PosX && c.PosY == selecionado.PosY)  && JogadorAtual.Inventario.Count < 8) //O JOGADOR SÓ OBTEM O ITEM SE ESTIVER NA MESMA CASA QUE ELE
+                if ((c.PosX == selecionado.PosX && c.PosY == selecionado.PosY)  && JogadorAtual.Inventario.Count < 8 && selecionado!= null) //O JOGADOR SÓ OBTEM O ITEM SE ESTIVER NA MESMA CASA QUE ELE
                 {
                     JogadorAtual.Inventario.Add(Itens[0]); //NECESSÁRIO REFAZER PARA "DINAMICIDADE"
                 }
