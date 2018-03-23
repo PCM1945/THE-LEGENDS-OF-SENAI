@@ -16,7 +16,7 @@ namespace Legends_lib
             Atq = 20;
             Vida = 100;
             Experiencia = 20;
-            MovRange = 4;
+            MovRange = 3;
             PosX = cordx;
             PosY = cordy;
         }

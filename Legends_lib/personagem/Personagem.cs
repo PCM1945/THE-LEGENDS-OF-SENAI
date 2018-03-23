@@ -23,6 +23,7 @@ namespace Legends_lib
         public int Experiencia { get; set; }
         public int Custo_Gold { get; set; }
         public int MovRange { get; set; }
+        public int MovUsados { get; set; }
         public Personagem()
         {
            

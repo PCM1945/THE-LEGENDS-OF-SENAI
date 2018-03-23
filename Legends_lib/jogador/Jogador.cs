@@ -23,5 +23,12 @@ namespace Legends_lib
             Personagens = new List<Personagem>();
         }
 
+        public void ResetarPerson()
+        {
+            foreach (Personagem person in Personagens)
+            {
+                person.MovUsados = 0;
+            }
+        }
     }
 }

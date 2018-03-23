@@ -97,9 +97,10 @@ namespace LegendsOfSenai
             Debug.WriteLine("pos X: " + ptrPt.Position.X);
 
             Debug.WriteLine("pos Y: " + ptrPt.Position.Y);
-
+            Debug.WriteLine("POSICAO NA MATRIZ");
             Debug.WriteLine(calcCasa.getPosCasa((int)ptrPt.Position.X));
-            if(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null){
+            Debug.WriteLine(calcCasa.getPosCasa((int)ptrPt.Position.Y));
+            if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null){
                 Debug.WriteLine("TEM PERSONAGEM AQUI");
             }
             if (selecionou == false)
@@ -114,7 +115,9 @@ namespace LegendsOfSenai
             }
             else
             {
-                if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem == null && Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel)
+                if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem == null && 
+                    Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel   &&
+                    PodeMover(calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)))
                 {
                     Debug.WriteLine(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel);
                     selecionou = false;
@@ -128,16 +131,27 @@ namespace LegendsOfSenai
                     //Reposiciona ele no canvas (passando a imagem dele, e a posicao relativa)
                     Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.X)) * 40);
                     Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.Y)) * 40);
-                    
-                    
+                    selecionado = null;
                 }
+              
+               
             }
 
 
         }
+        /// <summary>
+        /// Checa se o personagem eh do jogador atual e se ele tem Range para o movimento
+        /// </summary>
+        /// <returns></returns>
+        private bool PodeMover(int cordx,int cordy) {
+            Debug.WriteLine(JogadorAtual.Personagens.Contains(selecionado));
+            return (JogadorAtual.Personagens.Contains(selecionado)  && ((Math.Abs(selecionado.PosX - cordx) <= (selecionado.MovRange)
+                && (Math.Abs(selecionado.PosY - cordy) <= (selecionado.MovRange) ))));
+        }
 
         private void Button_Mudar_Turno(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            JogadorAtual.ResetarPerson();
             FilaJogador.Enqueue(JogadorAtual);
             JogadorAtual = FilaJogador.Dequeue();
         }
