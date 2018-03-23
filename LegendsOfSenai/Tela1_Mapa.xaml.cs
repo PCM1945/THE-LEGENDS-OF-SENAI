@@ -45,10 +45,6 @@ namespace LegendsOfSenai
             //Setando o data biding
 
 
-            JogadorAtual.Inventario = new List<Item>();
-            JogadorAtual.Inventario.Add(new Item { Nome = "item1", Tipo = EItens.Consumivel });
-            JogadorAtual.Inventario.Add(new Item { Nome = "item2", Tipo = EItens.Equipavel });
-            JogadorAtual.Inventario.Add(new Item { Nome = "item3", Tipo = EItens.NaoUtilizavel });
             Invetario_list.ItemsSource = JogadorAtual.Inventario;
             Player_info.ItemsSource = new List<Jogador>() { JogadorAtual };
 
@@ -154,6 +150,8 @@ namespace LegendsOfSenai
             JogadorAtual.ResetarPerson();
             FilaJogador.Enqueue(JogadorAtual);
             JogadorAtual = FilaJogador.Dequeue();
+            Invetario_list.ItemsSource = JogadorAtual.Inventario;
+         
         }
 
         private void Inventario_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)

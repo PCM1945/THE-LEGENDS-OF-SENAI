@@ -21,6 +21,7 @@ namespace Legends_lib
         {
             Castelos = new List<Castelo>();
             Personagens = new List<Personagem>();
+            Inventario = new List<Item.Item>();
         }
 
         public void ResetarPerson()
