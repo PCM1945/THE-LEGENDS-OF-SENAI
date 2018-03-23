@@ -27,7 +27,7 @@ namespace LegendsOfSenai
         public bool selecionou;
         Queue<Jogador> FilaJogador;
         Jogador JogadorAtual;
-
+        Casa casaSelecionado;
 
         public List<Item> Itens = //LISTA DE ITENS DISPONÍVEIS PARA SEREM COLOCADOS NA CASA
             new List<Item>() {
@@ -116,14 +116,23 @@ namespace LegendsOfSenai
             e.Handled = true;
 
             PointerPoint ptrPt = e.GetCurrentPoint(mapa);
-            Debug.WriteLine("pos X: " + ptrPt.Position.X);
+          /*  Debug.WriteLine("pos X: " + ptrPt.Position.X);
 
             Debug.WriteLine("pos Y: " + ptrPt.Position.Y);
             Debug.WriteLine("POSICAO NA MATRIZ");
             Debug.WriteLine(calcCasa.getPosCasa((int)ptrPt.Position.X));
-            Debug.WriteLine(calcCasa.getPosCasa((int)ptrPt.Position.Y));
-            if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null){
-                Debug.WriteLine("TEM PERSONAGEM AQUI");
+            Debug.WriteLine(calcCasa.getPosCasa((int)ptrPt.Position.Y));*/
+           for(int i = 0; i < 20; i++)
+            {
+                for(int j = 0; j < 20; j++)
+                {
+                    if (Map.casa[i, j].Personagem != null)
+                    {
+                        Debug.WriteLine("personagem NA MATRIZ");
+                        Debug.WriteLine(i);
+                        Debug.WriteLine(j);
+                    }
+                }
             }
             if (selecionou == false)
             {
@@ -132,7 +141,7 @@ namespace LegendsOfSenai
                 {
                     selecionou = true;
                     selecionado = Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem;
-                    Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem = null;
+                    casaSelecionado = Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)];
                 }
             }
             else
@@ -146,7 +155,7 @@ namespace LegendsOfSenai
                     //Adiciona o personagem no back atual
                     Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem=selecionado;
                     //Remove o personagem do back na pos antiga
-                    Map.casa[selecionado.PosX, selecionado.PosY].Personagem = null;
+                   Map.casa[selecionado.PosX, selecionado.PosY].Personagem = null;
                     //Muda as cordenadas no Jogador
                     selecionado.PosX = calcCasa.getPosCasa((int)ptrPt.Position.X);
                     selecionado.PosY = calcCasa.getPosCasa((int)ptrPt.Position.Y);
@@ -154,6 +163,7 @@ namespace LegendsOfSenai
                     Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.X)) * 40);
                     Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.Y)) * 40);
                     selecionado = null;
+                    casaSelecionado.Personagem = null;
                 }
               
                
@@ -213,8 +223,8 @@ namespace LegendsOfSenai
         private void ObtemItem(object sender, RoutedEventArgs e)
         {
             foreach(Casa c in this.Map.casa)
-            {
-                if ((selecionado != null) && (c.PosX == selecionado.PosX && c.PosY == selecionado.PosY)  && JogadorAtual.Inventario.Count < 8) //O JOGADOR SÓ OBTEM O ITEM SE ESTIVER NA MESMA CASA QUE ELE
+            {//(selecionado != null) &&
+                if ( (c.PosX == selecionado.PosX && c.PosY == selecionado.PosY)  && JogadorAtual.Inventario.Count < 8) //O JOGADOR SÓ OBTEM O ITEM SE ESTIVER NA MESMA CASA QUE ELE
                 {
                     JogadorAtual.Inventario.Add(Itens[0]); //NECESSÁRIO REFAZER PARA "DINAMICIDADE"
                     /*Invetario_list.ItemsSource = JogadorAtual.Inventario;*/
