@@ -29,13 +29,13 @@ namespace LegendsOfSenai
         Jogador JogadorAtual;
 
 
-        public List<Item> Itens = //LISTA DE ITENS DISPONÍVEIS PARA SEREM COLOCADOS NA CASA
-            new List<Item>() {
-                /** para a primeira entrega manter apenas um item não utilizavel */
-               // new Item.Item { Descricao = "DESCRIÇÃO 1", Nome = "NOME 1", Tipo = EItens.Consumivel},
-               // new Item.Item { Descricao = "DESCRIÇÃO 2", Nome = "NOME 2", Tipo = EItens.Equipavel},
-                 new Item { Descricao = "Não utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png"},
-            };
+        //public List<Item> Itens = //LISTA DE ITENS DISPONÍVEIS PARA SEREM COLOCADOS NA CASA
+        //    new List<Item>() {
+        //        /** para a primeira entrega manter apenas um item não utilizavel */
+        //       // new Item.Item { Descricao = "DESCRIÇÃO 1", Nome = "NOME 1", Tipo = EItens.Consumivel},
+        //       // new Item.Item { Descricao = "DESCRIÇÃO 2", Nome = "NOME 2", Tipo = EItens.Equipavel},
+        //         new Item { Descricao = "Não utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png"},
+        //    };
 
         Dictionary<uint, Windows.UI.Xaml.Input.Pointer> pointers;
         public Tela1_Mapa()
@@ -53,10 +53,8 @@ namespace LegendsOfSenai
             PosicionarItens();
 
             //Setando o data biding
-            JogadorAtual.Inventario = new List<Item>();
-            JogadorAtual.Inventario.Add(new Item { Nome = "item1", Tipo = EItens.Consumivel });
-            JogadorAtual.Inventario.Add(new Item { Nome = "item2", Tipo = EItens.Equipavel });
-            JogadorAtual.Inventario.Add(new Item { Nome = "item3", Tipo = EItens.NaoUtilizavel });
+
+
             Invetario_list.ItemsSource = JogadorAtual.Inventario;
             Player_info.ItemsSource = new List<Jogador>() { JogadorAtual };
 
@@ -121,9 +119,10 @@ namespace LegendsOfSenai
             Debug.WriteLine("pos X: " + ptrPt.Position.X);
 
             Debug.WriteLine("pos Y: " + ptrPt.Position.Y);
-
+            Debug.WriteLine("POSICAO NA MATRIZ");
             Debug.WriteLine(calcCasa.getPosCasa((int)ptrPt.Position.X));
-            if(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null){
+            Debug.WriteLine(calcCasa.getPosCasa((int)ptrPt.Position.Y));
+            if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null){
                 Debug.WriteLine("TEM PERSONAGEM AQUI");
             }
             if (selecionou == false)
@@ -138,7 +137,9 @@ namespace LegendsOfSenai
             }
             else
             {
-                if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem == null && Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel)
+                if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem == null && 
+                    Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel   &&
+                    PodeMover(calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)))
                 {
                     Debug.WriteLine(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel);
                     selecionou = false;
@@ -152,18 +153,31 @@ namespace LegendsOfSenai
                     //Reposiciona ele no canvas (passando a imagem dele, e a posicao relativa)
                     Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.X)) * 40);
                     Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.Y)) * 40);
-                    
-                    
+                    selecionado = null;
                 }
+              
+               
             }
 
 
         }
+        /// <summary>
+        /// Checa se o personagem eh do jogador atual e se ele tem Range para o movimento
+        /// </summary>
+        /// <returns></returns>
+        private bool PodeMover(int cordx,int cordy) {
+            Debug.WriteLine(JogadorAtual.Personagens.Contains(selecionado));
+            return (JogadorAtual.Personagens.Contains(selecionado)  && ((Math.Abs(selecionado.PosX - cordx) <= (selecionado.MovRange)
+                && (Math.Abs(selecionado.PosY - cordy) <= (selecionado.MovRange) ))));
+        }
 
         private void Button_Mudar_Turno(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            JogadorAtual.ResetarPerson();
             FilaJogador.Enqueue(JogadorAtual);
             JogadorAtual = FilaJogador.Dequeue();
+            Invetario_list.ItemsSource = JogadorAtual.Inventario;
+         
         }
 
         private void Inventario_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
