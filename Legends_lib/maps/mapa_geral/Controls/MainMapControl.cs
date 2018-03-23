@@ -133,8 +133,9 @@ namespace Legends_lib
                     {
                         c.Item.PosX = x;
                         c.Item.PosY = y;
+                        break;
                     }
-                    return;
+                    break;
                 }
             }
         }

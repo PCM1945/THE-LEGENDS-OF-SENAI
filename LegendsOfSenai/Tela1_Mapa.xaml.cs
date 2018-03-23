@@ -214,11 +214,13 @@ namespace LegendsOfSenai
         {
             foreach(Casa c in this.Map.casa)
             {
-                if ((c.PosX == selecionado.PosX && c.PosY == selecionado.PosY)  && JogadorAtual.Inventario.Count < 8 && selecionado!= null) //O JOGADOR SÓ OBTEM O ITEM SE ESTIVER NA MESMA CASA QUE ELE
+                if ((selecionado != null) && (c.PosX == selecionado.PosX && c.PosY == selecionado.PosY)  && JogadorAtual.Inventario.Count < 8) //O JOGADOR SÓ OBTEM O ITEM SE ESTIVER NA MESMA CASA QUE ELE
                 {
                     JogadorAtual.Inventario.Add(Itens[0]); //NECESSÁRIO REFAZER PARA "DINAMICIDADE"
+                    /*Invetario_list.ItemsSource = JogadorAtual.Inventario;*/
+                    c.Item = null;
+                    return;
                 }
-                return;
             }
         }
 
