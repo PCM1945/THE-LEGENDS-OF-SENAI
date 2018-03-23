@@ -48,7 +48,7 @@ namespace LegendsOfSenai
             FilaJogador.Enqueue(new Jogador());
             JogadorAtual = FilaJogador.Dequeue();
            
-          //  BtnPlayWav(); MUSICA
+            BtnPlayWav();
             IniciarCastelos();
             PosicionarItens();
 
@@ -68,7 +68,7 @@ namespace LegendsOfSenai
             var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
             mysong.SetSource(stream, file.ContentType);
            
-           // mysong.Volume = 100;
+           mysong.Volume = 100;
             mysong.Play();
         }
         private void IniciarCastelos()
@@ -134,7 +134,7 @@ namespace LegendsOfSenai
                     }
                 }
             }
-            if (selecionou == false)
+            if (!selecionou)
             {
                 Debug.WriteLine("entrou");
                 if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null)
