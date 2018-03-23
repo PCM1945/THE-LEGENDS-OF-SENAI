@@ -12,6 +12,8 @@ namespace Legends_lib.Item
         public string Descricao { get; set; }
         public BitmapImage bitmap;
         public Image Imagem { get; set; }
+        public int PosX { get; set; }
+        public int PosY { get; set; }
 
         public void CriarImagem()
         {

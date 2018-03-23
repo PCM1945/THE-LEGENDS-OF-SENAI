@@ -20,9 +20,7 @@
                     <CompositeTransform Rotation="-90"/>
                 </Image.RenderTransform>
             </Image>
-            <Image Name="pedra_de_crack_colorida" Width="20" Height="20" Source=" Assets\itens\pedra.png" Canvas.ZIndex="10" Canvas.Left="16" Canvas.Top="7" >
-                
-            </Image>
+            
 
             <Image Name="open_map" Width="800" Height="800"
                 Source="Assets/telas/open_map.png" Canvas.Left="5" Canvas.Top="-4">
@@ -84,6 +82,7 @@
             <Button Content="Turno" Name="Button_Turno" Click="Button_Mudar_Turno"
                     
                     Canvas.Left="-66" Canvas.Top="593"/>
+            <Button x:Name="PegaItem" Content="Pegar Item" Canvas.Left="706" Canvas.Top="1" Click="ObtemItem"/>
 
             <!-- Player Info-->
         </Canvas>

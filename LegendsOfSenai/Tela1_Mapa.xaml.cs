@@ -27,7 +27,16 @@ namespace LegendsOfSenai
         public bool selecionou;
         Queue<Jogador> FilaJogador;
         Jogador JogadorAtual;
-        
+
+
+        public List<Item> Itens = //LISTA DE ITENS DISPONÍVEIS PARA SEREM COLOCADOS NA CASA
+            new List<Item>() {
+                /** para a primeira entrega manter apenas um item não utilizavel */
+               // new Item.Item { Descricao = "DESCRIÇÃO 1", Nome = "NOME 1", Tipo = EItens.Consumivel},
+               // new Item.Item { Descricao = "DESCRIÇÃO 2", Nome = "NOME 2", Tipo = EItens.Equipavel},
+                 new Item { Descricao = "Não utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png"},
+            };
+
         Dictionary<uint, Windows.UI.Xaml.Input.Pointer> pointers;
         public Tela1_Mapa()
         {
@@ -41,10 +50,9 @@ namespace LegendsOfSenai
            
           //  BtnPlayWav(); MUSICA
             IniciarCastelos();
+            PosicionarItens();
 
             //Setando o data biding
-
-
             JogadorAtual.Inventario = new List<Item>();
             JogadorAtual.Inventario.Add(new Item { Nome = "item1", Tipo = EItens.Consumivel });
             JogadorAtual.Inventario.Add(new Item { Nome = "item2", Tipo = EItens.Equipavel });
@@ -86,6 +94,22 @@ namespace LegendsOfSenai
             JogadorAtual = FilaJogador.Dequeue();
         }
 
+        private void PosicionarItens()
+        {
+            //Debug.WriteLine("ANTES DO FOREACH");
+            foreach (Casa c in this.Map.casa)
+            {
+                //Debug.WriteLine("ITEM: (DENTRO DO FOREACH)" + c.Item.Nome);
+                if (c.Item != null)
+                {
+                    Debug.WriteLine("DENTRO DO IF DO FOREACH");
+                    c.Item.CriarImagem();
+                    mapa.Children.Add(c.Item.Imagem);
+                    Canvas.SetLeft(c.Item.Imagem, c.Item.PosX);//posiciona X
+                    Canvas.SetTop(c.Item.Imagem, c.Item.PosY);//posiciona Y
+                }
+            }
+        }
       
 
         private void Target_PointerPressed(object sender, PointerRoutedEventArgs e)
@@ -167,10 +191,23 @@ namespace LegendsOfSenai
                     Map.casa[cast.Cordx, cast.Cordy].Personagem = person;//add no back
                     JogadorAtual.Personagens.Add(person);//add na lista do jogador
                     break;
-                    }
+                }
                
             }
         }
+
+        private void ObtemItem(object sender, RoutedEventArgs e)
+        {
+            foreach(Casa c in this.Map.casa)
+            {
+                if ((c.PosX == selecionado.PosX && c.PosY == selecionado.PosY)  && JogadorAtual.Inventario.Count < 8) //O JOGADOR SÓ OBTEM O ITEM SE ESTIVER NA MESMA CASA QUE ELE
+                {
+                    JogadorAtual.Inventario.Add(Itens[0]); //NECESSÁRIO REFAZER PARA "DINAMICIDADE"
+                }
+                return;
+            }
+        }
+
        
         private void AbreRecrutamento(object sender, TappedRoutedEventArgs e)
         {

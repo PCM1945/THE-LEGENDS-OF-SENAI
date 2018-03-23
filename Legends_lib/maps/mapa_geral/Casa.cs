@@ -21,7 +21,7 @@ namespace Legends_lib
             this.PosX = posX;
             this.PosY = posY;
             this.Personagem = null;
-            this.Item = null;
+            this.Item = Item;
         }
 
         // fazer o metodo de alteração aleatoria 

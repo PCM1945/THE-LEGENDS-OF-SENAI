@@ -25,7 +25,7 @@ namespace Legends_lib
                 /** para a primeira entrega manter apenas um item não utilizavel */
                // new Item.Item { Descricao = "DESCRIÇÃO 1", Nome = "NOME 1", Tipo = EItens.Consumivel},
                // new Item.Item { Descricao = "DESCRIÇÃO 2", Nome = "NOME 2", Tipo = EItens.Equipavel},
-                 new Item.Item { Descricao = "DESCRIÇÃO 3", Nome = "NOME 3", Tipo = EItens.NaoUtilizavel},
+                 new Item.Item { Descricao = "Não Utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage="ms-appx:///Assets/itens/pedra.png"},
             };
 
 
@@ -80,7 +80,7 @@ namespace Legends_lib
             GerarCasas(mapa);
           
            
-            Random rnd = new Random();//utilizar o rnd ao criar um item no mapa
+            //Random rnd = new Random();//utilizar o rnd ao criar um item no mapa
             return mapa;
 
         }
@@ -125,7 +125,18 @@ namespace Legends_lib
         public void GeraItemNaCasa(int x, int y, Mapa map)
         {
             if (new Random().Next(0, 50) < 20)
-                GeraItem(x, y, map);
+            {
+                foreach (Casa c in map.casa)
+                {
+                    c.Item = GeraItem(x, y, map);
+                    if(c.Item != null)
+                    {
+                        c.Item.PosX = x;
+                        c.Item.PosY = y;
+                    }
+                    return;
+                }
+            }
         }
     }
 }
