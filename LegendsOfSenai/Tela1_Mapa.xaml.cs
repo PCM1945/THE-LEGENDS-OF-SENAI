@@ -48,7 +48,7 @@ namespace LegendsOfSenai
             FilaJogador.Enqueue(new Jogador());
             JogadorAtual = FilaJogador.Dequeue();
            
-            BtnPlayWav();
+           // BtnPlayWav();
             IniciarCastelos();
             PosicionarItens();
 
