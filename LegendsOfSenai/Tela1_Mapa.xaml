@@ -5,7 +5,7 @@
     xmlns:local="using:LegendsOfSenai"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Width="1000" Height="800" >
+    mc:Ignorable="d" Width="1106" Height="771" >
 
     <ScrollViewer Height="650" >
         <Canvas x:Name="mapa" Background="White" Width="800" Height="800" PointerPressed="Target_PointerPressed" >
@@ -60,7 +60,7 @@
 
             </StackPanel>
             <!--- Flyout Recrutamento -->
-            <Rectangle Name="RecrutamentoRect" Height="25" Canvas.Left="8" Canvas.Top="0" Width="90" Fill="Brown" >
+            <Rectangle Name="RecrutamentoRect" Height="25" Canvas.Left="8"  Canvas.Top="0" Width="90" Fill="Brown" >
                 <FlyoutBase.AttachedFlyout >
                     <MenuFlyout >
                         <MenuFlyoutItem  Text="Warrior" Click="Recrutamento"/>
@@ -87,11 +87,23 @@
                 <StackPanel HorizontalAlignment="Left"  Grid.RowSpan="1" Height="204" VerticalAlignment="Center" Width="96" Grid.Column="0" Grid.Row="1" Margin="1,-28,-97,-176">
                     <Button x:Name="Status" Content="Status" Margin="0,0,-1,0" Width="97" Height="57"/>
                     <Button x:Name="Recrut" Content="Recrutar" Margin="0,0,-1,0" Width="97" Height="47">
-                        <FlyoutBase.AttachedFlyout >
+                        <!--<FlyoutBase.AttachedFlyout >
                             <MenuFlyout >
                                 <MenuFlyoutItem  Text="Warrior" Click="Recrutamento"/>
                             </MenuFlyout>
-                        </FlyoutBase.AttachedFlyout>
+                        </FlyoutBase.AttachedFlyout>-->
+                        <Button.Flyout>
+                            <Flyout>
+                                <StackPanel>
+                                    <TextBlock Text="Recrute Uma tropa"  />
+                                    <RadioButton Content="Warrior" Tag="Warrior" GroupName="Recrutamento"  Checked="RadioButton_Checked" />
+                                    <RadioButton Content="Archer" Tag="Archer" GroupName="Recrutamento" Checked="RadioButton_Checked"/>
+                                    <RadioButton Content="Mage" Tag="Mage" GroupName="Recrutamento" Checked="RadioButton_Checked"/>
+                                    <RadioButton Content="??" Tag="??" GroupName="Recrutamento" Checked="RadioButton_Checked"/>
+                                    <Button Content="Confirmar" Click="Recrutamento"/>
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
                     </Button>
                     <Button x:Name="invent"  Content="itens" Margin="0,0,-1,0" Width="97" Height="59"/>
                 </StackPanel>

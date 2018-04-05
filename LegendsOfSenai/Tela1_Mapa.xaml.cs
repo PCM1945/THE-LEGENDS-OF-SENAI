@@ -28,7 +28,7 @@ namespace LegendsOfSenai
         Queue<Jogador> FilaJogador;
         Jogador JogadorAtual;
         Casa casaSelecionado;
-
+        private String RecrutSelec { get; set; }
         public List<Item> Itens = //LISTA DE ITENS DISPONÍVEIS PARA SEREM COLOCADOS NA CASA
             new List<Item>() {
                 /** para a primeira entrega manter apenas um item não utilizavel */
@@ -210,11 +210,22 @@ namespace LegendsOfSenai
         }
         private void Recrutamento(object sender, RoutedEventArgs e)
         {
+
+
             foreach (Castelo cast in JogadorAtual.Castelos) {
               //Acessa as casas cujo o jogador pode add persongens
                 if (Map.casa[cast.Cordx, cast.Cordy].Personagem == null)
                 {//chca se a casa esta vazia
-                    Personagem person = new Guerreiro(cast.Cordx, cast.Cordy);
+                    Personagem person = null;
+                    //Selecionar o personagem, usando o Radio Box
+                    switch (RecrutSelec)
+                    {
+                        case "Warrior":
+                             person = new Guerreiro(cast.Cordx, cast.Cordy);
+                            break;
+                    }
+
+                    if (person != null) { 
                     person.CriarImagem();//Utiliza os metodos do Xaml (inicia o bitmap da imagem && coloca ele na imagem)
                     mapa.Children.Add(person.Imagem);//Adiciona no canvas
                     Canvas.SetLeft(person.Imagem, cast.Cordx * 40);//posiciona
@@ -222,6 +233,7 @@ namespace LegendsOfSenai
                     Map.casa[cast.Cordx, cast.Cordy].Personagem = person;//add no back
                     JogadorAtual.Personagens.Add(person);//add na lista do jogador
                     break;
+                    }
                 }
                
             }
@@ -245,16 +257,22 @@ namespace LegendsOfSenai
         }
 
        
-        private void AbreRecrutamento(object sender, TappedRoutedEventArgs e)
-        {
-            FlyoutBase.ShowAttachedFlyout((FrameworkElement) sender);
-        }
+        
         private void UpdateEventLog(string v)
         {
             throw new NotImplementedException();
         }
 
-      
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton radio = sender as RadioButton;
+            if (radio != null)
+            {
+                RecrutSelec = radio.Tag.ToString();
+
+            }
+            
+        }
     }
     
 }
