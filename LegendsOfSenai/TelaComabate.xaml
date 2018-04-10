@@ -8,21 +8,15 @@
     mc:Ignorable="d" Width="994" Height="702">
     <Canvas x:Name="batlle_map" Background="Gray" Width="994" Height="702">
 
-        <Image x:Name="battle_bk" Source="Assets/telas/battle_BKv2.0.jpg">
-        </Image>
+        <Image x:Name="battle_bk" Source="Assets/telas/battle_BKv2.0.jpg" Canvas.Left="-2" Canvas.Top="-2"/>
 
-        <Image x:Name="btt_worrior" Source="Assets/charters/Warrrior_spt/humano/warrior.png" Canvas.ZIndex="10" 
-               Width="150" Height="190" Canvas.Left="150" Canvas.Top="340" >
-
-        </Image>
-        <Image x:Name="btt_mago" Source="Assets/charters/Mago_spt/humano/mago_lado_esq.png" Width="150" Height="190" Canvas.Left="683" Canvas.Top="333" >
-        </Image>
+        <Image x:Name="btt_worrior" Source="Assets/characters/Warrrior_spt/humano/warrior.png" Canvas.ZIndex="10" 
+               Width="150" Height="190" Canvas.Left="150" Canvas.Top="340" />
+        <Image x:Name="btt_mago" Source="Assets\characters\Mago_spt\humano/mago_lado_esq.png" Width="150" Height="190" Canvas.Left="683" Canvas.Top="333" />
 
         <Button x:Name = "botao_batalha" Content ="batalha em desenvolvimento" Canvas.ZIndex="10" Canvas.Left="405" 
-                Canvas.Top="242" Height="70" Width="230" Background="Gold" Click= "botao_batalha_Click">
-
-        </Button>
-        <Image x:Name="Oponente1"  Source="" Height="100" Canvas.Left="745" Canvas.Top="311" Width="100"/>
-        <Image x:Name="Oponente2"  Source="" Height="100" Canvas.Left="165" Canvas.Top="313" Width="100"/>
+                Canvas.Top="242" Height="70" Width="230" Background="Gold" Click= "botao_batalha_Click"/>
+        <Image x:Name="Oponente1"  Source="Assets/charters/Warrrior_spt/humano/warrior.png" Height="100" Canvas.Left="745" Canvas.Top="311" Width="100"/>
+        <Image x:Name="Oponente2"  Source="Acharters/Warrrior_spt/humano/warrior.png" Height="100" Canvas.Left="165" Canvas.Top="313" Width="100"/>
     </Canvas>
 </Page>
