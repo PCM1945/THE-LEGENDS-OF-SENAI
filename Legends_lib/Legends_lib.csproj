@@ -113,6 +113,7 @@
     <Compile Include="item\Controls\ItemControl.cs" />
     <Compile Include="jogador\Castelo.cs" />
     <Compile Include="jogador\Controls\HabilidadeJogador.cs" />
+    <Compile Include="jogador\Controls\JogadorControl.cs" />
     <Compile Include="maps\mapa_geral\Casa.cs" />
     <Compile Include="item\Eitens.cs" />
     <Compile Include="maps\mapa_geral\Controls\calcCasa.cs" />
