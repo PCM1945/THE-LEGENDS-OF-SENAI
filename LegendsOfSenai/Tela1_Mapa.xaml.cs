@@ -170,6 +170,8 @@ namespace LegendsOfSenai
                 else if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null &&
                     !JogadorAtual.Personagens.Contains(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem))
                 {
+                    
+                    
                     this.Frame.Navigate(typeof(BlankPage1));
 
 
