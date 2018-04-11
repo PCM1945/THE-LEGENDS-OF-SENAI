@@ -10,10 +10,10 @@ namespace Legends_lib.Batalha
     {
         public static int Atacar(int atq,int vida)
         {
+            
             vida -= atq;
             return vida;
         }
-
         
 
     }

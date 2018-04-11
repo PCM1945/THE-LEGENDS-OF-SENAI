@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/*
+ * ClassePOG para facilitar o acesso do jogador em outras telas 
+ * sem precisar passar no parâmetro 
+ * 
+ * */
 namespace Legends_lib.jogador.Controls
 {
     public static class JogadorControl

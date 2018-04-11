@@ -32,19 +32,20 @@ namespace LegendsOfSenai
 
         private void Batalha()
         {
-            ControleBatalha.ordenarBatalha();
-            while (ControleBatalha.BuscarVencedor() != 0)
+            
+            while (ControleBatalha.BuscarVencedor() != 0)//ALTERAR P/ ==0 QUANDO A BATALHA TIVER PRONTA P/ N ENTRAR EM LOOP INFINITO 
             {
-                //COLOCAR A BATALHA
+                //COLOCAR A BATALHA-clicar botão e verificar mana e se é o turno do jogador 
+
             }
-            //voltarMapa(); ----- tira esse coment 
+           
         }
 
         private void voltarMapa()
         {
             this.Frame.Navigate(typeof(Tela1_Mapa));
         }
-        private void botao_batalha_Click(object sender, RoutedEventArgs e)
+        private void botao_batalha_Click(object sender, RoutedEventArgs e)//COLOCAR P/ BOTÃO APARECER APENAS QUANDO ACABAR A BATALHA
         {
             voltarMapa();
         }
