@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
@@ -29,10 +27,9 @@ namespace Legends_lib
            
 
         }
-        /// <summary>
-        /// 
+     
         /// Cria a imagem no xaml, apos chamar a funcao, colocar personagem.Imagem no canvas
-        /// </summary>
+
         public void CriarImagem()
         {
             bitmap = new BitmapImage();

@@ -106,6 +106,8 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Batalha\AtkController.cs" />
+    <Compile Include="Batalha\ControleBatalha.cs" />
     <Compile Include="Habilidade\Habilidade.cs" />
     <Compile Include="Habilidade\TipoHabilidade.cs" />
     <Compile Include="item\Controls\ItemControl.cs" />
@@ -133,9 +135,7 @@
       <Version>6.0.6</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Batalha\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
