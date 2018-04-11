@@ -18,6 +18,7 @@ namespace Legends_lib
         public int Turno_movimento { get; set; }
         public Jogador()
         {
+            Gold = 100;
             Castelos = new List<Castelo>();
             Personagens = new List<Personagem>();
             Inventario = new List<Item.Item>();

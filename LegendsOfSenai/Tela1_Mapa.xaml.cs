@@ -136,7 +136,7 @@ namespace LegendsOfSenai
                     }
                 }
             }
-            if (!selecionou)
+            if (!selecionou)//LEMBRAR DE TRATAR CLICKS FORA DA TELA!!!!!!!!!!!!!!!ATENÇÃO!!!!!!!!!!!IMPORTANTE!!!!
             {
                 Debug.WriteLine("entrou");
                 if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null)
