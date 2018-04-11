@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Legends_lib.Batalha;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,11 +26,27 @@ namespace LegendsOfSenai
         public BlankPage1()
         {
             this.InitializeComponent();
+            Batalha();
+            
         }
 
-        private void botao_batalha_Click(object sender, RoutedEventArgs e)
+        private void Batalha()
+        {
+            ControleBatalha.ordenarBatalha();
+            while (ControleBatalha.BuscarVencedor() != 0)
+            {
+                //COLOCAR A BATALHA
+            }
+            //voltarMapa(); ----- tira esse coment 
+        }
+
+        private void voltarMapa()
         {
             this.Frame.Navigate(typeof(Tela1_Mapa));
+        }
+        private void botao_batalha_Click(object sender, RoutedEventArgs e)
+        {
+            voltarMapa();
         }
     }
 }

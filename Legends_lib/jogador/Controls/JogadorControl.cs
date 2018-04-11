@@ -8,7 +8,7 @@ namespace Legends_lib.jogador.Controls
 {
     public static class JogadorControl
     {
-        private static List<Jogador> listaJogadores;
+        private static List<Jogador> listaJogadores = new List<Jogador>();
 
         public static void AddPlayer(Jogador jogador)
         {

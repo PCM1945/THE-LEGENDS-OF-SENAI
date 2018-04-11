@@ -14,7 +14,7 @@ namespace Legends_lib.Batalha
             return vida;
         }
 
-
+        
 
     }
 }

@@ -13,6 +13,7 @@ using Windows.Media.Playback;
 using Windows.Media.Core;
 using Windows.UI.Xaml.Navigation;
 using Legends_lib.jogador.Controls;
+using Legends_lib.Batalha;
 
 namespace LegendsOfSenai
 {
@@ -174,10 +175,20 @@ namespace LegendsOfSenai
                 else if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null &&
                     !JogadorAtual.Personagens.Contains(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem))
                 {
+
+                    //ORGANIZANDO A BATALHA                                      ORGANIZANDO A BATALHA
+
+                        ControleBatalha.personagem2 = Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem;
+                        ControleBatalha.personagem1 = selecionado;
                     
+                   
                     
                     this.Frame.Navigate(typeof(BlankPage1));
+                    if (ControleBatalha.vencedor == 1)
+                    {
+                        ControleBatalha.personagem2 = Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem=null;
 
+                    }
 
                 }
               
