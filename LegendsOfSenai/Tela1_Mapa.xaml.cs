@@ -12,6 +12,7 @@ using Windows.UI.Xaml;
 using Windows.Media.Playback;
 using Windows.Media.Core;
 using Windows.UI.Xaml.Navigation;
+using Legends_lib.jogador.Controls;
 
 namespace LegendsOfSenai
 {
@@ -49,7 +50,10 @@ namespace LegendsOfSenai
             FilaJogador.Enqueue(new Jogador());
             FilaJogador.Enqueue(new Jogador());
             JogadorAtual = FilaJogador.Dequeue();
-           
+            foreach(Jogador a in FilaJogador)
+            {
+                JogadorControl.AddPlayer(a);
+            }
            // BtnPlayWav();
             IniciarCastelos();
             PosicionarItens();
