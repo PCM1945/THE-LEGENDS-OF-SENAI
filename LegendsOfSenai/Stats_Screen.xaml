@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="LegendsOfSenai.Stats_Screen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LegendsOfSenai"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Height="728" Width="702">
+
+    <Grid Background="RosyBrown">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="39*" />
+            <RowDefinition Height="102*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*" />
+           
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="Close_Button"  Content="Close"  HorizontalAlignment="Right"  VerticalAlignment="Bottom" Height="73" Width="160" Click="Button_Click" RenderTransformOrigin="0.856,0.863" Grid.Row="3" Grid.Column="1"/>
+        <TextBlock x:Name="tittle" Text="Stats" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" FontSize="36"/>
+       <!-- stats show-->
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel x:Name="StackDefin" Padding="20" Grid.Column="0" Grid.Row="0">
+                <TextBlock Text="Vida do Castelo " />
+                <TextBlock Text="Gold " />
+                <TextBlock Text="Tropas" />
+                <TextBlock Text="Itens" />
+                <TextBlock Text="Vilas" />
+            </StackPanel>
+            
+            <StackPanel x:Name="StackStatsBinding" Padding="20" Grid.Column="1" Grid.Row="0" DataContext="Statsjogador" >
+                <TextBlock Text="{Binding VidaCastelo}" />
+                <TextBlock Text="{Binding Gold}" />
+                <TextBlock x:Name="TxtTropas" Text="" />
+                <TextBlock x:Name="TxtItens" Text="" />
+                <TextBlock x:Name="TxtVilas" Text="" />
+            </StackPanel>
+        </Grid>
+        <!-- Stats show-->
+
+        <ListView x:Name="ListPersonagens" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="2"  >
+            
+            <!-- TENTAR GRID VIEW-->
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <!--  <StackPanel Orientation="Vertical">-->
+                    <Image x:Name="PersonImg" Source="{Binding UrlImage}" Width="50" Height="50" />
+                    <!-- </StackPanel> -->
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        
+    </Grid>
+    
+    <!--Style ListView Horizontal-->
+    
+    
+</Page>

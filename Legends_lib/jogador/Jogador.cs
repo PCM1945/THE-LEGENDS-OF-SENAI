@@ -9,11 +9,10 @@ namespace Legends_lib
     public  class Jogador 
     {
         public Int64 Gold { get; set; }
-        public Int64 Experiencia { get; set; }
         public List<Habilidade> Habilidades { get; set; }
         public List<Item.Item> Inventario { get; set; }//Iobservable collection
        // public IObservable<Item.Item> Inventario { get; set; }//Iobservable collection
-
+        public int VidaCastelo { get; set; }
         public List<Personagem> Personagens { get; set; }
         public List<Castelo> Castelos {get; set;}
         public int Turno_movimento { get; set; }
@@ -22,6 +21,7 @@ namespace Legends_lib
             Castelos = new List<Castelo>();
             Personagens = new List<Personagem>();
             Inventario = new List<Item.Item>();
+            VidaCastelo = 100;
         }
 
         public void ResetarPerson()

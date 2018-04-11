@@ -85,7 +85,8 @@
                     <RowDefinition Height="86"/>
                 </Grid.RowDefinitions>
                 <StackPanel HorizontalAlignment="Left"  Grid.RowSpan="1" Height="204" VerticalAlignment="Center" Width="96" Grid.Column="0" Grid.Row="1" Margin="1,-28,-97,-176">
-                    <Button x:Name="Status" Content="Status" Margin="0,0,-1,0" Width="97" Height="57"/>
+                    <Button x:Name="Status" Content="Status" Margin="0,0,-1,0" Width="97" Height="57" Click="Status_Click"/>
+                    
                     <Button x:Name="Recrut" Content="Recrutar" Margin="0,0,-1,0" Width="97" Height="47">
                         <!--<FlyoutBase.AttachedFlyout >
                             <MenuFlyout >

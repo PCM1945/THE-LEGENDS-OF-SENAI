@@ -95,6 +95,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Stats_Screen.xaml.cs">
+      <DependentUpon>Stats_Screen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TelaComabate.xaml.cs">
       <DependentUpon>TelaComabate.xaml</DependentUpon>
     </Compile>
@@ -143,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Stats_Screen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TelaComabate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml;
 using Windows.Media.Playback;
 using Windows.Media.Core;
+using Windows.UI.Xaml.Navigation;
 
 namespace LegendsOfSenai
 {
@@ -42,6 +43,7 @@ namespace LegendsOfSenai
         {
             selecionou = false;
             this.InitializeComponent();
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             pointers = new Dictionary<uint, Pointer>();
             FilaJogador = new Queue<Jogador>();
             FilaJogador.Enqueue(new Jogador());
@@ -272,6 +274,12 @@ namespace LegendsOfSenai
 
             }
             
+        }
+      
+
+        private void Status_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Stats_Screen), JogadorAtual);
         }
     }
     

@@ -32,12 +32,12 @@ namespace Legends_lib
             return j.Turno_movimento += 1;
         }
 
-        public string GanhaExp(Jogador j, Personagem enemy)
+        /*public string GanhaExp(Jogador j, Personagem enemy)
         {
             j.Experiencia = enemy.Experiencia; //EXPERIÊNCIA DO OPONENTE É ADQUIRIDA PELO JOGADOR
                                               // INIMIGO CARREGA EXPERIÊNCIA EM SEUS ATRIBUTOS
             return "Adquiriu " + enemy.Experiencia;
-        }
+        }*/
 
         public string GanhaGold(Jogador j, Personagem enemy)
         {
