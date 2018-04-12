@@ -1,4 +1,5 @@
-﻿using Legends_lib.Batalha;
+﻿using Legends_lib;
+using Legends_lib.Batalha;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,7 @@ namespace LegendsOfSenai
     /// </summary>
     public sealed partial class BlankPage1 : Page
     {
+        Personagem aux1,aux2;
         public BlankPage1()
         {
             this.InitializeComponent();
@@ -35,7 +37,9 @@ namespace LegendsOfSenai
             
             while (ControleBatalha.BuscarVencedor() != 0)//ALTERAR P/ ==0 QUANDO A BATALHA TIVER PRONTA P/ N ENTRAR EM LOOP INFINITO 
             {
-                //COLOCAR A BATALHA-clicar botão e verificar mana e se é o turno do jogador 
+                //definir turno
+                //colocar com notify do botao(tirar esse while e char smp que houver um click
+
 
             }
            
