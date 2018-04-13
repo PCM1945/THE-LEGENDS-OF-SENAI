@@ -27,12 +27,12 @@ namespace Legends_lib.Batalha
 
         public static int BuscarVencedor()//COLOCAR OS GANHOS DE GOLD DE BATALHA
          {
-            if (personagem1.Vida <= 0)
+            if (personagem1.VidaAtual <= 0)
             {
                 vencedor = 1;
                 return 1;
             }
-            if (personagem2.Vida <= 0)
+            if (personagem2.VidaAtual <= 0)
             {
                 vencedor = 2;
                 return 2;
