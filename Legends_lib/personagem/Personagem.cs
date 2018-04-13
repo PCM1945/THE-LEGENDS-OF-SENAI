@@ -18,12 +18,14 @@ namespace Legends_lib
         public List<object> ItemEquipado { get; set; }
         public BitmapImage bitmap;
         public int Atq { get; set; }
-        public int Vida { get; set; }
+        public int VidaMax { get; set; }
+        public int VidaAtual { get; set; }
         public Image Imagem { get; set; }
         public int Experiencia { get; set; }
         public int Custo_Gold { get; set; }
         public int MovRange { get; set; }
         public int MovUsados { get; set; }
+        public String Nome { get; set; }
         public Personagem()
         {
            

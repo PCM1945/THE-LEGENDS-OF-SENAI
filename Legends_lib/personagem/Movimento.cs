@@ -1,19 +1,45 @@
-﻿namespace Legends_lib
+﻿using System.Collections.Generic;
+
+namespace Legends_lib
 {
     public class Movimento
     {
 
-        public int DimXCasaini { get; set; }
-        public int DimYCasaini { get; set; }
-        public int DimXCasafim { get; set; }
-        public int DimYCasafim { get; set; }
+        /* public int DimXCasaini { get; set; }
+         public int DimYCasaini { get; set; }
+         public int DimXCasafim { get; set; }
+         public int DimYCasafim { get; set; }
 
-        public Movimento (int xi, int yi, int xf, int yf)
+         public Movimento (int xi, int yi, int xf, int yf)
+         {
+             this.DimXCasaini = xi;
+             this.DimYCasaini = yi;
+             this.DimXCasafim = xf;
+             this.DimYCasafim = yf;
+         }*/
+
+        static List<Casa> CasasMoviveis(Personagem per, Mapa map)
         {
-            this.DimXCasaini = xi;
-            this.DimYCasaini = yi;
-            this.DimXCasafim = xf;
-            this.DimYCasafim = yf;
+            List<Casa> CasasAndaveis = new List<Casa>();
+            int px = per.PosX;
+            int py = per.PosY;
+            int rg = per.MovRange;
+            for (int x = rg; x > -rg; x--)
+            {
+                for (int y = rg; y > -rg; y--)
+                {
+                    if (y==0 && x == 0)
+                    {
+                        continue;
+                    }
+                    if (map.casa[px+x,py+y].Andavel == true && map.casa[px + x, py + y].Personagem == null)
+                    {
+                        CasasAndaveis.Add(map.casa[px + x, py + y]);
+                    }
+                }
+            }
+
+            return CasasAndaveis;
         }
         
     }

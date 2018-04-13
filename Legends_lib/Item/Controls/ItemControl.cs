@@ -18,7 +18,7 @@ namespace Legends_lib.Item.Controls
         {
             if (EItens.Consumivel.Equals(i.Tipo))//VERIFICA QUAL TIPO DE ITEM FOI USADO
             {                               //PARA PRIMEIRA ENTREGA O CONSUMÍVEL VAI AUMENTAR 1 DE HP
-                p.Vida += 1;                
+                p.VidaAtual += 1;                
                 j.Inventario.Remove(i);
             }
             else if(EItens.Equipavel.Equals(i.Tipo))//O EQUIPAVEL AUMENTA 1 DE ATK

@@ -14,11 +14,13 @@ namespace Legends_lib
             UrlImage = "ms-appx:///Assets/characters/Warrrior_spt/humano/guerreiro.png";
             Custo_Gold = 200;
             Atq = 20;
-            Vida = 100;
+            VidaMax = 100;
+            VidaAtual = 100;
             Experiencia = 20;
             MovRange = 3;
             PosX = cordx;
             PosY = cordy;
+            Nome = "Guerreiro";
         }
             
         
