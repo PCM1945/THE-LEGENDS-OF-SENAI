@@ -12,6 +12,8 @@ using Windows.UI.Xaml;
 using Windows.Media.Playback;
 using Windows.Media.Core;
 using Windows.UI.Xaml.Navigation;
+using Legends_lib.jogador.Controls;
+using Legends_lib.Batalha;
 
 namespace LegendsOfSenai
 {
@@ -49,7 +51,10 @@ namespace LegendsOfSenai
             FilaJogador.Enqueue(new Jogador());
             FilaJogador.Enqueue(new Jogador());
             JogadorAtual = FilaJogador.Dequeue();
-           
+            foreach(Jogador a in FilaJogador)
+            {
+                JogadorControl.AddPlayer(a);
+            }
            // BtnPlayWav();
             IniciarCastelos();
             PosicionarItens();
@@ -136,7 +141,7 @@ namespace LegendsOfSenai
                     }
                 }
             }
-            if (!selecionou)
+            if (!selecionou)//LEMBRAR DE TRATAR CLICKS FORA DA TELA!!!!!!!!!!!!!!!ATENÇÃO!!!!!!!!!!!IMPORTANTE!!!!
             {
                 Debug.WriteLine("entrou");
                 if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null)
@@ -170,10 +175,20 @@ namespace LegendsOfSenai
                 else if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null &&
                     !JogadorAtual.Personagens.Contains(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem))
                 {
-                    
-                    
-                    this.Frame.Navigate(typeof(BlankPage1));
 
+
+
+                    ControleBatalha.ordenarBatalha(selecionado, Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem);
+                    this.Frame.Navigate(typeof(BlankPage1));
+                    if (ControleBatalha.vencedor == 1)//colocar oq acontece quando a batalha termina- ta apagando pela lista de jogadores, mas lembrar que se der bug é pq ele fica na casa(n sei como ta esse tratamento de imagem, caso seja buscado a cada turno coloque um 'OK' ao lado desse comentario e me avise);
+                    {
+                        
+
+                    }
+                    else
+                    {
+
+                    }
 
                 }
               
@@ -281,6 +296,7 @@ namespace LegendsOfSenai
 
         private void Status_Click(object sender, RoutedEventArgs e)
         {
+            
             this.Frame.Navigate(typeof(Stats_Screen), JogadorAtual);
         }
     }

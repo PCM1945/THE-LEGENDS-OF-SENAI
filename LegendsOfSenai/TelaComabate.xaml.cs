@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Legends_lib;
+using Legends_lib.Batalha;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,14 +24,34 @@ namespace LegendsOfSenai
     /// </summary>
     public sealed partial class BlankPage1 : Page
     {
+        Personagem aux1,aux2;
         public BlankPage1()
         {
             this.InitializeComponent();
+            Batalha();
+            
         }
 
-        private void botao_batalha_Click(object sender, RoutedEventArgs e)
+        private void Batalha()
+        {
+            
+            while (ControleBatalha.BuscarVencedor() != 0)//ALTERAR P/ ==0 QUANDO A BATALHA TIVER PRONTA P/ N ENTRAR EM LOOP INFINITO 
+            {
+                //definir turno
+                //colocar com notify do botao(tirar esse while e char smp que houver um click
+
+
+            }
+           
+        }
+
+        private void voltarMapa()
         {
             this.Frame.Navigate(typeof(Tela1_Mapa));
+        }
+        private void botao_batalha_Click(object sender, RoutedEventArgs e)//COLOCAR P/ BOTÃO APARECER APENAS QUANDO ACABAR A BATALHA
+        {
+            voltarMapa();
         }
     }
 }
