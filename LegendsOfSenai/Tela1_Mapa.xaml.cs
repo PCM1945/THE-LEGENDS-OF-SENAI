@@ -180,16 +180,27 @@ namespace LegendsOfSenai
 
                     ControleBatalha.ordenarBatalha(selecionado, Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem);
                     this.Frame.Navigate(typeof(BlankPage1));
+                    selecionou = false;
                     ControleBatalha.vencedor = 1;
                     if (ControleBatalha.vencedor == 1)//colocar oq acontece quando a batalha termina- ta apagando pela lista de jogadores, mas lembrar que se der bug é pq ele fica na casa(n sei como ta esse tratamento de imagem, caso seja buscado a cada turno coloque um 'OK' ao lado desse comentario e me avise);
                     {
-                        foreach(Personagem a in JogadorAtual.Personagens)
+                        for(int aqd = 0; aqd < JogadorAtual.Personagens.Count; aqd++)
+                        {
+                            if (JogadorAtual.Personagens[aqd] == selecionado)
+                            {
+                                JogadorAtual.Personagens.Remove(JogadorAtual.Personagens[aqd]);
+                                Debug.WriteLine("sholaaaaaaaaaa");
+                            }
+
+                        }
+
+                        /*foreach(Personagem a in JogadorAtual.Personagens)
                         {
                             if (a == selecionado)
                             {
-                                JogadorAtual.Personagens.Remove(a);
+                               
                             }
-                        }
+                        }*/
 
                     }
                     else
