@@ -24,6 +24,7 @@ namespace Legends_lib
         public int MovRange { get; set; }
         public int MovUsados { get; set; }
         public String Nome { get; set; }
+        public bool turno_person { get; set; }//verificar se o personagem já andou no turno
         public Personagem()
         {
            

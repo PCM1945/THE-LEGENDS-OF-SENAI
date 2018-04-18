@@ -38,7 +38,6 @@ namespace Legends_lib
                     }
                 }
             }
-
             return CasasAndaveis;
         }
         

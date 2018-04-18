@@ -119,7 +119,7 @@ namespace LegendsOfSenai
 
         private void Target_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
-           
+
             e.Handled = true;
 
             PointerPoint ptrPt = e.GetCurrentPoint(mapa);
@@ -171,6 +171,7 @@ namespace LegendsOfSenai
                     Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.Y)) * 40);
                     selecionado = null;
                     casaSelecionado.Personagem = null;
+                    selecionado.turno_person = true;//passa e ser 'true', então o personagem não anda mais no turno
                 }
                 else if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null &&
                     !JogadorAtual.Personagens.Contains(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem))
@@ -227,6 +228,11 @@ namespace LegendsOfSenai
 
         private void Button_Mudar_Turno(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+
+            for(int TamLista = 0; TamLista<JogadorAtual.Personagens.Count; TamLista++)
+            {
+                JogadorAtual.Personagens[TamLista].turno_person = false;//torna 'false' o turno de cada personagem
+            }
             JogadorAtual.ResetarPerson();
             FilaJogador.Enqueue(JogadorAtual);
             JogadorAtual = FilaJogador.Dequeue();
