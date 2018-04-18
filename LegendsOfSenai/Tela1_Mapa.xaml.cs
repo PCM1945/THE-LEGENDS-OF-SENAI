@@ -14,6 +14,8 @@ using Windows.Media.Core;
 using Windows.UI.Xaml.Navigation;
 using Legends_lib.jogador.Controls;
 using Legends_lib.Batalha;
+using Windows.UI.Xaml.Shapes;
+using Windows.UI.Xaml.Media;
 
 namespace LegendsOfSenai
 {
@@ -149,6 +151,9 @@ namespace LegendsOfSenai
                     selecionou = true;
                     selecionado = Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem;
                     casaSelecionado = Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)];
+                    //Adiciona retangulos
+                    GerarGridMovimento();
+                    //----------
                 }
             }
             else
@@ -316,6 +321,26 @@ namespace LegendsOfSenai
         {
             
             this.Frame.Navigate(typeof(Stats_Screen), JogadorAtual);
+        }
+
+        private void GerarGridMovimento()
+        {
+            foreach (Casa casa in Movimento.CasasAndaveis(selecionado, Map))
+            {
+                Rectangle rec = new Rectangle();
+                rec.Fill = new SolidColorBrush(Windows.UI.Colors.Yellow);
+                rec.Width = ObjetoDeJogo.DimXCasa;
+                rec.Height = ObjetoDeJogo.DimYCasa;
+                rec.Opacity = 0.4;
+                mapa.Children.Add(rec);
+                Canvas.SetLeft(rec,casa.PosX*40);
+                Canvas.SetTop(rec, casa.PosY * 40);
+
+
+
+            }
+            //selecionado.
+
         }
     }
     

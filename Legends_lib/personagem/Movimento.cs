@@ -18,20 +18,21 @@ namespace Legends_lib
              this.DimYCasafim = yf;
          }*/
 
-        static List<Casa> CasasMoviveis(Personagem per, Mapa map)
+        public static List<Casa> CasasAndaveis(Personagem per, Mapa map)
         {
             List<Casa> CasasAndaveis = new List<Casa>();
             int px = per.PosX;
             int py = per.PosY;
             int rg = per.MovRange;
-            for (int x = rg; x > -rg; x--)
+            for (int x = rg; x >= -rg; x--)
             {
-                for (int y = rg; y > -rg; y--)
+                for (int y = rg; y >= -rg; y--)
                 {
-                    if (y==0 && x == 0)
+                    if (y==0 && x == 0 || px+x <0 || px+x >= 20 || py + y < 0 || py + y >= 20)
                     {
                         continue;
                     }
+                    
                     if (map.casa[px+x,py+y].Andavel == true && map.casa[px + x, py + y].Personagem == null)
                     {
                         CasasAndaveis.Add(map.casa[px + x, py + y]);
