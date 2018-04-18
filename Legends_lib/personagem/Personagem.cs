@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Shapes;
 
 namespace Legends_lib
 {
@@ -24,9 +25,12 @@ namespace Legends_lib
         public int MovRange { get; set; }
         public int MovUsados { get; set; }
         public String Nome { get; set; }
+
+        public List<Rectangle> GridMovimento { get; set; }
+
         public Personagem()
         {
-           
+            GridMovimento = new List<Rectangle>();
 
         }
      

@@ -18,7 +18,7 @@
                     <MenuFlyout/>
                 </FlyoutBase.AttachedFlyout>
             </Image>
-            <!-- INVENTARIO-->
+          <!-- INVENTARIO-->
             <StackPanel Name="Inventario" Height="250"    Canvas.Left="801" Width="100" Visibility="Visible" Opacity="0" Background="BurlyWood" Canvas.Top="152">
                 <TextBlock Name="text_invent" Text="Inventario"></TextBlock>
                 <ScrollViewer Height="230" Width="100">
@@ -37,8 +37,8 @@
                     </ListView>
                 </ScrollViewer>
             </StackPanel>
-            <!-- INVENTARIO-->
-            <Button x:Name="Inventario_button" Content="BAG" Background="Beige" Canvas.Left="11" Canvas.Top="744" Height="38" Width="58" Click="Inventario_Click"/>
+            <!-- INVENTARIO--> 
+            <Button x:Name="Inventario_button" Content="BAG" Background="Beige" Canvas.Left="11" Canvas.Top="744" Height="38" Width="58" />
 
             <!-- Player Info-->
             <StackPanel Name="InfoPlayerBox" Height="101"    Canvas.Left="804" Width="100" Visibility="Visible" Opacity="100" Background="Aqua" Canvas.Top="4">
@@ -111,10 +111,26 @@
 
             </Grid>
             <!-- Grid Menu-->
+            
+            <!-- Flyout para o personagem-->
+            
         </Canvas>
     </ScrollViewer>
 
+    <!-- Flyout para o personagem-->
+    <Page.Resources>
+        <MenuFlyout x:Key="PersonFly">
+            <MenuFlyoutItem Text="Move">
+                
+            </MenuFlyoutItem>
+            <MenuFlyoutItem Text="attack">
 
+            </MenuFlyoutItem>
+            <MenuFlyoutItem Text="Pegar Item">
 
+            </MenuFlyoutItem>
+        </MenuFlyout>
+    </Page.Resources>
+    <!-- Flyout para o personagem-->
 
 </Page>

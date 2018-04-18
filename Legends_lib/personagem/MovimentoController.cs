@@ -1,22 +1,12 @@
 ﻿using System.Collections.Generic;
+using Windows.UI.Xaml.Shapes;
 
 namespace Legends_lib
 {
-    public class Movimento
+    public class MovimentoController
     {
-
-        /* public int DimXCasaini { get; set; }
-         public int DimYCasaini { get; set; }
-         public int DimXCasafim { get; set; }
-         public int DimYCasafim { get; set; }
-
-         public Movimento (int xi, int yi, int xf, int yf)
-         {
-             this.DimXCasaini = xi;
-             this.DimYCasaini = yi;
-             this.DimXCasafim = xf;
-             this.DimYCasafim = yf;
-         }*/
+     
+      
 
         public static List<Casa> CasasAndaveis(Personagem per, Mapa map)
         {

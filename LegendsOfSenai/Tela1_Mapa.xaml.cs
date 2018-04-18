@@ -174,6 +174,7 @@ namespace LegendsOfSenai
                     //Reposiciona ele no canvas (passando a imagem dele, e a posicao relativa)
                     Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.X)) * 40);
                     Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.Y)) * 40);
+                    RemoverGridMovimento();
                     selecionado = null;
                     casaSelecionado.Personagem = null;
                 }
@@ -239,17 +240,7 @@ namespace LegendsOfSenai
          
         }
 
-        private void Inventario_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            if (Inventario.Opacity != 0) {
-                Inventario.Opacity = 0;
-            }
-            else
-            {
-                Inventario.Opacity = 100;
-            }
-           
-        }
+   
         private void Recrutamento(object sender, RoutedEventArgs e)
         {
 
@@ -269,6 +260,8 @@ namespace LegendsOfSenai
 
                     if (person != null) { 
                     person.CriarImagem();//Utiliza os metodos do Xaml (inicia o bitmap da imagem && coloca ele na imagem)
+                    person.Imagem.ContextFlyout = (MenuFlyout) this.Resources["PersonFly"];
+                       // person.Imagem.Tapped += PersonagemClicked; 
                     mapa.Children.Add(person.Imagem);//Adiciona no canvas
                     Canvas.SetLeft(person.Imagem, cast.Cordx * 40);//posiciona
                     Canvas.SetTop(person.Imagem, cast.Cordy * 40);
@@ -298,8 +291,14 @@ namespace LegendsOfSenai
             }
         }
 
-       
-        
+        private void PersonagemClicked(object sender, TappedRoutedEventArgs e)
+        {
+            Image pers = sender as Image;
+            
+            FlyoutBase.ShowAttachedFlyout(pers);
+            
+        }
+
         private void UpdateEventLog(string v)
         {
             throw new NotImplementedException();
@@ -325,7 +324,7 @@ namespace LegendsOfSenai
 
         private void GerarGridMovimento()
         {
-            foreach (Casa casa in Movimento.CasasAndaveis(selecionado, Map))
+            foreach (Casa casa in MovimentoController.CasasAndaveis(selecionado, Map))
             {
                 Rectangle rec = new Rectangle();
                 rec.Fill = new SolidColorBrush(Windows.UI.Colors.Yellow);
@@ -335,12 +334,22 @@ namespace LegendsOfSenai
                 mapa.Children.Add(rec);
                 Canvas.SetLeft(rec,casa.PosX*40);
                 Canvas.SetTop(rec, casa.PosY * 40);
+                selecionado.GridMovimento.Add(rec);
 
-
-
+                
             }
             //selecionado.
 
+        }
+
+        private void RemoverGridMovimento()
+        {
+            foreach (Rectangle rec in selecionado.GridMovimento)
+            {
+                mapa.Children.Remove(rec);
+            }
+
+            selecionado.GridMovimento.Clear();
         }
     }
     
