@@ -72,7 +72,6 @@
             <Button Content="Turno" Name="Button_Turno" Click="Button_Mudar_Turno"
                     
                     Canvas.Left="-66" Canvas.Top="593"/>
-            <Button x:Name="PegaItem" Content="Pegar Item" Canvas.Left="706" Canvas.Top="1" Click="ObtemItem"/>
             <!-- Player Info-->
             <Image  Source="Assets\Menus\MainMenuBackground2.jpg" Height="328" Canvas.Top="73" Width="143" Canvas.Left="-118" RequestedTheme="Default"></Image>
             <!-- Grid Menu-->
@@ -119,17 +118,20 @@
 
     <!-- Flyout para o personagem-->
     <Page.Resources>
-        <MenuFlyout x:Key="PersonFly">
+      
+        <MenuFlyout x:Key="PersonFly" >
             <MenuFlyoutItem Text="Move">
                 
             </MenuFlyoutItem>
             <MenuFlyoutItem Text="attack">
 
             </MenuFlyoutItem>
-            <MenuFlyoutItem Text="Pegar Item">
+            <MenuFlyoutItem Text="Pegar Item" Tapped="ObtemItem">
 
             </MenuFlyoutItem>
         </MenuFlyout>
+        
+        
     </Page.Resources>
     <!-- Flyout para o personagem-->
 

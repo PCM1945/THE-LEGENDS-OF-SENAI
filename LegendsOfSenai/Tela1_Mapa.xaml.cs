@@ -260,8 +260,14 @@ namespace LegendsOfSenai
 
                     if (person != null) { 
                     person.CriarImagem();//Utiliza os metodos do Xaml (inicia o bitmap da imagem && coloca ele na imagem)
-                    person.Imagem.ContextFlyout = (MenuFlyout) this.Resources["PersonFly"];
-                       // person.Imagem.Tapped += PersonagemClicked; 
+                        
+
+                        person.Imagem.ContextFlyout = (FlyoutBase) this.Resources["PersonFly"];
+
+                        FlyoutBase.SetAttachedFlyout(person.Imagem, (FlyoutBase)this.Resources["PersonFly"]);
+                        person.Imagem.IsRightTapEnabled = false;
+                        person.Imagem.Tapped += PersonagemClicked; 
+                        
                     mapa.Children.Add(person.Imagem);//Adiciona no canvas
                     Canvas.SetLeft(person.Imagem, cast.Cordx * 40);//posiciona
                     Canvas.SetTop(person.Imagem, cast.Cordy * 40);
@@ -293,9 +299,10 @@ namespace LegendsOfSenai
 
         private void PersonagemClicked(object sender, TappedRoutedEventArgs e)
         {
-            Image pers = sender as Image;
-            
-            FlyoutBase.ShowAttachedFlyout(pers);
+
+            FrameworkElement obj = sender as FrameworkElement;
+            if(obj!=null)
+            FlyoutBase.ShowAttachedFlyout(obj);
             
         }
 
