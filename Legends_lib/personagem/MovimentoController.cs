@@ -11,6 +11,7 @@ namespace Legends_lib
         public static List<Casa> CasasAndaveis(Personagem per, Mapa map)
         {
             List<Casa> CasasAndaveis = new List<Casa>();
+           
             int px = per.PosX;
             int py = per.PosY;
             int rg = per.MovRange;
@@ -18,7 +19,7 @@ namespace Legends_lib
             {
                 for (int y = rg; y >= -rg; y--)
                 {
-                    if (y==0 && x == 0 || px+x <0 || px+x >= 20 || py + y < 0 || py + y >= 20)
+                    if (y == 0 && x == 0 || px +x <0 || px+x >= 20 || py + y < 0 || py + y >= 20)
                     {
                         continue;
                     }
@@ -29,7 +30,7 @@ namespace Legends_lib
                     }
                 }
             }
-
+            CasasAndaveis.Add(map.casa[px, py]);
             return CasasAndaveis;
         }
         
