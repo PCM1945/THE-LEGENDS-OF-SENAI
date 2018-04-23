@@ -200,6 +200,7 @@ namespace LegendsOfSenai
                             {
                                 JogadorAtual.Personagens.Remove(JogadorAtual.Personagens[aqd]);
                                 Debug.WriteLine("sholaaaaaaaaaa");
+                               
                             }
 
                         }

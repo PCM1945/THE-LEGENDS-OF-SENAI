@@ -12,7 +12,7 @@ namespace Legends_lib
         {
             List<Casa> CasasAndaveis = new List<Casa>();
            
-            int px = per.PosX;
+            int px = per.PosX;//deu exception aq qnd clicou varias vzs nos perso do msm time
             int py = per.PosY;
             int rg = per.MovRange;
             for (int x = rg; x >= -rg; x--)
