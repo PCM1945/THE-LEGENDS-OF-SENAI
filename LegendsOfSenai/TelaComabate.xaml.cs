@@ -49,12 +49,6 @@ namespace LegendsOfSenai
         {
             this.Frame.Navigate(typeof(Tela1_Mapa));
         }
-
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void botao_batalha_Click(object sender, RoutedEventArgs e)//COLOCAR P/ BOTÃO APARECER APENAS QUANDO ACABAR A BATALHA
         {
             voltarMapa();

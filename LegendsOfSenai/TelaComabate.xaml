@@ -18,7 +18,5 @@
                 Canvas.Top="242" Height="70" Width="230" Background="Gold" Click= "botao_batalha_Click"/>
         <Image x:Name="Oponente1"  Source="Assets/charters/Warrrior_spt/humano/warrior.png" Height="100" Canvas.Left="745" Canvas.Top="311" Width="100"/>
         <Image x:Name="Oponente2"  Source="Acharters/Warrrior_spt/humano/warrior.png" Height="100" Canvas.Left="165" Canvas.Top="313" Width="100"/>
-        <TextBlock Canvas.Left="34" Canvas.Top="77" Text="Hp:" TextWrapping="Wrap" Style="{StaticResource TitleTextBlockStyle}" SelectionChanged="TextBlock_SelectionChanged"/>
-        <Grid Height="100" Width="100" Canvas.Left="52" Canvas.Top="516"/>
     </Canvas>
 </Page>
