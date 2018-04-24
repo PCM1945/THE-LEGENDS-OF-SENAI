@@ -16,6 +16,9 @@ using Legends_lib.jogador.Controls;
 using Legends_lib.Batalha;
 using Windows.UI.Xaml.Shapes;
 using Windows.UI.Xaml.Media;
+using Windows.UI.ViewManagement;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace LegendsOfSenai
 {
@@ -33,6 +36,7 @@ namespace LegendsOfSenai
         Queue<Jogador> FilaJogador;
         Jogador JogadorAtual;
         Casa casaSelecionado;
+        Rectangle UltimoRecSelecionado;
         private String RecrutSelec { get; set; }
         public List<Item> Itens = //LISTA DE ITENS DISPONÍVEIS PARA SEREM COLOCADOS NA CASA
             new List<Item>() {
@@ -148,12 +152,12 @@ namespace LegendsOfSenai
                 Debug.WriteLine("entrou");
                 if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null)
                 {
-                    selecionou = true;
+                 /*   selecionou = true;
                     selecionado = Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem;
                     casaSelecionado = Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)];
                     //Adiciona retangulos
-                    GerarGridMovimento();
-                    //----------
+                  //  GerarGridMovimento();
+                    //----------*/
                 }
             }
             else
@@ -162,7 +166,7 @@ namespace LegendsOfSenai
                     Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel   &&
                     PodeMover(calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)))
                 {
-                    Debug.WriteLine(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel);
+                /*    Debug.WriteLine(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel);
                     selecionou = false;
                     //Adiciona o personagem no back atual
                     Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem=selecionado;
@@ -176,7 +180,7 @@ namespace LegendsOfSenai
                     Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.Y)) * 40);
                     RemoverGridMovimento();
                     selecionado = null;
-                    casaSelecionado.Personagem = null;
+                    casaSelecionado.Personagem = null;*/
                 }
                 else if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null &&
                     !JogadorAtual.Personagens.Contains(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem))
@@ -267,8 +271,8 @@ namespace LegendsOfSenai
                         person.Imagem.ContextFlyout = (FlyoutBase) this.Resources["PersonFly"];
 
                         FlyoutBase.SetAttachedFlyout(person.Imagem, (FlyoutBase)this.Resources["PersonFly"]);
-                        person.Imagem.IsRightTapEnabled = false;
-                        person.Imagem.Tapped += PersonagemClicked; 
+                        person.Imagem.Tapped += SelecionarPersonagem;
+                     //   person.Imagem.Tapped += PersonagemClicked; 
                         
                     mapa.Children.Add(person.Imagem);//Adiciona no canvas
                     Canvas.SetLeft(person.Imagem, cast.Cordx * 40);//posiciona
@@ -299,14 +303,14 @@ namespace LegendsOfSenai
             }
         }
 
-        private void PersonagemClicked(object sender, TappedRoutedEventArgs e)
+     /*   private void PersonagemClicked(object sender, TappedRoutedEventArgs e)
         {
 
             FrameworkElement obj = sender as FrameworkElement;
             if(obj!=null)
             FlyoutBase.ShowAttachedFlyout(obj);
             
-        }
+        }*/
 
         private void UpdateEventLog(string v)
         {
@@ -331,6 +335,17 @@ namespace LegendsOfSenai
             this.Frame.Navigate(typeof(Stats_Screen), JogadorAtual);
         }
 
+        private void SelecionarPersonagem(object sender, TappedRoutedEventArgs e)
+        {
+            Image Pers = sender as Image;
+            //Selecionando o personagem q vai se mover
+            selecionou = true;
+            selecionado = Map.casa[calcCasa.getPosCasa((int)Canvas.GetLeft(Pers)), calcCasa.getPosCasa((int)Canvas.GetTop(Pers))].Personagem;
+            casaSelecionado = Map.casa[calcCasa.getPosCasa((int)Canvas.GetLeft(Pers)), calcCasa.getPosCasa((int)Canvas.GetTop(Pers))]; 
+
+            GerarGridMovimento();
+        }
+
         private void GerarGridMovimento()
         {
             foreach (Casa casa in MovimentoController.CasasAndaveis(selecionado, Map))
@@ -340,6 +355,13 @@ namespace LegendsOfSenai
                 rec.Width = ObjetoDeJogo.DimXCasa;
                 rec.Height = ObjetoDeJogo.DimYCasa;
                 rec.Opacity = 0.4;
+                rec.AccessKey = "Yellow";
+                rec.AllowFocusOnInteraction = true;
+                rec.PointerEntered += MudarCorDoGrid;
+                rec.Tapped += MoverPersonagem;
+                rec.IsRightTapEnabled = true;
+                rec.RightTapped += CancelarMovimento;
+
                 mapa.Children.Add(rec);
                 Canvas.SetLeft(rec,casa.PosX*40);
                 Canvas.SetTop(rec, casa.PosY * 40);
@@ -351,6 +373,28 @@ namespace LegendsOfSenai
 
         }
 
+      
+
+        // Funcao para ver o caminho cuja o persongem vai fazer
+        private void MudarCorDoGrid(object sender, PointerRoutedEventArgs e)
+        {
+            Rectangle rec = sender as Rectangle;
+               if (rec.AccessKey != "Red") { 
+
+            rec.AccessKey = "Red"; 
+            rec.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+            UltimoRecSelecionado = rec;
+            }
+            else{
+                UltimoRecSelecionado.AccessKey = "Yellow";
+                UltimoRecSelecionado.Fill = new SolidColorBrush(Windows.UI.Colors.Yellow);
+                UltimoRecSelecionado = rec;
+            }
+            //   throw new NotImplementedException();
+        }
+
+        
+
         private void RemoverGridMovimento()
         {
             foreach (Rectangle rec in selecionado.GridMovimento)
@@ -360,6 +404,43 @@ namespace LegendsOfSenai
 
             selecionado.GridMovimento.Clear();
         }
+
+        private void MoverPersonagem(object sender, TappedRoutedEventArgs e)
+        {
+            Rectangle rec = sender as Rectangle;
+           
+
+            //Adiciona o personagem no back atual
+            Map.casa[calcCasa.getPosCasa((int)Canvas.GetLeft(rec)), calcCasa.getPosCasa((int)Canvas.GetTop(rec))].Personagem = selecionado;
+            //Remove o personagem do back na pos antiga
+            Map.casa[selecionado.PosX, selecionado.PosY].Personagem = null;
+            //Muda as cordenadas no Jogador
+            selecionado.PosX = calcCasa.getPosCasa((int)Canvas.GetLeft(rec));
+            selecionado.PosY = calcCasa.getPosCasa((int)Canvas.GetTop(rec));
+            //Reposiciona ele no canvas (passando a imagem dele, e a posicao relativa)
+
+            Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(rec))) * 40);
+            Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(rec))) * 40);
+
+            RemoverGridMovimento();
+            
+            selecionado = null;
+            selecionou = false;
+            casaSelecionado.Personagem = null;
+            casaSelecionado = null;
+        }
+
+        private void CancelarMovimento(object sender, RightTappedRoutedEventArgs e)
+        {
+            RemoverGridMovimento();
+            selecionado = null;
+            selecionou = false;
+            casaSelecionado = null;
+        }
+
+    }
+
+
     }
     
-}
+

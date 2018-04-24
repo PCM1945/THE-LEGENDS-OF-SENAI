@@ -120,9 +120,7 @@
     <Page.Resources>
       
         <MenuFlyout x:Key="PersonFly" >
-            <MenuFlyoutItem Text="Move">
-                
-            </MenuFlyoutItem>
+          
             <MenuFlyoutItem Text="attack">
 
             </MenuFlyoutItem>
