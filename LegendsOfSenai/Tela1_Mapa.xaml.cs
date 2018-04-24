@@ -195,6 +195,7 @@ namespace LegendsOfSenai
                             if (JogadorAtual.Personagens[aqd] == selecionado)
                             {
                                 JogadorAtual.Personagens.Remove(JogadorAtual.Personagens[aqd]);
+                                Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].local_imagem = null;
                                 Debug.WriteLine("sholaaaaaaaaaa");
                             }
 
@@ -237,7 +238,8 @@ namespace LegendsOfSenai
             FilaJogador.Enqueue(JogadorAtual);
             JogadorAtual = FilaJogador.Dequeue();
             Invetario_list.ItemsSource = JogadorAtual.Inventario;
-         
+            selecionado = null;
+            selecionou = false;
         }
 
    
