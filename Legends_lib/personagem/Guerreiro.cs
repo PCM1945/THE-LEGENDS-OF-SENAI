@@ -18,6 +18,7 @@ namespace Legends_lib
             VidaAtual = 100;
             Experiencia = 20;
             MovRange = 3;
+            MovUsados = MovRange;
             PosX = cordx;
             PosY = cordy;
             Nome = "Guerreiro";
