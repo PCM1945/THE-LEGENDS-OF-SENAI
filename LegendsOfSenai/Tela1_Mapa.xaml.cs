@@ -36,6 +36,7 @@ namespace LegendsOfSenai
         Queue<Jogador> FilaJogador;
         Jogador JogadorAtual;
         Casa casaSelecionado;
+        List<Rectangle> Caminho;
         Rectangle UltimoRecSelecionado;
         private String RecrutSelec { get; set; }
         public List<Item> Itens = //LISTA DE ITENS DISPONÍVEIS PARA SEREM COLOCADOS NA CASA
@@ -70,8 +71,8 @@ namespace LegendsOfSenai
 
             Invetario_list.ItemsSource = JogadorAtual.Inventario;
             Player_info.ItemsSource = new List<Jogador>() { JogadorAtual };
+            Caminho = new List<Rectangle>();
 
-           
         }
         private async void BtnPlayWav()
         {
@@ -152,12 +153,7 @@ namespace LegendsOfSenai
                 Debug.WriteLine("entrou");
                 if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null)
                 {
-                 /*   selecionou = true;
-                    selecionado = Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem;
-                    casaSelecionado = Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)];
-                    //Adiciona retangulos
-                  //  GerarGridMovimento();
-                    //----------*/
+                 
                 }
             }
             else
@@ -166,21 +162,7 @@ namespace LegendsOfSenai
                     Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel   &&
                     PodeMover(calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)))
                 {
-                /*    Debug.WriteLine(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel);
-                    selecionou = false;
-                    //Adiciona o personagem no back atual
-                    Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem=selecionado;
-                    //Remove o personagem do back na pos antiga
-                   Map.casa[selecionado.PosX, selecionado.PosY].Personagem = null;
-                    //Muda as cordenadas no Jogador
-                    selecionado.PosX = calcCasa.getPosCasa((int)ptrPt.Position.X);
-                    selecionado.PosY = calcCasa.getPosCasa((int)ptrPt.Position.Y);
-                    //Reposiciona ele no canvas (passando a imagem dele, e a posicao relativa)
-                    Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.X)) * 40);
-                    Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.Y)) * 40);
-                    RemoverGridMovimento();
-                    selecionado = null;
-                    casaSelecionado.Personagem = null;*/
+              
                 }
                 else if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null &&
                     !JogadorAtual.Personagens.Contains(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem))
@@ -335,6 +317,8 @@ namespace LegendsOfSenai
 
         private void SelecionarPersonagem(object sender, TappedRoutedEventArgs e)
         {
+            Caminho.Clear();
+            
             Image Pers = sender as Image;
             //Selecionando o personagem q vai se mover
             selecionou = true;
@@ -377,21 +361,42 @@ namespace LegendsOfSenai
         private void MudarCorDoGrid(object sender, PointerRoutedEventArgs e)
         {
             Rectangle rec = sender as Rectangle;
-               if (rec.AccessKey != "Red") { 
+            int posx = calcCasa.getPosCasa((int)Canvas.GetLeft(rec));
+            int posy = calcCasa.getPosCasa((int)Canvas.GetTop(rec));
+            if ((posx == calcCasa.getPosCasa((int)Canvas.GetLeft(selecionado.Imagem)) && posy == calcCasa.getPosCasa((int)Canvas.GetTop(selecionado.Imagem))) || Caminho.Count==0)
+            {
+                if(rec.AccessKey != "Red")
+                {
+                    rec.AccessKey = "Red";
+                    rec.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                    UltimoRecSelecionado = rec;
+                    Caminho.Add(rec);
+                }
+            }
+            //checar se o retangulo esta em volta
+            else if (posx >= calcCasa.getPosCasa((int)Canvas.GetLeft(Caminho.Last()))-1 && 
+                posx <= calcCasa.getPosCasa((int)Canvas.GetLeft(Caminho.Last())) + 1 && 
+                posy >= calcCasa.getPosCasa((int)Canvas.GetTop(Caminho.Last())) - 1 &&
+                posy <= calcCasa.getPosCasa((int)Canvas.GetTop(Caminho.Last())) + 1) { 
+            if (rec.AccessKey != "Red") { 
 
             rec.AccessKey = "Red"; 
             rec.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
             UltimoRecSelecionado = rec;
-            }
+             Caminho.Add(rec);
+                }
             else{
+
                 UltimoRecSelecionado.AccessKey = "Yellow";
                 UltimoRecSelecionado.Fill = new SolidColorBrush(Windows.UI.Colors.Yellow);
                 UltimoRecSelecionado = rec;
+                    Caminho.Remove(Caminho.Last());
             }
             //   throw new NotImplementedException();
         }
+        }
 
-        
+
 
         private void RemoverGridMovimento()
         {
