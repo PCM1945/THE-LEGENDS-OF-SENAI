@@ -181,6 +181,7 @@ namespace LegendsOfSenai
                             if (JogadorAtual.Personagens[aqd] == selecionado)
                             {
                                 JogadorAtual.Personagens.Remove(JogadorAtual.Personagens[aqd]);
+                                Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].local_imagem = null;
                                 Debug.WriteLine("sholaaaaaaaaaa");
                             }
 
@@ -204,7 +205,7 @@ namespace LegendsOfSenai
               
                
             }
-
+            Checar_personagem(selecionado);
 
         }
         /// <summary>
@@ -212,21 +213,34 @@ namespace LegendsOfSenai
         /// </summary>
         /// <returns></returns>
         private bool PodeMover(int cordx,int cordy) {
-            Debug.WriteLine(JogadorAtual.Personagens.Contains(selecionado));
-            return (JogadorAtual.Personagens.Contains(selecionado)  && ((Math.Abs(selecionado.PosX - cordx) <= (selecionado.MovRange)
-                && (Math.Abs(selecionado.PosY - cordy) <= (selecionado.MovRange) ))));
+            if (selecionado.turn_perso)//verifica se o turno do personagem é 'true', se for, pode andar
+            {
+                Debug.WriteLine(JogadorAtual.Personagens.Contains(selecionado));
+                return (JogadorAtual.Personagens.Contains(selecionado) && ((Math.Abs(selecionado.PosX - cordx) <= (selecionado.MovRange)
+                    && (Math.Abs(selecionado.PosY - cordy) <= (selecionado.MovRange)))));
+            }
+            return false;
+        }
+
+        private void Checar_personagem(object sender)//torna o turno do personagem falso, assim ele não anda mais no turno
+        {
+            selecionado.turn_perso = false;
         }
 
         private void Button_Mudar_Turno(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            for(int numb = 0; numb < JogadorAtual.Personagens.Count; numb++)
+            {
+                JogadorAtual.Personagens[numb].turn_perso = true;//todos os personagems da lista tem o turno 'true'
+            }
             JogadorAtual.ResetarPerson();
             FilaJogador.Enqueue(JogadorAtual);
             JogadorAtual = FilaJogador.Dequeue();
             Invetario_list.ItemsSource = JogadorAtual.Inventario;
-         
+            selecionado = null;
+            selecionou = false;
         }
 
-   
         private void Recrutamento(object sender, RoutedEventArgs e)
         {
 

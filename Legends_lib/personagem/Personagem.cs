@@ -25,6 +25,7 @@ namespace Legends_lib
         public int MovRange { get; set; }
         public int MovUsados { get; set; }
         public String Nome { get; set; }
+        public bool turn_perso { get; set; }
 
         public List<Rectangle> GridMovimento { get; set; }
 
