@@ -237,7 +237,8 @@ namespace LegendsOfSenai
             FilaJogador.Enqueue(JogadorAtual);
             JogadorAtual = FilaJogador.Dequeue();
             Invetario_list.ItemsSource = JogadorAtual.Inventario;
-         
+            JogadorAtual.Gold += JogadorAtual.GoldTurno;
+            
         }
 
         private void Inventario_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -263,9 +264,10 @@ namespace LegendsOfSenai
                     //Selecionar o personagem, usando o Radio Box
                     switch (RecrutSelec)
                     {
-                        case "Warrior":
+                        case "Warrior":                            
                              person = new Guerreiro(cast.Cordx, cast.Cordy);
                             break;
+                          
                     }
 
                     if (person != null) { 
