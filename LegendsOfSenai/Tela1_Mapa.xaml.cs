@@ -252,7 +252,7 @@ namespace LegendsOfSenai
             Invetario_list.ItemsSource = JogadorAtual.Inventario;
             selecionado = null;
             selecionou = false;
-        }
+        
 
             JogadorAtual.Gold += JogadorAtual.GoldTurno;
             
