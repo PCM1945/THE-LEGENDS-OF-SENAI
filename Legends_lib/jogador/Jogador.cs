@@ -16,6 +16,8 @@ namespace Legends_lib
         public List<Personagem> Personagens { get; set; }
         public List<Castelo> Castelos {get; set;}
         public int Turno_movimento { get; set; }
+        public int GoldTurno { get; set; }
+        public int QntdMinas { get; set; }
         public Jogador()
         {
             Gold = 100;
@@ -23,6 +25,7 @@ namespace Legends_lib
             Personagens = new List<Personagem>();
             Inventario = new List<Item.Item>();
             VidaCastelo = 100;
+            GoldTurno = 10 + (50 * QntdMinas);
         }
 
         public void ResetarPerson()

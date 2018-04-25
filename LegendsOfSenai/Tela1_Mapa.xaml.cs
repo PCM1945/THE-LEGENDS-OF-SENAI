@@ -162,7 +162,20 @@ namespace LegendsOfSenai
                     Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel   &&
                     PodeMover(calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)))
                 {
-              
+                    Debug.WriteLine(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel);
+                    selecionou = false;
+                    //Adiciona o personagem no back atual
+                    Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem=selecionado;
+                    //Remove o personagem do back na pos antiga
+                   Map.casa[selecionado.PosX, selecionado.PosY].Personagem = null;
+                    //Muda as cordenadas no Jogador
+                    selecionado.PosX = calcCasa.getPosCasa((int)ptrPt.Position.X);
+                    selecionado.PosY = calcCasa.getPosCasa((int)ptrPt.Position.Y);
+                    //Reposiciona ele no canvas (passando a imagem dele, e a posicao relativa)
+                    Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.X)) * 40);
+                    Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.Y)) * 40);
+                    selecionado = null;
+                    casaSelecionado.Personagem = null;
                 }
                 else if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null &&
                     !JogadorAtual.Personagens.Contains(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem))
@@ -241,6 +254,21 @@ namespace LegendsOfSenai
             selecionou = false;
         }
 
+            JogadorAtual.Gold += JogadorAtual.GoldTurno;
+            
+        }
+
+        private void Inventario_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            if (Inventario.Opacity != 0) {
+                Inventario.Opacity = 0;
+            }
+            else
+            {
+                Inventario.Opacity = 100;
+            }
+           
+        }
         private void Recrutamento(object sender, RoutedEventArgs e)
         {
 
@@ -253,9 +281,10 @@ namespace LegendsOfSenai
                     //Selecionar o personagem, usando o Radio Box
                     switch (RecrutSelec)
                     {
-                        case "Warrior":
+                        case "Warrior":                            
                              person = new Guerreiro(cast.Cordx, cast.Cordy);
                             break;
+                          
                     }
 
                     if (person != null) { 
