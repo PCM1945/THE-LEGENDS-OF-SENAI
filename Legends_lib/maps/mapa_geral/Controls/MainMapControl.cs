@@ -38,9 +38,9 @@ namespace Legends_lib
 
         private Item.Item GeraItem(int posX, int posY, Mapa mapa)
         {
-            if (PodeAndar(posX, posY, mapa)) {
-                
-                return Itens.First();//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+            if (PodeAndar(posX, posY, mapa))
+            {
+                return new Item.Item { Descricao = "Não Utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
             }
             else
                 return null;
@@ -126,19 +126,9 @@ namespace Legends_lib
 
         public void GeraItemNaCasa(int x, int y, Mapa map)
         {
-            if (new Random().Next(0, 50) < 29)
+            if (new Random().Next(0, 50) < 100)
             {
-                foreach (Casa c in map.casa)
-                {
-                    c.Item = GeraItem(x, y, map);
-                    if(c.Item != null)
-                    {
-                        c.Item.PosX = x;
-                        c.Item.PosY = y;
-                        break;
-                    }
-                    break;
-                }
+                map.casa[x, y].Item = GeraItem(x, y, map);
             }
         }
     }

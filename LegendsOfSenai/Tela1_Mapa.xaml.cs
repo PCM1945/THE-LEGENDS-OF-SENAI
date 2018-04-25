@@ -114,15 +114,15 @@ namespace LegendsOfSenai
                 //Debug.WriteLine("ITEM: (DENTRO DO FOREACH)" + c.Item.Nome);
                 if (c.Item != null)
                 {
-                    Debug.WriteLine("DENTRO DO IF DO FOREACH");
+                    //Debug.WriteLine("DENTRO DO IF DO FOREACH");
                     c.Item.CriarImagem();
                     mapa.Children.Add(c.Item.Imagem);
-                    Canvas.SetLeft(c.Item.Imagem, c.Item.PosX * 40);//posiciona X
-                    Canvas.SetTop(c.Item.Imagem, c.Item.PosY * 40);//posiciona Y
+                    Canvas.SetLeft(c.Item.Imagem, c.PosX * 40);//posiciona X
+                    Canvas.SetTop(c.Item.Imagem, c.PosY * 40);//posiciona Y
                 }
             }
         }
-      
+
 
         private void Target_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
