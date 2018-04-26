@@ -132,12 +132,12 @@ namespace Legends_lib
         public void GeraItemNaCasa(int x, int y, Mapa map)
         {
             var valorSorteado = new Random().Next(0, 100);
-            if (valorSorteado <= 100)
+            if (valorSorteado <= 30)
             {
-                if(!((x==1 && y==7 ) || (x==1 && y==8) || (x == 2 && y == 7) || (x == 2 && y == 8)))
+                if(!((x==1 && y==7 ) || (x==1 && y==8) || (x == 2 && y == 7) || (x == 2 && y == 8)) &&
+                    !((x == 17 && y == 7) || (x == 17 && y == 8) || (x == 18 && y == 7) || (x == 18 && y == 8)))
                 {
-                    if(!((x == 17 && y == 7) || (x == 17 && y == 8) || (x == 18 && y == 7) || (x == 18 && y == 8)))
-                        map.casa[x, y].Item = GeraItem(x, y, map, valorSorteado);
+                    map.casa[x, y].Item = GeraItem(x, y, map, valorSorteado);
                 }
             }
         }
