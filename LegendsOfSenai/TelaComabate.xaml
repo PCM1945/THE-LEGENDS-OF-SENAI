@@ -18,9 +18,11 @@
                 Canvas.Top="526" Height="70" Width="100" Background="Gold" Click= "botao_AtkBas1"/>
         <Image x:Name="Oponente1"  Source="Assets/charters/Warrrior_spt/humano/warrior.png" Height="100" Canvas.Left="745" Canvas.Top="311" Width="100"/>
         <Image x:Name="Oponente2"  Source="Acharters/Warrrior_spt/humano/warrior.png" Height="100" Canvas.Left="165" Canvas.Top="313" Width="100"/>
-        <TextBlock Name="Hp1" Canvas.Left="76" Canvas.Top="67" Text="TextBlock" TextWrapping="Wrap" Height="52" Width="146"/>
-        <TextBlock x:Name="Hp2" Canvas.Left="840" Canvas.Top="67" Text="TextBlock" TextWrapping="Wrap" Height="52" Width="146"/>
+        <TextBlock Name="Hp1" Canvas.Left="76" Canvas.Top="67" Text="HP1" TextWrapping="Wrap" Height="22" Width="146"/>
+        <TextBlock x:Name="Hp2" Canvas.Left="840" Canvas.Top="67" Text="HP2" TextWrapping="Wrap" Height="52" Width="146"/>
         <Button x:Name = "AtkBas2" Content ="ATK BASICO" Canvas.ZIndex="10" Canvas.Left="857" 
             Canvas.Top="526" Height="70" Width="100" Background="Gold" Click= "botao_AtkBas2"/>
+        <TextBlock x:Name="Mp1" Canvas.Left="76" Canvas.Top="90" Text="MP1" TextWrapping="Wrap" Height="23" Width="146"/>
+        <TextBlock x:Name="Mp2" Canvas.Left="840" Canvas.Top="90" Text="MP2" TextWrapping="Wrap" Height="23" Width="146"/>
     </Canvas>
 </Page>

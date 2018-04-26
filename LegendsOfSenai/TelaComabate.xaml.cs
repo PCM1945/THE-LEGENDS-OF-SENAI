@@ -60,8 +60,10 @@ namespace LegendsOfSenai
 
         private void TextBlock_SelectionChanged()
         {
-            Hp1.Text ="HP: " +ControleBatalha.personagem1.VidaAtual.ToString();
-            Hp2.Text= "HP: " + ControleBatalha.personagem2.VidaAtual.ToString();
+            Hp1.Text = "HP: " +ControleBatalha.personagem1.VidaAtual.ToString();
+            Hp2.Text = "HP: " + ControleBatalha.personagem2.VidaAtual.ToString();
+            Mp1.Text = "MP: " + ControleBatalha.personagem1.Mp.ToString();
+            Mp2.Text = "MP: " + ControleBatalha.personagem2.Mp.ToString();
         }
 
         private void botao_AtkBas2(object sender, RoutedEventArgs e)
