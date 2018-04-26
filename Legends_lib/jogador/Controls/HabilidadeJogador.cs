@@ -16,7 +16,7 @@ namespace Legends_lib
             switch (activity)
             {
                 case '+':
-                    if(j.Gold > habilidadeSelecionada.CustoGold)
+                    if(j.Gold >= habilidadeSelecionada.CustoGold)
                         habilidadeSelecionada.NivelHabilidade += 1;
                     break;
                 case '-':
