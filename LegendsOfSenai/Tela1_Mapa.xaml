@@ -69,9 +69,7 @@
             </Rectangle>
             <TextBlock x:Name="RecrutamentoText" Text="Recrutamento" Canvas.Left="5" IsHitTestVisible="False"/>
             <!--- Flyout Recrutamento -->
-            <Button Content="Turno" Name="Button_Turno" Click="Button_Mudar_Turno"
-                    
-                    Canvas.Left="-66" Canvas.Top="593"/>
+            <Button Content="Turno" Name="Button_Turno" Click="Button_Mudar_Turno" Canvas.Left="-66" Canvas.Top="593"/>
             <!-- Player Info-->
             <Image  Source="Assets\Menus\MainMenuBackground2.jpg" Height="328" Canvas.Top="73" Width="143" Canvas.Left="-118" RequestedTheme="Default"></Image>
             <!-- Grid Menu-->
