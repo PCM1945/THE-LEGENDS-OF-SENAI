@@ -32,26 +32,50 @@ namespace LegendsOfSenai
             
         }
 
-        private void Batalha()
+        private void Batalha()// ATT AS INFS DE BATALHA
         {
-            
-            while (ControleBatalha.BuscarVencedor() != 0)//ALTERAR P/ ==0 QUANDO A BATALHA TIVER PRONTA P/ N ENTRAR EM LOOP INFINITO 
-            {
-                //definir turno
-                //colocar com notify do botao(tirar esse while e char smp que houver um click
-
-
-            }
-           
+            TextBlock_SelectionChanged();
+            verificaVencedor();
         }
 
         private void voltarMapa()
         {
             this.Frame.Navigate(typeof(Tela1_Mapa));
         }
-        private void botao_batalha_Click(object sender, RoutedEventArgs e)//COLOCAR P/ BOTÃO APARECER APENAS QUANDO ACABAR A BATALHA
+
+        private void verificaVencedor()
         {
-            voltarMapa();
+
+            if (ControleBatalha.personagem1.VidaAtual <= 0)
+            {
+                ControleBatalha.vencedor = 2;
+                voltarMapa();
+            }
+            if (ControleBatalha.personagem2.VidaAtual <= 0)
+            {
+                ControleBatalha.vencedor = 1;
+                voltarMapa();
+            }
+        }
+
+        private void TextBlock_SelectionChanged()
+        {
+            Hp1.Text ="HP: " +ControleBatalha.personagem1.VidaAtual.ToString();
+            Hp2.Text= "HP: " + ControleBatalha.personagem2.VidaAtual.ToString();
+        }
+
+        private void botao_AtkBas2(object sender, RoutedEventArgs e)//COLOCAR P/ BOTÃO APARECER APENAS QUANDO ACABAR A BATALHA
+        {
+            // voltarMapa();
+            ControleBatalha.personagem1.VidaAtual -= 10;
+            Batalha();
+        }
+
+        private void botao_AtkBas1(object sender, RoutedEventArgs e)//COLOCAR P/ BOTÃO APARECER APENAS QUANDO ACABAR A BATALHA
+        {
+            // voltarMapa();
+            ControleBatalha.personagem2.VidaAtual -= 10;
+            Batalha();
         }
     }
 }

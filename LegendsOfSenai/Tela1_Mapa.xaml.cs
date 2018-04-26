@@ -126,10 +126,15 @@ namespace LegendsOfSenai
 
         private void Target_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
+
            
             e.Handled = true;
 
             PointerPoint ptrPt = e.GetCurrentPoint(mapa);
+            if(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem == null)
+            {
+                Debug.WriteLine("Ta nulo mano");
+            }
           /*  Debug.WriteLine("pos X: " + ptrPt.Position.X);
 
             Debug.WriteLine("pos Y: " + ptrPt.Position.Y);
@@ -189,18 +194,19 @@ namespace LegendsOfSenai
                     ControleBatalha.vencedor = 1;
                     if (ControleBatalha.vencedor == 1)//colocar oq acontece quando a batalha termina- ta apagando pela lista de jogadores, mas lembrar que se der bug é pq ele fica na casa(n sei como ta esse tratamento de imagem, caso seja buscado a cada turno coloque um 'OK' ao lado desse comentario e me avise);
                     {
-                        for(int aqd = 0; aqd < JogadorAtual.Personagens.Count; aqd++)
+                        Debug.WriteLine("sholaaaaaaaaaa" + JogadorAtual.Personagens.Count);
+                        for (int aqd = 0; aqd < JogadorAtual.Personagens.Count; aqd++)
                         {
                             if (JogadorAtual.Personagens[aqd] == selecionado)
                             {
-                                JogadorAtual.Personagens.Remove(JogadorAtual.Personagens[aqd]);
+                                JogadorAtual.Personagens.RemoveAt(aqd);
                                 Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].local_imagem = null;
-                                Debug.WriteLine("sholaaaaaaaaaa");
+                               
                                
                             }
 
                         }
-
+                        Debug.WriteLine("sholaaaaaaaaaa" + JogadorAtual.Personagens.Count);
                         /*foreach(Personagem a in JogadorAtual.Personagens)
                         {
                             if (a == selecionado)
