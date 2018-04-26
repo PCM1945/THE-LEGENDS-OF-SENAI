@@ -8,7 +8,42 @@ namespace Legends_lib
 {
     public class ControlsHabilidade
     {
+        public static List<Habilidade> ListaHabilidadesJogador = new List<Habilidade>()
+        {
+            new Habilidade{
+                CustoGold = 0,
+                Efeitos = new List<string>() { "ATK 1" },
+                NivelHabilidade = 1,
+                Nome = "ATK 1",
+                Status = true, // status deve mudar conforme batalha
+                Tipo = TipoHabilidade.Ativa
+            },
+            new Habilidade{
+                CustoGold = 0,
+                Efeitos = new List<string>() { "ATK 2" },
+                NivelHabilidade = 1,
+                Nome = "ATK 2",
+                Status = true, // status deve mudar conforme batalha
+                Tipo = TipoHabilidade.Ativa
+            },
+            new Habilidade{
+                CustoGold = 0,
+                Efeitos = new List<string>() { "ATK 3" },
+                NivelHabilidade = 1,
+                Nome = "ATK 3",
+                Status = true, // status deve mudar conforme batalha
+                Tipo = TipoHabilidade.Ativa
+            },
+            new Habilidade{
+                CustoGold = 0,
+                Efeitos = new List<string>() { "PASSIVA ÚNICA" },
+                NivelHabilidade = 1,
+                Nome = "PASSIVA ÚNICA",
+                Status = true, // status deve mudar conforme batalha
+                Tipo = TipoHabilidade.Passiva
+            }
 
+        };
         private bool PodeUsarHabilidade(Personagem p)
         {
             return p.Habilidade.Status;
