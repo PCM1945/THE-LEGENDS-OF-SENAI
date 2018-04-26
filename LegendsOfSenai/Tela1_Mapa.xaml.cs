@@ -458,7 +458,7 @@ namespace LegendsOfSenai
             selecionado.GridMovimento.Clear();
         }
 
-        private void MoverPersonagem(object sender, TappedRoutedEventArgs e)
+        private async void MoverPersonagem(object sender, TappedRoutedEventArgs e)
         {
             Rectangle rec = sender as Rectangle;
 
@@ -473,6 +473,15 @@ namespace LegendsOfSenai
             selecionado.PosY = calcCasa.getPosCasa((int)Canvas.GetTop(rec));
             //Reposiciona ele no canvas (passando a imagem dele, e a posicao relativa)
             Map.casa[selecionado.PosX, selecionado.PosY].Personagem = selecionado;
+
+
+            foreach(Rectangle cas in Caminho)
+            {
+                //TODA A PARTE DA ANIMACAO EM TESE VEM AQUI
+                Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                await Task.Delay(400);
+            }
 
 
             Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(rec))) * 40);
