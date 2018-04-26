@@ -167,20 +167,7 @@ namespace LegendsOfSenai
                     Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel   &&
                     PodeMover(calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)))
                 {
-                    Debug.WriteLine(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel);
-                    selecionou = false;
-                    //Adiciona o personagem no back atual
-                    Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem=selecionado;
-                    //Remove o personagem do back na pos antiga
-                   Map.casa[selecionado.PosX, selecionado.PosY].Personagem = null;
-                    //Muda as cordenadas no Jogador
-                    selecionado.PosX = calcCasa.getPosCasa((int)ptrPt.Position.X);
-                    selecionado.PosY = calcCasa.getPosCasa((int)ptrPt.Position.Y);
-                    //Reposiciona ele no canvas (passando a imagem dele, e a posicao relativa)
-                    Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.X)) * 40);
-                    Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)ptrPt.Position.Y)) * 40);
-                    selecionado = null;
-                    casaSelecionado.Personagem = null;
+                    
                 }
                 else if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null &&
                     !JogadorAtual.Personagens.Contains(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem))
@@ -232,7 +219,7 @@ namespace LegendsOfSenai
         /// </summary>
         /// <returns></returns>
         private bool PodeMover(int cordx,int cordy) {
-            if (selecionado.turn_perso)//verifica se o turno do personagem é 'true', se for, pode andar
+            if (selecionado.PodeMover)//verifica se o turno do personagem é 'true', se for, pode andar
             {
                 Debug.WriteLine(JogadorAtual.Personagens.Contains(selecionado));
                 return (JogadorAtual.Personagens.Contains(selecionado) && ((Math.Abs(selecionado.PosX - cordx) <= (selecionado.MovRange)
@@ -241,16 +228,13 @@ namespace LegendsOfSenai
             return false;
         }
 
-        private void personagem_Moveu(object sender)//torna o turno do personagem falso, assim ele não anda mais no turno
-        {
-            selecionado.turn_perso = false;
-        }
+    
 
         private void Button_Mudar_Turno(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             for(int numb = 0; numb < JogadorAtual.Personagens.Count; numb++)
             {
-                JogadorAtual.Personagens[numb].turn_perso = true;//todos os personagems da lista tem o turno 'true'
+                JogadorAtual.Personagens[numb].PodeMover = true;//todos os personagems da lista tem o turno 'true'
               //  JogadorAtual.Personagens[numb].MovUsados = JogadorAtual.Personagens[numb].MovRange;
             }
             JogadorAtual.ResetarPerson();
@@ -326,22 +310,14 @@ namespace LegendsOfSenai
                                                            /*Invetario_list.ItemsSource = JogadorAtual.Inventario;*/
                   //  Debug.WriteLine("ITEM");
                   //  Debug.WriteLine(c.Item.Nome);
-                    //c.Item.Imagem = null;   
+                  //  c.Item.Imagem = null;   
                     c.Item = null;
                     return;
                 }
             }
         }
 
-     /*   private void PersonagemClicked(object sender, TappedRoutedEventArgs e)
-        {
-
-            FrameworkElement obj = sender as FrameworkElement;
-            if(obj!=null)
-            FlyoutBase.ShowAttachedFlyout(obj);
-            
-        }*/
-
+    
         private void UpdateEventLog(string v)
         {
             throw new NotImplementedException();
@@ -368,18 +344,39 @@ namespace LegendsOfSenai
         private void SelecionarPersonagem(object sender, TappedRoutedEventArgs e)
         {
             Caminho.Clear();
-            
+
             Image Pers = sender as Image;
+            if(selecionado != null)
+            {
+                RemoverGridMovimento();
+                selecionado = null;
+            }
             //Selecionando o personagem q vai se mover
+            if(JogadorAtual.Personagens.Contains(Map.casa[calcCasa.getPosCasa((int)Canvas.GetLeft(Pers)), calcCasa.getPosCasa((int)Canvas.GetTop(Pers))].Personagem))
+            {
+
+            
             selecionou = true;
             selecionado = Map.casa[calcCasa.getPosCasa((int)Canvas.GetLeft(Pers)), calcCasa.getPosCasa((int)Canvas.GetTop(Pers))].Personagem;
-            casaSelecionado = Map.casa[calcCasa.getPosCasa((int)Canvas.GetLeft(Pers)), calcCasa.getPosCasa((int)Canvas.GetTop(Pers))]; 
-
-            GerarGridMovimento();
+            casaSelecionado = Map.casa[calcCasa.getPosCasa((int)Canvas.GetLeft(Pers)), calcCasa.getPosCasa((int)Canvas.GetTop(Pers))];
+                if (selecionado.PodeMover)//se o persongem nao tiver movido
+                {
+                    GerarGridMovimento();
+                }
+                else//caso ja tenha movido
+                {
+                    selecionado = null;
+                    selecionou = false;
+                    casaSelecionado = null;
+                }
+            
+            }
         }
 
         private void GerarGridMovimento()
         {
+
+
             foreach (Casa casa in MovimentoController.CasasAndaveis(selecionado, Map))
             {
                 Rectangle rec = new Rectangle();
@@ -465,7 +462,7 @@ namespace LegendsOfSenai
         {
             Rectangle rec = sender as Rectangle;
 
-            personagem_Moveu(selecionado);
+            MovimentoController.PersonagemMoveu(selecionado);
 
             //Adiciona o personagem no back atual
             Map.casa[calcCasa.getPosCasa((int)Canvas.GetLeft(rec)), calcCasa.getPosCasa((int)Canvas.GetTop(rec))].Personagem = selecionado;
@@ -475,16 +472,19 @@ namespace LegendsOfSenai
             selecionado.PosX = calcCasa.getPosCasa((int)Canvas.GetLeft(rec));
             selecionado.PosY = calcCasa.getPosCasa((int)Canvas.GetTop(rec));
             //Reposiciona ele no canvas (passando a imagem dele, e a posicao relativa)
+            Map.casa[selecionado.PosX, selecionado.PosY].Personagem = selecionado;
+
 
             Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(rec))) * 40);
             Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(rec))) * 40);
 
             RemoverGridMovimento();
-            
+            selecionado.Imagem.Opacity = 0.7;
             selecionado = null;
             selecionou = false;
             casaSelecionado.Personagem = null;
             casaSelecionado = null;
+            Caminho.Clear();
         }
 
         private void CancelarMovimento(object sender, RightTappedRoutedEventArgs e)

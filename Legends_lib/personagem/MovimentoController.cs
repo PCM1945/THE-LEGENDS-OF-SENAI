@@ -33,6 +33,11 @@ namespace Legends_lib
             CasasAndaveis.Add(map.casa[px, py]);
             return CasasAndaveis;
         }
-        
+
+        public static void  PersonagemMoveu(Personagem person)//torna o turno do personagem falso, assim ele não anda mais no turno
+        {
+            person.PodeMover = false;
+        }
+
     }
 }

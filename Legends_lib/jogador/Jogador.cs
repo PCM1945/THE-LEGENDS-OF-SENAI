@@ -33,7 +33,7 @@ namespace Legends_lib
             foreach (Personagem person in Personagens)
             {
                 person.MovUsados = person.MovRange;
-
+                person.Imagem.Opacity = 1;
             }
         }
     }
