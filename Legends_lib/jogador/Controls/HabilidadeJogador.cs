@@ -9,6 +9,28 @@ namespace Legends_lib
     public class HabilidadeJogador
     {
         private const int MaxInvSize = 8;
+
+        public static List<Habilidade> ListaHabilidadesJogador = new List<Habilidade>()
+        {
+            new Habilidade{
+                CustoGold = 100,
+                Efeitos = new List<string>() { "AUMENTA O HP" },
+                NivelHabilidade = 1,
+                Nome = "BOOST DE HP",
+                Status = true,
+                Tipo = TipoHabilidade.Passiva
+            },
+            new Habilidade{
+                CustoGold = 100,
+                Efeitos = new List<string>() { "AUMENTA O DANO" },
+                NivelHabilidade = 1,
+                Nome = "BOOST DE DANO",
+                Status = true,
+                Tipo = TipoHabilidade.Passiva
+            }
+
+        };
+
         public void MudaNivelHabilidade(Jogador j, Habilidade habilidadeSelecionada, char activity) 
         {
             //Habilidade habilidadeSelecionada = j.Habilidades.Where(x => x.Nome == habilidade.Nome).First();
