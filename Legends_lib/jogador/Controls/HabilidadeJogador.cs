@@ -9,20 +9,18 @@ namespace Legends_lib
     public class HabilidadeJogador
     {
         private const int MaxInvSize = 8;
-        public void MudaNivelHabilidade(Jogador j, char activity) //DESSE JEITO TODAS AS HABILIDADES PASSIVAS 
-        {                                                          //SÃO MODIFICADAS AO MESMO TEMPO QUEREMOS ISSO ?
-            foreach (Habilidade h in j.Habilidades)
+        public void MudaNivelHabilidade(Jogador j, Habilidade habilidadeSelecionada, char activity) 
+        {
+            //Habilidade habilidadeSelecionada = j.Habilidades.Where(x => x.Nome == habilidade.Nome).First();
+
+            switch (activity)
             {
-                if (activity == '+')
-                {
-                    //DIMINUI 1 AOS PONTOS DE DISTRIBUIÇÃO
-                    h.NivelHabilidade += 1;
-                }
-                else if (activity == '-')
-                {
-                    //ADICIONA 1 AOS PONTOS DE DISTRIBUIÇÃO
-                    h.NivelHabilidade -= 1;
-                }
+                case '+':
+                    habilidadeSelecionada.NivelHabilidade += 1;
+                    break;
+                case '-':
+                    habilidadeSelecionada.NivelHabilidade -= 1;
+                    break;
             }
         }
 
