@@ -64,16 +64,16 @@ namespace LegendsOfSenai
             Hp2.Text= "HP: " + ControleBatalha.personagem2.VidaAtual.ToString();
         }
 
-        private void botao_AtkBas2(object sender, RoutedEventArgs e)//COLOCAR P/ BOTÃO APARECER APENAS QUANDO ACABAR A BATALHA
+        private void botao_AtkBas2(object sender, RoutedEventArgs e)
         {
-            // voltarMapa();
+            
             ControleBatalha.personagem1.VidaAtual -= 10;
             Batalha();
         }
 
-        private void botao_AtkBas1(object sender, RoutedEventArgs e)//COLOCAR P/ BOTÃO APARECER APENAS QUANDO ACABAR A BATALHA
+        private void botao_AtkBas1(object sender, RoutedEventArgs e)
         {
-            // voltarMapa();
+            
             ControleBatalha.personagem2.VidaAtual -= 10;
             Batalha();
         }
