@@ -10,9 +10,9 @@
 
         <Image x:Name="battle_bk" Source="Assets/telas/battle_BKv2.0.jpg" Canvas.Left="-2" Canvas.Top="-2"/>
 
-        <Image x:Name="btt_worrior" Source="Assets/characters/Warrrior_spt/humano/warrior.png" Canvas.ZIndex="10" 
+        <Image x:Name="imgPlayer1" Source="Assets/characters/Warrrior_spt/humano/warrior.png" Canvas.ZIndex="10" 
                Width="150" Height="190" Canvas.Left="150" Canvas.Top="340" />
-        <Image x:Name="btt_mago" Source="Assets\characters\Mago_spt\humano/mago_lado_esq.png" Width="150" Height="190" Canvas.Left="683" Canvas.Top="333" />
+        <Image x:Name="imgPlayer2" Source="Assets\characters\Mago_spt\humano/mago_lado_esq.png" Width="150" Height="190" Canvas.Left="683" Canvas.Top="333" />
 
         <Button x:Name = "AtkBas1" Content ="ATK BASICO" Canvas.ZIndex="10" Canvas.Left="33" 
                 Canvas.Top="526" Height="70" Width="100" Background="Gold" Click= "botao_AtkBas1"/>

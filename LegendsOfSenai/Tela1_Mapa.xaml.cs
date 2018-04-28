@@ -491,7 +491,10 @@ namespace LegendsOfSenai
             selecionado.Imagem.Opacity = 0.7;
             selecionado = null;
             selecionou = false;
-            casaSelecionado.Personagem = null;
+            if (casaSelecionado!=null)
+            {
+                casaSelecionado.Personagem = null;
+            }
             casaSelecionado = null;
             Caminho.Clear();
         }

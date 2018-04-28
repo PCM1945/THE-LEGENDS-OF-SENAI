@@ -28,6 +28,9 @@ namespace LegendsOfSenai
         public BlankPage1()
         {
             this.InitializeComponent();
+            imgPlayer1 = ControleBatalha.personagem1.Imagem;
+            imgPlayer2 = ControleBatalha.personagem2.Imagem;
+            //imgPlayer1.Source = new System.Uri(ControleBatalha.personagem1.UrlImage);
             Batalha();
             
         }
