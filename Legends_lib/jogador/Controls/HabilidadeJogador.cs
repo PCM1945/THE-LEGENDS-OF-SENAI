@@ -10,7 +10,7 @@ namespace Legends_lib
     {
         private const int MaxInvSize = 8;
 
-        public static List<Habilidade> ListaHabilidadesJogador = new List<Habilidade>()
+        public static List<Habilidade> ListaHabilidadesJogador = new List<Habilidade>() 
         {
             new Habilidade{
                 CustoGold = 100,
