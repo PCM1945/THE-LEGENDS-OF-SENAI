@@ -40,7 +40,8 @@ namespace Legends_lib
         {
             if (PodeAndar(posX, posY, mapa))
             {
-                if(valorSorteado >1 && valorSorteado < 3)
+               // return new Item.Item { Descricao = "Não Utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png" };
+               if(valorSorteado >1 && valorSorteado < 3)
                     return new Item.Item { Descricao = "Não Utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
                 else if (valorSorteado == 5)
                     return new Item.Item { Descricao = "Arma", Nome = "ESPADA VORPAL", Tipo = EItens.Equipavel, UrlImage = "ms-appx:///Assets/itens/pedra.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
@@ -97,7 +98,7 @@ namespace Legends_lib
             foreach (int[] casa in CasasNaoAndaveis){
                 Debug.WriteLine(" "+casa[0] + "  " + casa[1]);
             }
-         
+            Random valorSorteado = new Random();
             for (int x = 0; x < DimX; x++)
             {
                 for (int y = 0; y < DimY; y++)
@@ -105,7 +106,7 @@ namespace Legends_lib
                   
                     mapa.casa[x,y] = new Casa( x, y);
                     EhAdavel(mapa.casa[x,y],CasasNaoAndaveis);
-                    GeraItemNaCasa(x, y, mapa);
+                    GeraItemNaCasa(x, y, mapa,valorSorteado);
                 }
             }
 
@@ -129,15 +130,18 @@ namespace Legends_lib
 
         }
 
-        public void GeraItemNaCasa(int x, int y, Mapa map)
+        public void GeraItemNaCasa(int x, int y, Mapa map, Random valorSorteado)
         {
-            var valorSorteado = new Random().Next(0, 100);
-            if (valorSorteado <= 30)
+
+            ///var valorSorteado = new Random().Next(0, 100);
+            int VS = valorSorteado.Next(0, 100);
+            if ( VS <= 5)
+           // if ((valorSorteado < 35 &&valorSorteado>20 ) || (valorSorteado < 80 && valorSorteado > 60))
             {
                 if(!((x==1 && y==7 ) || (x==1 && y==8) || (x == 2 && y == 7) || (x == 2 && y == 8)) &&
                     !((x == 17 && y == 7) || (x == 17 && y == 8) || (x == 18 && y == 7) || (x == 18 && y == 8)))
                 {
-                    map.casa[x, y].Item = GeraItem(x, y, map, valorSorteado);
+                    map.casa[x, y].Item = GeraItem(x, y, map, VS);
                 }
             }
         }

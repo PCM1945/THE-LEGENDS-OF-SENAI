@@ -34,6 +34,7 @@ namespace Legends_lib
             {
                 person.MovUsados = person.MovRange;
                 person.Imagem.Opacity = 1;
+                person.VidaAtual -= 10;
             }
         }
     }
