@@ -271,6 +271,8 @@ namespace LegendsOfSenai
             }
            
         }
+
+        RadioButton radio;
         private void Recrutamento(object sender, RoutedEventArgs e)
         {
 
@@ -283,8 +285,16 @@ namespace LegendsOfSenai
                     //Selecionar o personagem, usando o Radio Box
                     switch (RecrutSelec)
                     {
-                        case "Warrior":                            
-                             person = new Guerreiro(cast.Cordx, cast.Cordy);
+                        case "Warrior":
+                            if (JogadorAtual.Gold < person.Custo_Gold)
+                            {
+                                radio.IsEnabled = false;
+                            }
+                            else
+                            {                  
+                                person = new Guerreiro(cast.Cordx, cast.Cordy);
+                                JogadorAtual.Gold -= person.Custo_Gold;
+                            }
                             break;
                           
                     }
@@ -337,10 +347,12 @@ namespace LegendsOfSenai
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            RadioButton radio = sender as RadioButton;
+            radio = sender as RadioButton;
             if (radio != null)
             {
+               
                 RecrutSelec = radio.Tag.ToString();
+               
 
             }
             
