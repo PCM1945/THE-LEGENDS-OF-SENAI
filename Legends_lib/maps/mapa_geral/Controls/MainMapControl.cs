@@ -44,11 +44,11 @@ namespace Legends_lib
                if(valorSorteado == 2)
                     return new Item.Item { Descricao = "Não Utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
                 else if (valorSorteado == 3)
-                    return new Item.Item { Descricao = "Não Utilizável", Nome = "DIAMANTE", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/minerais/diamante.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                    return new Item.Item { Descricao = "Recebe Dinheiro Ao Pegar", Nome = "DIAMANTE", Tipo = EItens.Gold, UrlImage = "ms-appx:///Assets/itens/minerais/diamante.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
                else if (valorSorteado == 4 || valorSorteado == 5)
-                    return new Item.Item { Descricao = "Não Utilizável", Nome = "RUBI", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/minerais/rubi.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                    return new Item.Item { Descricao = "Recebe Dinheiro Ao Pegar", Nome = "RUBI", Tipo = EItens.Gold, UrlImage = "ms-appx:///Assets/itens/minerais/rubi.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
                 else if (valorSorteado == 6 || valorSorteado == 7)
-                    return new Item.Item { Descricao = "Não Utilizável", Nome = "OURO", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/minerais/ouro.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                    return new Item.Item { Descricao = "Recebe Dinheiro Ao Pegar", Nome = "OURO", Tipo = EItens.Gold, UrlImage = "ms-appx:///Assets/itens/minerais/ouro.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
                 else if (valorSorteado == 8)
                     return new Item.Item { Descricao = "POÇÃO", Nome = "POÇÃO", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pocoes/poção_att+10.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
                 else if (valorSorteado == 9 || valorSorteado == 10)

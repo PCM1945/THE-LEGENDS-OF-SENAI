@@ -70,7 +70,7 @@ namespace LegendsOfSenai
 
 
             Invetario_list.ItemsSource = JogadorAtual.Inventario;
-            Player_info.ItemsSource = new List<Jogador>() { JogadorAtual };
+           
             Caminho = new List<Rectangle>();
 
         }
@@ -575,7 +575,10 @@ namespace LegendsOfSenai
             casaSelecionado = null;
         }
 
-        
+        private void invent_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 
