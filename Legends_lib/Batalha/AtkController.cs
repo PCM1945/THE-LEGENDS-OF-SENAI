@@ -8,13 +8,19 @@ namespace Legends_lib.Batalha
 {
     public static class AtkController
     {
-        public static int Atacar(int atq,int vida)
+        public static int Atacar(int atq,int vida, Jogador jogadorAlvo)
         {
             
-            vida -= atq;
-            return vida;
+            jogadorAlvo.VidaCastelo -= atq;
+            return jogadorAlvo.VidaCastelo;
         }
-        
+
+        public static int Atacar(int atq, int vida, Personagem personagemAlvo, Personagem personagemAtk)
+        {
+            personagemAlvo.VidaAtual -= personagemAtk.Atq;
+            return personagemAlvo.VidaAtual;
+        }
+
 
     }
 }

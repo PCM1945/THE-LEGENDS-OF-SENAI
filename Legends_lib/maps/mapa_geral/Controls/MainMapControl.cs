@@ -44,9 +44,9 @@ namespace Legends_lib
                if(valorSorteado >1 && valorSorteado < 3)
                     return new Item.Item { Descricao = "Não Utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
                 else if (valorSorteado == 5)
-                    return new Item.Item { Descricao = "Arma", Nome = "ESPADA VORPAL", Tipo = EItens.Equipavel, UrlImage = "ms-appx:///Assets/itens/pedra.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                    return new Item.Item { Descricao = "Arma", Nome = "ESPADA VORPAL", Tipo = EItens.Equipavel, UrlImage = "ms-appx:///Assets/itens/minerais/ouro.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
                 else
-                    return new Item.Item { Descricao = "Poção", Nome = "POÇÃO", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pedra.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                    return new Item.Item { Descricao = "Poção", Nome = "POÇÃO", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pocoes/poção_att+10.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
             }
             else
                 return null;
