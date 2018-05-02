@@ -228,7 +228,18 @@ namespace LegendsOfSenai
             return false;
         }
 
-    
+        private bool EstruturaCastelo(object sender, int atq, int vida, Jogador jogadorAlvo)//função para ser chamada a hora do ataque caso o alvo seja o castelo
+        {
+            bool VitoriaJogo;
+            jogadorAlvo.VidaCastelo = AtkController.Atacar(atq, vida, jogadorAlvo);
+            VitoriaJogo = AtkController.Conquista(vida, jogadorAlvo);
+            if (VitoriaJogo)
+            {
+                Debug.WriteLine("Castelo inimigo destruido! Vitória!");
+                return true;
+            }
+            return false;
+        }
 
         private void Button_Mudar_Turno(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
@@ -260,6 +271,8 @@ namespace LegendsOfSenai
             }
            
         }
+
+        RadioButton radio;
         private void Recrutamento(object sender, RoutedEventArgs e)
         {
 
@@ -272,8 +285,16 @@ namespace LegendsOfSenai
                     //Selecionar o personagem, usando o Radio Box
                     switch (RecrutSelec)
                     {
-                        case "Warrior":                            
-                             person = new Guerreiro(cast.Cordx, cast.Cordy);
+                        case "Warrior":
+                            if (JogadorAtual.Gold < person.Custo_Gold)
+                            {
+                                radio.IsEnabled = false;
+                            }
+                            else
+                            {                  
+                                person = new Guerreiro(cast.Cordx, cast.Cordy);
+                                JogadorAtual.Gold -= person.Custo_Gold;
+                            }
                             break;
                           
                     }
@@ -295,6 +316,7 @@ namespace LegendsOfSenai
                     Canvas.SetTop(person.Imagem, cast.Cordy * 40);
                     Map.casa[cast.Cordx, cast.Cordy].Personagem = person;//add no back
                     JogadorAtual.Personagens.Add(person);//add na lista do jogador
+                        person.PodeMover = true;
                     break;
                     }
                 }
@@ -335,10 +357,12 @@ namespace LegendsOfSenai
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            RadioButton radio = sender as RadioButton;
+            radio = sender as RadioButton;
             if (radio != null)
             {
+               
                 RecrutSelec = radio.Tag.ToString();
+               
 
             }
             
@@ -514,6 +538,7 @@ namespace LegendsOfSenai
 
             RemoverGridMovimento();
             selecionado.Imagem.Opacity = 0.7;
+            selecionado.PodeMover = false;
             selecionado = null;
             selecionou = false;
             if (casaSelecionado!=null)
