@@ -12,7 +12,7 @@ namespace Legends_lib
         {
             List<Casa> CasasAndaveis = new List<Casa>();
            
-            int px = per.PosX;
+            int px = per.PosX;//deu exception aq qnd clicou varias vzs nos perso do msm time
             int py = per.PosY;
             int rg = per.MovRange;
             for (int x = rg; x >= -rg; x--)
@@ -33,6 +33,11 @@ namespace Legends_lib
             CasasAndaveis.Add(map.casa[px, py]);
             return CasasAndaveis;
         }
-        
+
+        public static void  PersonagemMoveu(Personagem person)//torna o turno do personagem falso, assim ele não anda mais no turno
+        {
+            person.PodeMover = false;
+        }
+
     }
 }

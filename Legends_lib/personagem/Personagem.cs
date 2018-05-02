@@ -17,6 +17,7 @@ namespace Legends_lib
         public List<object> ItemEquipado { get; set; }
         public BitmapImage bitmap;
         public int Atq { get; set; }
+        public int Mp { get; set; }
         public int VidaMax { get; set; }
         public int VidaAtual { get; set; }
         public Image Imagem { get; set; }
@@ -25,12 +26,13 @@ namespace Legends_lib
         public int MovRange { get; set; }
         public int MovUsados { get; set; }
         public String Nome { get; set; }
-        public bool turn_perso { get; set; }
+        public bool PodeMover { get; set; }
 
         public List<Rectangle> GridMovimento { get; set; }
 
         public Personagem()
         {
+            PodeMover = true;
             GridMovimento = new List<Rectangle>();
 
         }

@@ -10,5 +10,6 @@ namespace Legends_lib
         //public string Diretorio { get; set; }
         public bool Status { get; set; } //HABILIDADE PODE SER USADA
         public int NivelHabilidade { get; set; }
+        public int CustoGold { get; set; }
     }
 }
