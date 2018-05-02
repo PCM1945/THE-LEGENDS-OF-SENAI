@@ -286,15 +286,15 @@ namespace LegendsOfSenai
                     switch (RecrutSelec)
                     {
                         case "Warrior":
-                            if (JogadorAtual.Gold < person.Custo_Gold)
+                          /*  if (JogadorAtual.Gold < person.Custo_Gold)
                             {
                                 radio.IsEnabled = false;
                             }
                             else
-                            {                  
+                            {*/                  
                                 person = new Guerreiro(cast.Cordx, cast.Cordy);
                                 JogadorAtual.Gold -= person.Custo_Gold;
-                            }
+                           // }
                             break;
                           
                     }
@@ -335,6 +335,22 @@ namespace LegendsOfSenai
                 
                 if ((selecionado != null) && (c.Item!=null)  && JogadorAtual.Inventario.Count < 16) //O JOGADOR SÓ OBTEM O ITEM SE ESTIVER NA MESMA CASA QUE ELE
                 {
+                if (c.Item.Tipo == EItens.Gold )
+                {
+                    switch (c.Item.Nome)
+                    {
+                        case ("RUBI"):
+                            JogadorAtual.Gold += 300;
+                            break;
+                        case ("DIAMANTE"):
+                            JogadorAtual.Gold += 200;
+                            break;
+                        case ("OURO"):
+                            JogadorAtual.Gold += 100;
+                            break;
+                    }
+                   
+                }
                     JogadorAtual.Inventario.Add(c.Item); //NECESSÁRIO REFAZER PARA "DINAMICIDADE"
                   /*Invetario_list.ItemsSource = JogadorAtual.Inventario;*/
                   //  Debug.WriteLine("ITEM");
@@ -510,7 +526,7 @@ namespace LegendsOfSenai
         private async void MoverPersonagem(object sender, TappedRoutedEventArgs e)
         {
             Rectangle rec = sender as Rectangle;
-
+            RemoverGridMovimento();
             MovimentoController.PersonagemMoveu(selecionado);
 
             //Adiciona o personagem no back atual
@@ -559,15 +575,7 @@ namespace LegendsOfSenai
             casaSelecionado = null;
         }
 
-        private void PegarItemFlyout_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void PegarItemFlyout_Click(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine("entrou no evento");
-        }
+        
     }
 
 
