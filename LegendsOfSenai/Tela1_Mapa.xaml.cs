@@ -293,6 +293,7 @@ namespace LegendsOfSenai
                     Canvas.SetTop(person.Imagem, cast.Cordy * 40);
                     Map.casa[cast.Cordx, cast.Cordy].Personagem = person;//add no back
                     JogadorAtual.Personagens.Add(person);//add na lista do jogador
+                        person.PodeMover = true;
                     break;
                     }
                 }
@@ -489,6 +490,7 @@ namespace LegendsOfSenai
 
             RemoverGridMovimento();
             selecionado.Imagem.Opacity = 0.7;
+            selecionado.PodeMover = false;
             selecionado = null;
             selecionou = false;
             if (casaSelecionado!=null)
