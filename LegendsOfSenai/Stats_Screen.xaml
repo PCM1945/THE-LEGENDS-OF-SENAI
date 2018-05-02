@@ -13,7 +13,7 @@
             <RowDefinition Height="102*"/>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="50*" />
-           
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="Close_Button"  Content="Close"  HorizontalAlignment="Right"  VerticalAlignment="Bottom" Height="73" Width="160" Click="Button_Click" RenderTransformOrigin="0.856,0.863" Grid.Row="3" Grid.Column="1"/>
         <TextBlock x:Name="tittle" Text="Stats" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" FontSize="36"/>
-       <!-- stats show-->
+        <!-- stats show-->
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -35,7 +35,7 @@
                 <TextBlock Text="Itens" />
                 <TextBlock Text="Vilas" />
             </StackPanel>
-            
+
             <StackPanel x:Name="StackStatsBinding" Padding="20" Grid.Column="1" Grid.Row="0" DataContext="Statsjogador" >
                 <TextBlock Text="{Binding VidaCastelo}" />
                 <TextBlock Text="{Binding Gold}" />
@@ -43,27 +43,41 @@
                 <TextBlock x:Name="TxtItens" Text="" />
                 <TextBlock x:Name="TxtVilas" Text="" />
             </StackPanel>
+
+
         </Grid>
         <!-- Stats show-->
         <ScrollViewer Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="2" FlowDirection="LeftToRight" >
-        <GridView x:Name="ListPersonagens" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="2" >
-            
-            <!-- TENTAR GRID VIEW-->
-            
-            <GridView.ItemTemplate>
-                <DataTemplate>
+            <GridView x:Name="ListPersonagens" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="2" >
+                <!-- TENTAR GRID VIEW-->
+                <GridView.ItemTemplate>
+                    <DataTemplate>
                         <StackPanel Orientation="Vertical" Padding="30">
                             <Image x:Name="PersonImg" Source="{Binding UrlImage}" Width="50" Height="50" />
                             <ProgressBar Maximum="{Binding VidaMax}"  Value="{Binding VidaAtual}" Background="Gray"/>
                             <TextBlock Text="{Binding Nome}" />
-                        </StackPanel> 
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
         </ScrollViewer>
-        
+
+        <!-- Itens -->
+        <ListView x:Name="ListItens" Grid.Column="0" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel  Orientation="Vertical" Padding="30">
+                        <Image x:Name="ItemImg" Source="{Binding UrlImage}" Width="50" Height="50" />
+                        <TextBlock Text="{Binding Nome}" />
+                        <TextBlock Text="{Binding Tipo}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!-- Itens -->
+
     </Grid>
-    
+
     <!--Style ListView Horizontal-->
     
     

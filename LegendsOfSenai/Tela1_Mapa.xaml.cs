@@ -283,9 +283,11 @@ namespace LegendsOfSenai
                         
 
                         person.Imagem.ContextFlyout = (FlyoutBase) this.Resources["PersonFly"];
-
+                        //var ItemMenu = (person.Imagem.ContextFlyout as MenuFlyout).Items.Where(i => i.Name == "PegarItemFlyout").FirstOrDefault();
+                        //ItemMenu.Tapped += ObtemItem;
                         FlyoutBase.SetAttachedFlyout(person.Imagem, (FlyoutBase)this.Resources["PersonFly"]);
                         person.Imagem.Tapped += SelecionarPersonagem;
+                        person.Imagem.RightTapped += SelecionarPersonagemRightTapped;
                      //   person.Imagem.Tapped += PersonagemClicked; 
                         
                     mapa.Children.Add(person.Imagem);//Adiciona no canvas
@@ -302,19 +304,27 @@ namespace LegendsOfSenai
 
         private void ObtemItem(object sender, RoutedEventArgs e)
         {
-            foreach(Casa c in this.Map.casa)
-            {//
-                if ((selecionado != null) && (c.PosX == selecionado.PosX && c.PosY == selecionado.PosY)  && JogadorAtual.Inventario.Count < 8) //O JOGADOR SÓ OBTEM O ITEM SE ESTIVER NA MESMA CASA QUE ELE
+            if (selecionado == null)
+            {
+                Debug.WriteLine("PERSONAGEM ESTA SAINDO NULO");
+                return;
+            }
+            Casa c = Map.casa[selecionado.PosX, selecionado.PosY];
+                
+                if ((selecionado != null) && (c.Item!=null)  && JogadorAtual.Inventario.Count < 16) //O JOGADOR SÓ OBTEM O ITEM SE ESTIVER NA MESMA CASA QUE ELE
                 {
-                    JogadorAtual.Inventario.Add(Itens[0]); //NECESSÁRIO REFAZER PARA "DINAMICIDADE"
-                                                           /*Invetario_list.ItemsSource = JogadorAtual.Inventario;*/
+                    JogadorAtual.Inventario.Add(c.Item); //NECESSÁRIO REFAZER PARA "DINAMICIDADE"
+                  /*Invetario_list.ItemsSource = JogadorAtual.Inventario;*/
                   //  Debug.WriteLine("ITEM");
                   //  Debug.WriteLine(c.Item.Nome);
                   //  c.Item.Imagem = null;   
+                  mapa.Children.Remove(c.Item.Imagem);
                     c.Item = null;
+                
+                selecionado = null;
                     return;
                 }
-            }
+            
         }
 
     
@@ -340,6 +350,21 @@ namespace LegendsOfSenai
             
             this.Frame.Navigate(typeof(Stats_Screen), JogadorAtual);
         }
+
+        private void SelecionarPersonagemRightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            Image Pers = sender as Image;
+            if (JogadorAtual.Personagens.Contains(Map.casa[calcCasa.getPosCasa((int)Canvas.GetLeft(Pers)), calcCasa.getPosCasa((int)Canvas.GetTop(Pers))].Personagem))
+            {
+                selecionado = Map.casa[calcCasa.getPosCasa((int)Canvas.GetLeft(Pers)), calcCasa.getPosCasa((int)Canvas.GetTop(Pers))].Personagem;
+            }
+            else
+            {
+               // Pers.ContextFlyout.clos
+            }
+         }
+
+        
 
         private void SelecionarPersonagem(object sender, TappedRoutedEventArgs e)
         {
@@ -501,12 +526,23 @@ namespace LegendsOfSenai
 
         private void CancelarMovimento(object sender, RightTappedRoutedEventArgs e)
         {
+            Caminho.Clear();
             RemoverGridMovimento();
+            selecionado.MovUsados = selecionado.MovRange;
             selecionado = null;
             selecionou = false;
             casaSelecionado = null;
         }
 
+        private void PegarItemFlyout_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void PegarItemFlyout_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("entrou no evento");
+        }
     }
 
 

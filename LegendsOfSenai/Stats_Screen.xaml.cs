@@ -32,11 +32,12 @@ namespace LegendsOfSenai
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
+            //binding dos itens
              JogadorAtual = (Jogador)e.Parameter;
             StackStatsBinding.DataContext = JogadorAtual;
             StatsGenerate();
             ListPersonagens.ItemsSource = JogadorAtual.Personagens;
+            ListItens.ItemsSource = JogadorAtual.Inventario;
         }
 
         private void StatsGenerate()

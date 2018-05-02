@@ -38,8 +38,7 @@
                 </ScrollViewer>
             </StackPanel>
             <!-- INVENTARIO--> 
-            <Button x:Name="Inventario_button" Content="BAG" Background="Beige" Canvas.Left="11" Canvas.Top="744" Height="38" Width="58" />
-
+         
             <!-- Player Info-->
             <StackPanel Name="InfoPlayerBox" Height="101"    Canvas.Left="804" Width="100" Visibility="Visible" Opacity="100" Background="Aqua" Canvas.Top="4">
 
@@ -85,11 +84,7 @@
                     <Button x:Name="Status" Content="Status" Margin="0,0,-1,0" Width="97" Height="57" Click="Status_Click"/>
 
                     <Button x:Name="Recrut" Content="Recrutar" Margin="0,0,-1,0" Width="97" Height="47">
-                        <!--<FlyoutBase.AttachedFlyout >
-                            <MenuFlyout >
-                                <MenuFlyoutItem  Text="Warrior" Click="Recrutamento"/>
-                            </MenuFlyout>
-                        </FlyoutBase.AttachedFlyout>-->
+                      
                         <Button.Flyout>
                             <Flyout>
                                 <StackPanel>
@@ -118,13 +113,11 @@
     <Page.Resources>
       
         <MenuFlyout x:Key="PersonFly" >
-          
-            <MenuFlyoutItem Text="attack">
 
-            </MenuFlyoutItem>
-            <MenuFlyoutItem Text="Pegar Item" Tapped="ObtemItem">
+            <MenuFlyoutItem Text="attack" IsTapEnabled="True"/>
 
-            </MenuFlyoutItem>
+
+            <MenuFlyoutItem x:Name="PegarItemFlyout" Text="Pegar Item" IsTapEnabled="True" Click="ObtemItem"/>
         </MenuFlyout>
         
         
