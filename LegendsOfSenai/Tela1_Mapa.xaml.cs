@@ -228,7 +228,18 @@ namespace LegendsOfSenai
             return false;
         }
 
-    
+        private bool EstruturaCastelo(object sender, int atq, int vida, Jogador jogadorAlvo)//função para ser chamada a hora do ataque caso o alvo seja o castelo
+        {
+            bool VitoriaJogo;
+            jogadorAlvo.VidaCastelo = AtkController.Atacar(atq, vida, jogadorAlvo);
+            VitoriaJogo = AtkController.Conquista(vida, jogadorAlvo);
+            if (VitoriaJogo)
+            {
+                Debug.WriteLine("Castelo inimigo destruido! Vitória!");
+                return true;
+            }
+            return false;
+        }
 
         private void Button_Mudar_Turno(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {

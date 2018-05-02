@@ -21,6 +21,14 @@ namespace Legends_lib.Batalha
             return personagemAlvo.VidaAtual;
         }
 
+        public static bool Conquista(int vida,Jogador jogadorAlvo)//função que dirá se o jogador venceu ao destruir o castelo inimigo ou não
+        {
+            if(jogadorAlvo.VidaCastelo <= 0)//verifica se a vida do castelo zerou
+            {
+                return true;
+            }
+            return false;
+        }
 
     }
 }
