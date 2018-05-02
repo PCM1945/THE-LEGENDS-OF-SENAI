@@ -74,6 +74,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button x:Name="UsarItem" Content="Usar Item" Grid.Column="0" HorizontalAlignment="Left" Height="70" Width="100" Margin="239,651,-304,-683" Tapped="EquiparItem" Grid.Row="0" VerticalAlignment="Top"/>
         <!-- Itens -->
 
     </Grid>
