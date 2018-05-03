@@ -40,5 +40,33 @@ namespace Legends_lib.Batalha
             return 0;
         }
 
+        public static List<Casa> PersonAtacaveis(Personagem per,Jogador JogAtual,Mapa map)
+        {
+            List<Casa> CasasAndaveis = new List<Casa>();
+
+            int px = per.PosX;//deu exception aq qnd clicou varias vzs nos perso do msm time
+            int py = per.PosY;
+            int rg = per.AtqRange;
+            for (int x = rg; x >= -rg; x--)
+            {
+                for (int y = rg; y >= -rg; y--)
+                {
+                    if (y == 0 && x == 0 || px + x < 0 || px + x >= 20 || py + y < 0 || py + y >= 20)
+                    {
+                        continue;
+                    }
+
+                    if (map.casa[px + x, py + y].Personagem != null)
+                    {
+                        if(!(JogAtual.Personagens.Contains(map.casa[px + x, py + y].Personagem)))
+                        CasasAndaveis.Add(map.casa[px + x, py + y]);
+                        
+                    }
+                }
+            }
+           
+            return CasasAndaveis;
+        }
+
     }
 }

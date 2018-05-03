@@ -9,6 +9,7 @@ namespace Legends_lib
 {
     public  class Jogador 
     {
+        public String Nome;
         public Int64 Gold { get; set; }
         public List<Habilidade> Habilidades { get; set; }
         //    public List<Item.Item> Inventario { get; set; }//Iobservable collection
@@ -20,8 +21,9 @@ namespace Legends_lib
         public int Turno_movimento { get; set; }
         public int GoldTurno { get; set; }
         public int QntdMinas { get; set; }
-        public Jogador()
+        public Jogador(String nome)
         {
+            Nome = nome;
             Gold = 100;
             Castelos = new List<Castelo>();
             Personagens = new List<Personagem>();

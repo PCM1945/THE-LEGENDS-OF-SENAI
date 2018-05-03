@@ -35,6 +35,8 @@ namespace LegendsOfSenai
         public bool selecionou;
         Queue<Jogador> FilaJogador;
         Jogador JogadorAtual;
+        public int ContagemDeTurno = 1;
+        public bool TrocaTurno = false;
         Casa casaSelecionado;
         List<Rectangle> Caminho;
         Rectangle UltimoRecSelecionado;
@@ -55,8 +57,8 @@ namespace LegendsOfSenai
             this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             pointers = new Dictionary<uint, Pointer>();
             FilaJogador = new Queue<Jogador>();
-            FilaJogador.Enqueue(new Jogador());
-            FilaJogador.Enqueue(new Jogador());
+            FilaJogador.Enqueue(new Jogador("Jogador 1"));
+            FilaJogador.Enqueue(new Jogador("Jogador 2"));
             JogadorAtual = FilaJogador.Dequeue();
             foreach(Jogador a in FilaJogador)
             {
@@ -66,12 +68,10 @@ namespace LegendsOfSenai
             IniciarCastelos();
             PosicionarItens();
 
-            //Setando o data biding
-
-
             Invetario_list.ItemsSource = JogadorAtual.Inventario;
            
             Caminho = new List<Rectangle>();
+            JogadorAtualTxt.Text = JogadorAtual.Nome;
 
         }
         private async void BtnPlayWav()
@@ -181,7 +181,7 @@ namespace LegendsOfSenai
                     ControleBatalha.vencedor = 1;
                     if (ControleBatalha.vencedor == 1)//colocar oq acontece quando a batalha termina- ta apagando pela lista de jogadores, mas lembrar que se der bug é pq ele fica na casa(n sei como ta esse tratamento de imagem, caso seja buscado a cada turno coloque um 'OK' ao lado desse comentario e me avise);
                     {
-                        Debug.WriteLine("sholaaaaaaaaaa" + JogadorAtual.Personagens.Count);
+
                         for (int aqd = 0; aqd < JogadorAtual.Personagens.Count; aqd++)
                         {
                             if (JogadorAtual.Personagens[aqd] == selecionado)
@@ -243,6 +243,14 @@ namespace LegendsOfSenai
 
         private void Button_Mudar_Turno(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            if (TrocaTurno)
+            {
+                ContagemDeTurno++;
+                TrocaTurno = false;
+            }
+            else
+                TrocaTurno = true;
+            TxtTurno.Text = "Turno " + ContagemDeTurno;
             for(int numb = 0; numb < JogadorAtual.Personagens.Count; numb++)
             {
                 JogadorAtual.Personagens[numb].PodeMover = true;//todos os personagems da lista tem o turno 'true'
@@ -257,7 +265,8 @@ namespace LegendsOfSenai
         
 
             JogadorAtual.Gold += JogadorAtual.GoldTurno;
-            
+            JogadorAtualTxt.Text = JogadorAtual.Nome;
+
         }
 
         private void Inventario_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -575,13 +584,37 @@ namespace LegendsOfSenai
             casaSelecionado = null;
         }
 
-        private void invent_Click(object sender, RoutedEventArgs e)
+        private void GerarGridAtq(object sender, RoutedEventArgs e)
         {
 
+
+            foreach (Casa casa in ControleBatalha.PersonAtacaveis(selecionado,JogadorAtual, Map))
+            {
+                Rectangle rec = new Rectangle();
+                rec.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                rec.Width = ObjetoDeJogo.DimXCasa;
+                rec.Height = ObjetoDeJogo.DimYCasa;
+                rec.Opacity = 0.4;
+                //rec.Tapped += Atacar;
+                rec.IsRightTapEnabled = true;
+                rec.RightTapped += CancelarMovimento;
+                mapa.Children.Add(rec);
+                Canvas.SetLeft(rec, casa.PosX * 40);
+                Canvas.SetTop(rec, casa.PosY * 40);
+                selecionado.GridMovimento.Add(rec);
+
+
+            }
+
+            return;
         }
-    }
+
+        }
 
 
     }
+
+
+    
     
 

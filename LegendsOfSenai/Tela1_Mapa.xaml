@@ -18,7 +18,7 @@
                     <MenuFlyout/>
                 </FlyoutBase.AttachedFlyout>
             </Image>
-          <!-- INVENTARIO-->
+            <!-- INVENTARIO-->
             <StackPanel Name="Inventario" Height="250"    Canvas.Left="801" Width="100" Visibility="Visible" Opacity="0" Background="BurlyWood" Canvas.Top="152">
                 <TextBlock Name="text_invent" Text="Inventario"></TextBlock>
                 <ScrollViewer Height="230" Width="100">
@@ -37,11 +37,11 @@
                     </ListView>
                 </ScrollViewer>
             </StackPanel>
-            <!-- INVENTARIO--> 
-         
-       
-           
-           
+            <!-- INVENTARIO-->
+
+
+
+
             <!-- Player Info-->
             <Image  Source="Assets\Menus\MainMenuBackground2.jpg" Height="328" Canvas.Top="73" Width="143" Canvas.Left="-118" RequestedTheme="Default"></Image>
             <!-- Grid Menu-->
@@ -57,7 +57,7 @@
                     <Button x:Name="Status" Content="Status" Margin="0,0,-1,0" Width="97" Height="57" Click="Status_Click"/>
 
                     <Button x:Name="Recrut" Content="Recrutar" Margin="0,0,-1,0" Width="97" Height="47">
-                      
+
                         <Button.Flyout>
                             <Flyout>
                                 <StackPanel>
@@ -71,30 +71,32 @@
                             </Flyout>
                         </Button.Flyout>
                     </Button>
-                    <Button x:Name="invent"  Content="itens" Margin="0,0,-1,0" Width="97" Height="59" Click="invent_Click"/>
+                   
                     <Button Content="Turno" x:Name="Button_Turno" Width="97" Height="59" Click="Button_Mudar_Turno" Canvas.Left="-66" Canvas.Top="593"/>
+                    <TextBlock x:Name="JogadorAtualTxt" Text="" />
                 </StackPanel>
 
             </Grid>
+            <TextBlock x:Name="TxtTurno" Canvas.Left="-86" Canvas.Top="88" Text="Turno 1" TextWrapping="Wrap" Height="28" Width="75" />
             <!-- Grid Menu-->
-            
+
             <!-- Flyout para o personagem-->
-            
+
         </Canvas>
     </ScrollViewer>
 
     <!-- Flyout para o personagem-->
     <Page.Resources>
-      
+
         <MenuFlyout x:Key="PersonFly" >
 
-            <MenuFlyoutItem Text="attack" IsTapEnabled="True"/>
+            <MenuFlyoutItem Text="attack" IsTapEnabled="True" Click="GerarGridAtq"/>
 
 
             <MenuFlyoutItem x:Name="PegarItemFlyout" Text="Pegar Item" IsTapEnabled="True" Click="ObtemItem"/>
         </MenuFlyout>
-        
-        
+
+
     </Page.Resources>
     <!-- Flyout para o personagem-->
 
