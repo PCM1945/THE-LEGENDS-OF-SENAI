@@ -465,6 +465,7 @@ namespace LegendsOfSenai
             MovimentoController.PersonagemMoveu(selecionado);
 
             //Adiciona o personagem no back atual
+            //posição final back
             Map.casa[calcCasa.getPosCasa((int)Canvas.GetLeft(rec)), calcCasa.getPosCasa((int)Canvas.GetTop(rec))].Personagem = selecionado;
             //Remove o personagem do back na pos antiga
             Map.casa[selecionado.PosX, selecionado.PosY].Personagem = null;
@@ -472,18 +473,42 @@ namespace LegendsOfSenai
             selecionado.PosX = calcCasa.getPosCasa((int)Canvas.GetLeft(rec));
             selecionado.PosY = calcCasa.getPosCasa((int)Canvas.GetTop(rec));
             //Reposiciona ele no canvas (passando a imagem dele, e a posicao relativa)
-            Map.casa[selecionado.PosX, selecionado.PosY].Personagem = selecionado;
+            //Map.casa[selecionado.PosX, selecionado.PosY].Personagem = selecionado;//POSIÇÃO 
 
 
             foreach(Rectangle cas in Caminho)
+
             {
                 //TODA A PARTE DA ANIMACAO EM TESE VEM AQUI
+                //posição final 
                 Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
                 Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+
+                switch ()
+                {
+                    case left:
+                   Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                   Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                        break;
+
+                    case up:
+                        Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                        Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                        break;
+                        Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                        Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                    case right:
+                        Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                        Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                        break;
+                    case down:
+                        Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                        Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                        break;
+                }
                 await Task.Delay(400);
             }
-
-
+        
             Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(rec))) * 40);
             Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(rec))) * 40);
 
