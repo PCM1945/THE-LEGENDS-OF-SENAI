@@ -125,6 +125,7 @@
     <Compile Include="jogador\Jogador.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="maps\mapa-batalha\MapaBatalha.cs" />
+    <Compile Include="personagem\Esqueleto.cs" />
     <Compile Include="personagem\Guerreiro.cs" />
     <Compile Include="personagem\MovimentoController.cs" />
     <Compile Include="personagem\ObjetoDeJogo.cs" />

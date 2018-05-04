@@ -44,15 +44,21 @@ namespace LegendsOfSenai
             ListPersonagens.ItemsSource = JogadorAtual.Personagens;
 
              ListItens.ItemsSource = JogadorAtual.Inventario;
-           // ListItens.ItemsSource = new ObservableCollection<Item> (JogadorAtual.Inventario);
+            // ListItens.ItemsSource = new ObservableCollection<Item> (JogadorAtual.Inventario);
+            JogadorAtual.Inventario.CollectionChanged += InventarioChanged;
+        }
+
+        private void InventarioChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            TxtItens.Text =""+ JogadorAtual.Inventario.Count;
+
         }
 
         private void StatsGenerate()
         {
             TxtTropas.Text ="" + JogadorAtual.Personagens.Count;
             TxtItens.Text = "" + JogadorAtual.Inventario.Count;
-            // TxtVilas.Text = "" + JogadorAtual.Vilas.Count;
-            TxtVilas.Text = "Nao Implementado";
+            TxtGoldTurno.Text = "" + JogadorAtual.GoldTurno;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
