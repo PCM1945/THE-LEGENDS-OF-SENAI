@@ -184,8 +184,15 @@
     <Content Include="Assets\characters\Warrrior_spt\humano\guerreiro\paldino-dir.png" />
     <Content Include="Assets\characters\Warrrior_spt\humano\guerreiro\paldino.png" />
     <Content Include="Assets\characters\Warrrior_spt\humano\warrior - Cópia .png" />
+    <Content Include="Assets\itens\equipaveis\armadura-dourada.png" />
+    <Content Include="Assets\itens\para-batalha\arrow.gif" />
+    <Content Include="Assets\itens\equipaveis\espada-dourada.png" />
+    <Content Include="Assets\itens\equipaveis\botas-douradas.png" />
+    <Content Include="Assets\itens\equipaveis\capacete-dourado.png" />
     <Content Include="Assets\itens\minerais\diamante.png" />
     <Content Include="Assets\itens\minerais\ouro.png" />
+    <Content Include="Assets\itens\para-batalha\magic.png" />
+    <Content Include="Assets\itens\para-batalha\slash.png" />
     <Content Include="Assets\itens\pocoes\poção_att+10.png" />
     <Content Include="Assets\itens\pocoes\poção_att+5.png" />
     <Content Include="Assets\itens\pocoes\poção_def+10.png" />
