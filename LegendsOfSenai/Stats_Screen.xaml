@@ -33,7 +33,7 @@
                 <TextBlock Text="Gold " />
                 <TextBlock Text="Tropas" />
                 <TextBlock Text="Itens" />
-                <TextBlock Text="Vilas" />
+                <TextBlock Text="Gold Turno" />
             </StackPanel>
 
             <StackPanel x:Name="StackStatsBinding" Padding="20" Grid.Column="1" Grid.Row="0" DataContext="Statsjogador" >
@@ -41,7 +41,7 @@
                 <TextBlock Text="{Binding Gold}" />
                 <TextBlock x:Name="TxtTropas" Text="" />
                 <TextBlock x:Name="TxtItens" Text="" />
-                <TextBlock x:Name="TxtVilas" Text="" />
+                <TextBlock x:Name="TxtGoldTurno" Text="" />
             </StackPanel>
 
 
