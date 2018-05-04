@@ -24,7 +24,7 @@ namespace LegendsOfSenai
     /// </summary>
     public sealed partial class BlankPage1 : Page
     {
-        Personagem aux1,aux2;
+      //  Personagem aux1,aux2;
         public BlankPage1()
         {
             this.InitializeComponent();
