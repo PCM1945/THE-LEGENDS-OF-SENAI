@@ -14,7 +14,7 @@ namespace Legends_lib.Item.Controls
             return j.Inventario.Count < MaxInvSize;
         }
 
-        public void UsaItem(Jogador j, Item i, Personagem p)
+        public static void  UsaItem(Jogador j, Item i, Personagem p)
         {
             if (EItens.Consumivel.Equals(i.Tipo))//VERIFICA QUAL TIPO DE ITEM FOI USADO
             {                               //PARA PRIMEIRA ENTREGA O CONSUMÍVEL VAI AUMENTAR 1 DE HP
@@ -34,7 +34,7 @@ namespace Legends_lib.Item.Controls
                     p.Atq += 1;// AUMENTA O ATQ
                 }
             }
-            else if (EItens.NaoUtilizavel.Equals(i.Tipo))
+            else if (EItens.NaoUtilizavel.Equals(i.Tipo) || EItens.Gold.Equals(i.Tipo))
             {
                 return;// NADA FAZ SE FOR NÃO UTILIZAVEL -- PS ISSO NEM PRECISA AQUI, MAS BOTEI ASSIM MESMO
             }
