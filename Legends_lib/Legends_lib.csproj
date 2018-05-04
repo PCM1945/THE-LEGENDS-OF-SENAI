@@ -118,6 +118,7 @@
     <Compile Include="item\Eitens.cs" />
     <Compile Include="maps\mapa_geral\Controls\calcCasa.cs" />
     <Compile Include="maps\mapa_geral\Controls\MainMapControl.cs" />
+    <Compile Include="maps\mapa_geral\enum_posicao.cs" />
     <Compile Include="maps\mapa_geral\Mapa.cs" />
     <Compile Include="personagem\Controls\ControlsHabilidade.cs" />
     <Compile Include="item\Item.cs" />
