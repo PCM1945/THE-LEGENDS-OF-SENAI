@@ -18,6 +18,7 @@ namespace Legends_lib.Batalha
         public static int vencedor;
         public static void ordenarBatalha(Personagem perso1, Personagem perso2)
         {
+            
             personagem1 = perso1;
             personagem2 = perso2;
             vencedor = 0;

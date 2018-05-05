@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // O modelo de item de Página em Branco está documentado em https://go.microsoft.com/fwlink/?LinkId=234238
@@ -37,6 +38,7 @@ namespace LegendsOfSenai
         //teste 
         private void Batalha()// ATT AS INFS DE BATALHA
         {
+            imgPlayer1.Source = new BitmapImage(new Uri("Assets\\characters\\Mago_spt\\humano / mago_lado_esq.png", UriKind.Relative));
             TextBlock_SelectionChanged();
             verificaVencedor();
         }
