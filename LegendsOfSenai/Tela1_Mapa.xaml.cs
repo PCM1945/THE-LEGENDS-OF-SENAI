@@ -655,7 +655,7 @@ namespace LegendsOfSenai
             Rectangle rec = sender as Rectangle;
             ControleBatalha.ordenarBatalha(selecionado, Map.casa[calcCasa.getPosCasa((int)Canvas.GetLeft(rec)), calcCasa.getPosCasa((int)Canvas.GetTop(rec))].Personagem);
             this.Frame.Navigate(typeof(BlankPage1));
-
+            //
         }
 
         private void CancelarAtaque(object sender, RightTappedRoutedEventArgs e)
