@@ -38,7 +38,8 @@ namespace LegendsOfSenai
         //teste 
         private void Batalha()// ATT AS INFS DE BATALHA
         {
-            imgPlayer1.Source = new BitmapImage(new Uri("Assets\\characters\\Mago_spt\\humano / mago_lado_esq.png", UriKind.Relative));
+            Uri imgp= new Uri("ms-appx:Assets/characters/Mago_spt/humano/mago_lado_esq.png", UriKind.Absolute);
+            imgPlayer1.Source = new BitmapImage(imgp);
             TextBlock_SelectionChanged();
             verificaVencedor();
         }
