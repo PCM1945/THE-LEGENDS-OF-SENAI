@@ -301,20 +301,26 @@ namespace LegendsOfSenai
                             }
                             else
                             {*/ 
-                            if(JogadorAtual.Aligment == "Order") { 
+                            if(JogadorAtual.Aligment == "Order" ) {
+                                
                                 person = new Guerreiro(cast.Cordx, cast.Cordy);
-                                JogadorAtual.Gold -= person.Custo_Gold;
+                                
                             }
                             else if(JogadorAtual.Aligment == "Chaos")
                             {
                                 person = new Esqueleto(cast.Cordx, cast.Cordy);
-                                JogadorAtual.Gold -= person.Custo_Gold;
+                                
                             }
                             // }
                             break;
                           
                     }
-
+                    if (person != null) { 
+                        if (JogadorAtual.Gold - person.Custo_Gold > 0)
+                        JogadorAtual.Gold -= person.Custo_Gold;
+                       else
+                        person = null;//Checando se tem gold pra recrutar
+                    }
                     if (person != null) { 
                     person.CriarImagem();//Utiliza os metodos do Xaml (inicia o bitmap da imagem && coloca ele na imagem)
                         person.PodeMover = false;
@@ -328,7 +334,7 @@ namespace LegendsOfSenai
                     Canvas.SetTop(person.Imagem, cast.Cordy * 40);
                     Map.casa[cast.Cordx, cast.Cordy].Personagem = person;//add no back
                     JogadorAtual.Personagens.Add(person);//add na lista do jogador
-                        person.PodeMover = true;
+                        
                     break;
                     }
                 }
@@ -557,39 +563,41 @@ namespace LegendsOfSenai
             //Reposiciona ele no canvas (passando a imagem dele, e a posicao relativa)
             //Map.casa[selecionado.PosX, selecionado.PosY].Personagem = selecionado;//POSIÇÃO 
 
+           
+                foreach (Rectangle cas in Caminho)
 
-            foreach(Rectangle cas in Caminho)
+                {
+                    //TODA A PARTE DA ANIMACAO EM TESE VEM AQUI
+                    //posição final 
+                    Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                    Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
 
-            {
-                //TODA A PARTE DA ANIMACAO EM TESE VEM AQUI
-                //posição final 
-                Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
-                Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
-
-             //   switch ()
-               // {
-                 //   case left:
-                   //Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
-                   //Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
-                     //   break;
+                    //   switch ()
+                    // {
+                    //   case left:
+                    //Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                    //Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                    //   break;
 
                     //case up:
-                      //  Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
-                       // Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
-                       // break;
-                       // Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
-                        //Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                    //  Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                    // Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                    // break;
+                    // Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                    //Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
                     //case right:
-                     //   Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
-                       // Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
-                       // break;
+                    //   Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                    // Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                    // break;
                     //case down:
-                     //   Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
-                      //  Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
-                       // break;
-               // }
-                await Task.Delay(400);
-            }
+                    //   Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                    //  Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                    // break;
+                    // }
+                  await   Task.Delay(250);
+                }
+            
+         
         
             Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(rec))) * 40);
             Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(rec))) * 40);

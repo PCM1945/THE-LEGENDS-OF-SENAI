@@ -12,7 +12,7 @@ namespace Legends_lib {
         {
             UrlImage = "ms-appx:///Assets/characters/Warrrior_spt/esqueleto/esqueleto guerreiro/solado esqueleto-parado.png";
            
-            Custo_Gold = 100;
+            Custo_Gold = 150;
             Atq = 25;
             VidaMax = 80;
             VidaAtual = VidaMax;
@@ -24,7 +24,7 @@ namespace Legends_lib {
             PodeMover = false;
             PosX = cordx;
             PosY = cordy;
-            Nome = "Guerreiro";
+            Nome = "Esqueleto";
         }
     }
 }

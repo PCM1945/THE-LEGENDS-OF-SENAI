@@ -16,7 +16,7 @@ namespace Legends_lib
         public  ObservableCollection<Item.Item> Inventario { get; set; }
         // public IObservable<Item.Item> Inventario { get; set; }//Iobservable collection
         public int VidaCastelo { get; set; }
-        public List<Personagem> Personagens { get; set; }
+        public ObservableCollection<Personagem> Personagens { get; set; }
         public List<Castelo> Castelos {get; set;}
         public int Turno_movimento { get; set; }
         public int GoldTurno { get; set; }
@@ -27,7 +27,7 @@ namespace Legends_lib
             Nome = nome;
             Gold = 500;
             Castelos = new List<Castelo>();
-            Personagens = new List<Personagem>();
+            Personagens = new ObservableCollection<Personagem>();
             Inventario = new ObservableCollection<Item.Item> ();
             VidaCastelo = 100;
             GoldTurno = 10;

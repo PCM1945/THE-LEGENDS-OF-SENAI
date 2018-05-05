@@ -51,6 +51,7 @@ namespace LegendsOfSenai
         private void InventarioChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             TxtItens.Text =""+ JogadorAtual.Inventario.Count;
+          //  ListPersonagens. = JogadorAtual.Personagens;
 
         }
 
