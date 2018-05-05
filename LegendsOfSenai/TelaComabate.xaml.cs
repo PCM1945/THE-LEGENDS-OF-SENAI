@@ -34,7 +34,7 @@ namespace LegendsOfSenai
             Batalha();
             
         }
-
+        //teste 
         private void Batalha()// ATT AS INFS DE BATALHA
         {
             TextBlock_SelectionChanged();
