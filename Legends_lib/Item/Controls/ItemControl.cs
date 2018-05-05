@@ -16,9 +16,32 @@ namespace Legends_lib.Item.Controls
 
         public static void  UsaItem(Jogador j, Item i, Personagem p)
         {
-            if (EItens.Consumivel.Equals(i.Tipo))//VERIFICA QUAL TIPO DE ITEM FOI USADO
+            if (i == null || p == null)
+                return;
+                if (EItens.Consumivel.Equals(i.Tipo))//VERIFICA QUAL TIPO DE ITEM FOI USADO
             {                               //PARA PRIMEIRA ENTREGA O CONSUMÍVEL VAI AUMENTAR 1 DE HP
-                p.VidaAtual += 1;                
+                //p.VidaAtual += 1;   
+                switch (i.Nome)
+                {
+                    case ("POÇÃO CURA") :
+                        if (p.VidaAtual + 30 <= p.VidaMax)
+                            p.VidaAtual += 30;
+                        else
+                            p.VidaAtual = p.VidaMax;
+                        break;
+                    case ("POÇÃO VIDAMAX"):
+                        p.VidaMax += 20;
+                        break;
+                    case ("POÇÃO RANGE"):
+                        p.MovRange++;
+                        p.AtqRange++;
+                        break;
+                    case ("POÇÃO DANO"):
+                        p.Atq += 5;
+                        break;
+                }
+
+
                 j.Inventario.Remove(i);
             }
             else if(EItens.Equipavel.Equals(i.Tipo))//O EQUIPAVEL AUMENTA 1 DE ATK

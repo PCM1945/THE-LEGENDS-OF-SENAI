@@ -57,8 +57,8 @@ namespace LegendsOfSenai
             this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             pointers = new Dictionary<uint, Pointer>();
             FilaJogador = new Queue<Jogador>();
-            FilaJogador.Enqueue(new Jogador("Jogador 1"));
-            FilaJogador.Enqueue(new Jogador("Jogador 2"));
+            FilaJogador.Enqueue(new Jogador("Jogador 1","Order"));
+            FilaJogador.Enqueue(new Jogador("Jogador 2","Chaos"));
             JogadorAtual = FilaJogador.Dequeue();
             foreach(Jogador a in FilaJogador)
             {
@@ -125,7 +125,7 @@ namespace LegendsOfSenai
 
 
         private void Target_PointerPressed(object sender, PointerRoutedEventArgs e)
-        {
+        {/*
 
            
             e.Handled = true;
@@ -141,7 +141,7 @@ namespace LegendsOfSenai
             Debug.WriteLine("POSICAO NA MATRIZ");
             Debug.WriteLine(calcCasa.getPosCasa((int)ptrPt.Position.X));
             Debug.WriteLine(calcCasa.getPosCasa((int)ptrPt.Position.Y));*/
-           for(int i = 0; i < 20; i++)
+        /*   for(int i = 0; i < 20; i++)
             {
                 for(int j = 0; j < 20; j++)
                 {
@@ -152,8 +152,8 @@ namespace LegendsOfSenai
                         Debug.WriteLine(j);
                     }
                 }
-            }
-            if (!selecionou)//LEMBRAR DE TRATAR CLICKS FORA DA TELA!!!!!!!!!!!!!!!ATENÇÃO!!!!!!!!!!!IMPORTANTE!!!!
+            }*/
+          /*  if (!selecionou)//LEMBRAR DE TRATAR CLICKS FORA DA TELA!!!!!!!!!!!!!!!ATENÇÃO!!!!!!!!!!!IMPORTANTE!!!!
             {
                 Debug.WriteLine("entrou");
                 if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null)
@@ -193,7 +193,7 @@ namespace LegendsOfSenai
                             }
 
                         }
-                        Debug.WriteLine("sholaaaaaaaaaa" + JogadorAtual.Personagens.Count);
+                        Debug.WriteLine("sholaaaaaaaaaa" + JogadorAtual.Personagens.Count);*/
                         /*foreach(Personagem a in JogadorAtual.Personagens)
                         {
                             if (a == selecionado)
@@ -202,7 +202,7 @@ namespace LegendsOfSenai
                             }
                         }*/
 
-                    }
+                  /*  }
                     else
                     {
 
@@ -211,7 +211,7 @@ namespace LegendsOfSenai
                 }
               
                
-            }
+            }*/
             
         }
         /// <summary>
@@ -300,32 +300,41 @@ namespace LegendsOfSenai
                                 radio.IsEnabled = false;
                             }
                             else
-                            {*/                  
+                            {*/ 
+                            if(JogadorAtual.Aligment == "Order" ) {
+                                
                                 person = new Guerreiro(cast.Cordx, cast.Cordy);
-                                JogadorAtual.Gold -= person.Custo_Gold;
-                           // }
+                                
+                            }
+                            else if(JogadorAtual.Aligment == "Chaos")
+                            {
+                                person = new Esqueleto(cast.Cordx, cast.Cordy);
+                                
+                            }
+                            // }
                             break;
                           
                     }
-
+                    if (person != null) { 
+                        if (JogadorAtual.Gold - person.Custo_Gold > 0)
+                        JogadorAtual.Gold -= person.Custo_Gold;
+                       else
+                        person = null;//Checando se tem gold pra recrutar
+                    }
                     if (person != null) { 
                     person.CriarImagem();//Utiliza os metodos do Xaml (inicia o bitmap da imagem && coloca ele na imagem)
+                        person.PodeMover = false;
                         
-
-                        person.Imagem.ContextFlyout = (FlyoutBase) this.Resources["PersonFly"];
-                        //var ItemMenu = (person.Imagem.ContextFlyout as MenuFlyout).Items.Where(i => i.Name == "PegarItemFlyout").FirstOrDefault();
-                        //ItemMenu.Tapped += ObtemItem;
+                        person.Imagem.ContextFlyout = (FlyoutBase) this.Resources["PersonFly"];   
                         FlyoutBase.SetAttachedFlyout(person.Imagem, (FlyoutBase)this.Resources["PersonFly"]);
                         person.Imagem.Tapped += SelecionarPersonagem;
-                        person.Imagem.RightTapped += SelecionarPersonagemRightTapped;
-                     //   person.Imagem.Tapped += PersonagemClicked; 
-                        
+                        person.Imagem.RightTapped += SelecionarPersonagemRightTapped;        
                     mapa.Children.Add(person.Imagem);//Adiciona no canvas
                     Canvas.SetLeft(person.Imagem, cast.Cordx * 40);//posiciona
                     Canvas.SetTop(person.Imagem, cast.Cordy * 40);
                     Map.casa[cast.Cordx, cast.Cordy].Personagem = person;//add no back
                     JogadorAtual.Personagens.Add(person);//add na lista do jogador
-                        person.PodeMover = true;
+                        
                     break;
                     }
                 }
@@ -350,12 +359,15 @@ namespace LegendsOfSenai
                     {
                         case ("RUBI"):
                             JogadorAtual.Gold += 300;
+                            JogadorAtual.GoldTurno += 20;
                             break;
                         case ("DIAMANTE"):
                             JogadorAtual.Gold += 200;
+                            JogadorAtual.GoldTurno += 15;
                             break;
                         case ("OURO"):
                             JogadorAtual.Gold += 100;
+                            JogadorAtual.GoldTurno += 10;
                             break;
                     }
                    
@@ -524,12 +536,14 @@ namespace LegendsOfSenai
 
         private void RemoverGridMovimento()
         {
+            if (selecionado != null) { 
             foreach (Rectangle rec in selecionado.GridMovimento)
             {
                 mapa.Children.Remove(rec);
             }
 
             selecionado.GridMovimento.Clear();
+            }
         }
 
         private async void MoverPersonagem(object sender, TappedRoutedEventArgs e)
@@ -539,6 +553,7 @@ namespace LegendsOfSenai
             MovimentoController.PersonagemMoveu(selecionado);
 
             //Adiciona o personagem no back atual
+            //posição final back
             Map.casa[calcCasa.getPosCasa((int)Canvas.GetLeft(rec)), calcCasa.getPosCasa((int)Canvas.GetTop(rec))].Personagem = selecionado;
             //Remove o personagem do back na pos antiga
             Map.casa[selecionado.PosX, selecionado.PosY].Personagem = null;
@@ -546,18 +561,44 @@ namespace LegendsOfSenai
             selecionado.PosX = calcCasa.getPosCasa((int)Canvas.GetLeft(rec));
             selecionado.PosY = calcCasa.getPosCasa((int)Canvas.GetTop(rec));
             //Reposiciona ele no canvas (passando a imagem dele, e a posicao relativa)
-            Map.casa[selecionado.PosX, selecionado.PosY].Personagem = selecionado;
+            //Map.casa[selecionado.PosX, selecionado.PosY].Personagem = selecionado;//POSIÇÃO 
 
+           
+                foreach (Rectangle cas in Caminho)
 
-            foreach(Rectangle cas in Caminho)
-            {
-                //TODA A PARTE DA ANIMACAO EM TESE VEM AQUI
-                Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
-                Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
-                await Task.Delay(400);
-            }
+                {
+                    //TODA A PARTE DA ANIMACAO EM TESE VEM AQUI
+                    //posição final 
+                    Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                    Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
 
+                    //   switch ()
+                    // {
+                    //   case left:
+                    //Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                    //Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                    //   break;
 
+                    //case up:
+                    //  Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                    // Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                    // break;
+                    // Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                    //Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                    //case right:
+                    //   Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                    // Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                    // break;
+                    //case down:
+                    //   Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                    //  Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                    // break;
+                    // }
+                  await   Task.Delay(250);
+                }
+            
+         
+        
             Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(rec))) * 40);
             Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(rec))) * 40);
 
@@ -595,9 +636,9 @@ namespace LegendsOfSenai
                 rec.Width = ObjetoDeJogo.DimXCasa;
                 rec.Height = ObjetoDeJogo.DimYCasa;
                 rec.Opacity = 0.4;
-                //rec.Tapped += Atacar;
+                rec.Tapped += AtacarPersonagem;
                 rec.IsRightTapEnabled = true;
-                rec.RightTapped += CancelarMovimento;
+                rec.RightTapped += CancelarAtaque;
                 mapa.Children.Add(rec);
                 Canvas.SetLeft(rec, casa.PosX * 40);
                 Canvas.SetTop(rec, casa.PosY * 40);
@@ -609,7 +650,24 @@ namespace LegendsOfSenai
             return;
         }
 
+        private void AtacarPersonagem(object sender, TappedRoutedEventArgs e)
+        {
+            Rectangle rec = sender as Rectangle;
+            ControleBatalha.ordenarBatalha(selecionado, Map.casa[calcCasa.getPosCasa((int)Canvas.GetLeft(rec)), calcCasa.getPosCasa((int)Canvas.GetTop(rec))].Personagem);
+            this.Frame.Navigate(typeof(BlankPage1));
+
         }
+
+        private void CancelarAtaque(object sender, RightTappedRoutedEventArgs e)
+        {
+            
+            RemoverGridMovimento();
+            selecionado = null;
+            selecionou = false;
+            casaSelecionado = null;
+        }
+
+    }
 
 
     }

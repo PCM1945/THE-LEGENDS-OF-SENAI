@@ -33,7 +33,7 @@ namespace Legends_lib
 
         public Personagem()
         {
-            PodeMover = true;
+            PodeMover = false;
             GridMovimento = new List<Rectangle>();
 
         }

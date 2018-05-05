@@ -50,13 +50,13 @@ namespace Legends_lib
                 else if (valorSorteado == 6 || valorSorteado == 7)
                     return new Item.Item { Descricao = "Recebe Dinheiro Ao Pegar", Nome = "OURO", Tipo = EItens.Gold, UrlImage = "ms-appx:///Assets/itens/minerais/ouro.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
                 else if (valorSorteado == 8)
-                    return new Item.Item { Descricao = "POÇÃO", Nome = "POÇÃO", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pocoes/poção_att+10.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                    return new Item.Item { Descricao = "Cura em 30 sua vida atual", Nome = "POÇÃO CURA", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pocoes/poção_att+10.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
                 else if (valorSorteado == 9 || valorSorteado == 10)
-                    return new Item.Item { Descricao = "POÇÃO", Nome = "POÇÃO", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pocoes/poção_def+10.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                    return new Item.Item { Descricao = "Aumenta em 20 sua vida Maxima", Nome = "POÇÃO VIDAMAX", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pocoes/poção_def+10.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
                 else if(valorSorteado%2 == 0)
-                    return new Item.Item { Descricao = "Poção", Nome = "POÇÃO", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pocoes/poção_att+5.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                    return new Item.Item { Descricao = "Aumenta em 1 o seu Atk Range e o Mov Range", Nome = "POÇÃO RANGE", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pocoes/poção_att+5.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
                 else
-                    return new Item.Item { Descricao = "Poção", Nome = "POÇÃO", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pocoes/poção_def+5.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                    return new Item.Item { Descricao = "Aumenta em 5 o dano", Nome = "POÇÃO DANO", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pocoes/poção_def+5.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
             }
             else
                 return null;

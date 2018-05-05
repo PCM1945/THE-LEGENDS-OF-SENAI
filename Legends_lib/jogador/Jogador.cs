@@ -16,20 +16,23 @@ namespace Legends_lib
         public  ObservableCollection<Item.Item> Inventario { get; set; }
         // public IObservable<Item.Item> Inventario { get; set; }//Iobservable collection
         public int VidaCastelo { get; set; }
-        public List<Personagem> Personagens { get; set; }
+        public ObservableCollection<Personagem> Personagens { get; set; }
         public List<Castelo> Castelos {get; set;}
         public int Turno_movimento { get; set; }
         public int GoldTurno { get; set; }
-        public int QntdMinas { get; set; }
-        public Jogador(String nome)
+        public String Aligment;//Identificador da equipe dele
+       
+        public Jogador(String nome,String Alig)
         {
             Nome = nome;
-            Gold = 100;
+            Gold = 500;
             Castelos = new List<Castelo>();
-            Personagens = new List<Personagem>();
+            Personagens = new ObservableCollection<Personagem>();
             Inventario = new ObservableCollection<Item.Item> ();
             VidaCastelo = 100;
-            GoldTurno = 10 + (50 * QntdMinas);
+            GoldTurno = 10;
+            Aligment = Alig;
+            
         }
 
         public void ResetarPerson()
