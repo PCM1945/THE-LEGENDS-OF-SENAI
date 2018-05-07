@@ -40,12 +40,12 @@ namespace Legends_lib
         {
             if (PodeAndar(posX, posY, mapa))
             {
-                if(valorSorteado >1 && valorSorteado < 3)
-                    return new Item.Item { Descricao = "Não Utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
-                else if (valorSorteado == 5)
+                if(valorSorteado > 0 && valorSorteado <= 3)
+                    return new Item.Item { Descricao = "Não Utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/minerais/diamante.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                else if (valorSorteado >= 4 && valorSorteado < 8)
                     return new Item.Item { Descricao = "Arma", Nome = "ESPADA VORPAL", Tipo = EItens.Equipavel, UrlImage = "ms-appx:///Assets/itens/pedra.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
                 else
-                    return new Item.Item { Descricao = "Poção", Nome = "POÇÃO", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pedra.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                    return new Item.Item { Descricao = "Poção", Nome = "POÇÃO", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pocoes/poção_att+10.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
             }
             else
                 return null;
@@ -131,13 +131,13 @@ namespace Legends_lib
 
         public void GeraItemNaCasa(int x, int y, Mapa map)
         {
-            var valorSorteado = new Random().Next(0, 100);
-            if (valorSorteado <= 30)
+            var valorSorteado = new Random().Next(0, 50);
+            if (valorSorteado <= 50)
             {
                 if(!((x==1 && y==7 ) || (x==1 && y==8) || (x == 2 && y == 7) || (x == 2 && y == 8)) &&
                     !((x == 17 && y == 7) || (x == 17 && y == 8) || (x == 18 && y == 7) || (x == 18 && y == 8)))
                 {
-                    map.casa[x, y].Item = GeraItem(x, y, map, valorSorteado);
+                    map.casa[x, y].Item = GeraItem(x, y, map, new Random().Next(0, 10));
                 }
             }
         }
