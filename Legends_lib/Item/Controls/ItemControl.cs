@@ -51,10 +51,13 @@ namespace Legends_lib.Item.Controls
                     p.ItemEquipado.Remove(i); // SE ESTIVER DESEQUIPA
                     p.Atq -= 1; //DIMINUI O ATQ
                 }
-                else 
+                else
                 {
-                    p.ItemEquipado.Add(i);// SE NÃO ESTIVER EQUIPA
-                    p.Atq += 1;// AUMENTA O ATQ
+                    if(p.ItemEquipado.Count <= 5)
+                    {
+                        p.ItemEquipado.Add(i);// SE NÃO ESTIVER EQUIPA
+                        p.Atq += 1;// AUMENTA O ATQ
+                    }
                 }
             }
             else if (EItens.NaoUtilizavel.Equals(i.Tipo) || EItens.Gold.Equals(i.Tipo))
@@ -69,6 +72,5 @@ namespace Legends_lib.Item.Controls
             if(j.Inventario.Contains(i))
                 j.Inventario.Remove(i);
         }
-
     }
 }

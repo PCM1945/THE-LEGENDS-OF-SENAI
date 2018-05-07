@@ -20,15 +20,6 @@ namespace Legends_lib
         new int[2] { 15,8}, new int[2] { 15,9},new int[2] { 16,9},new int[2] { 18,9},new int[2] { 19,9}
         };
 
-        public List<Item.Item> Itens = //LISTA DE ITENS DISPONÍVEIS PARA SEREM COLOCADOS NA CASA
-            new List<Item.Item>() {
-                /** para a primeira entrega manter apenas um item não utilizavel */
-               // new Item.Item { Descricao = "DESCRIÇÃO 1", Nome = "NOME 1", Tipo = EItens.Consumivel},
-               // new Item.Item { Descricao = "DESCRIÇÃO 2", Nome = "NOME 2", Tipo = EItens.Equipavel},
-                 new Item.Item { Descricao = "Não Utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage="ms-appx:///Assets/itens/pedra.png"},
-            };
-
-
         private  bool PodeAndar(int posX, int posY, Mapa mapa)
         {
             return mapa.casa[posX,posY].Andavel;
@@ -40,7 +31,6 @@ namespace Legends_lib
         {
             if (PodeAndar(posX, posY, mapa))
             {
-               // return new Item.Item { Descricao = "Não Utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png" };
                if(valorSorteado == 2)
                     return new Item.Item { Descricao = "Não Utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
                 else if (valorSorteado == 3)
@@ -131,7 +121,7 @@ namespace Legends_lib
             {
                 if(y == cord[0] && x == cord[1])
                 {
-                    Debug.WriteLine("FALSEE");
+                    //Debug.WriteLine("FALSEE");
                     casa.Andavel = false;
                     return;
                 }

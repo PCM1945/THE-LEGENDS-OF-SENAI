@@ -33,16 +33,33 @@ namespace Legends_lib
 
         public void MudaNivelHabilidade(Jogador j, Habilidade habilidadeSelecionada, char activity) 
         {
-            //Habilidade habilidadeSelecionada = j.Habilidades.Where(x => x.Nome == habilidade.Nome).First();
-
             switch (activity)
             {
                 case '+':
                     if(j.Gold >= habilidadeSelecionada.CustoGold)
+                    {
+                        j.Gold -= habilidadeSelecionada.CustoGold;
                         habilidadeSelecionada.NivelHabilidade += 1;
-                    break;
-                case '-':
-                    habilidadeSelecionada.NivelHabilidade -= 1;
+                        habilidadeSelecionada.CustoGold *= habilidadeSelecionada.NivelHabilidade; // CUSTO DE GOLD MULTIPLICA PELO NIVEL DA HABILIDADE, INICIA EM 100, NIVEL 2 = 200, NIVEL 3 = 400, NIVEL 4 = 1200...
+                        habilidadeSelecionada.Status = true;
+                        if (habilidadeSelecionada.Nome.Equals(ListaHabilidadesJogador[0].Nome))
+                        {
+                            j.VidaCastelo += 50;
+                            foreach (var p in j.Personagens)
+                            {
+                                p.VidaMax += 20;
+                                p.VidaAtual += 20;
+                            }
+                        }
+                        else if (habilidadeSelecionada.Nome.Equals(ListaHabilidadesJogador[1].Nome))
+                        {
+                            foreach(var p in j.Personagens)
+                            {
+                                p.Atq += 5;
+                                p.AtqRange += 1;
+                            }
+                        }
+                    }
                     break;
             }
         }
