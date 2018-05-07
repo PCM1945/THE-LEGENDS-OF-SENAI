@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // O modelo de item de Página em Branco está documentado em https://go.microsoft.com/fwlink/?LinkId=234238
@@ -24,7 +25,7 @@ namespace LegendsOfSenai
     /// </summary>
     public sealed partial class BlankPage1 : Page
     {
-        Personagem aux1,aux2;
+      //  Personagem aux1,aux2;
         public BlankPage1()
         {
             this.InitializeComponent();
@@ -34,9 +35,11 @@ namespace LegendsOfSenai
             Batalha();
             
         }
-
+        //teste 
         private void Batalha()// ATT AS INFS DE BATALHA
         {
+            Uri imgp= new Uri("ms-appx:Assets/characters/Mago_spt/humano/mago_lado_esq.png", UriKind.Absolute);
+            imgPlayer1.Source = new BitmapImage(imgp);
             TextBlock_SelectionChanged();
             verificaVencedor();
         }

@@ -12,14 +12,16 @@ namespace Legends_lib
         
         public Guerreiro(int cordx,int cordy) : base() {
             UrlImage = "ms-appx:///Assets/characters/Warrrior_spt/humano/guerreiro.png";
-            Custo_Gold = 200;
+            Custo_Gold = 150;
             Atq = 20;
             VidaMax = 100;
             VidaAtual = 100;
             Mp = 25;
             Experiencia = 20;
             MovRange = 3;
+            AtqRange = 1;
             MovUsados = MovRange;
+            PodeMover=false;
             PosX = cordx;
             PosY = cordy;
             Nome = "Guerreiro";

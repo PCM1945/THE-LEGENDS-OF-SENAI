@@ -18,7 +18,7 @@
                     <MenuFlyout/>
                 </FlyoutBase.AttachedFlyout>
             </Image>
-          <!-- INVENTARIO-->
+            <!-- INVENTARIO-->
             <StackPanel Name="Inventario" Height="250"    Canvas.Left="801" Width="100" Visibility="Visible" Opacity="0" Background="BurlyWood" Canvas.Top="152">
                 <TextBlock Name="text_invent" Text="Inventario"></TextBlock>
                 <ScrollViewer Height="230" Width="100">
@@ -37,39 +37,11 @@
                     </ListView>
                 </ScrollViewer>
             </StackPanel>
-            <!-- INVENTARIO--> 
-            <Button x:Name="Inventario_button" Content="BAG" Background="Beige" Canvas.Left="11" Canvas.Top="744" Height="38" Width="58" />
+            <!-- INVENTARIO-->
 
-            <!-- Player Info-->
-            <StackPanel Name="InfoPlayerBox" Height="101"    Canvas.Left="804" Width="100" Visibility="Visible" Opacity="100" Background="Aqua" Canvas.Top="4">
 
-                <ListView Name="Player_info" Canvas.Top="10" Canvas.Left="10" >
 
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
 
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="Gold:"/>
-                                <TextBlock Text="{Binding Gold}"/>
-
-                            </StackPanel>
-
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-
-            </StackPanel>
-            <!--- Flyout Recrutamento -->
-            <Rectangle Name="RecrutamentoRect" Height="25" Canvas.Left="8"  Canvas.Top="0" Width="90" Fill="Brown" >
-                <FlyoutBase.AttachedFlyout >
-                    <MenuFlyout >
-                        <MenuFlyoutItem  Text="Warrior" Click="Recrutamento"/>
-                    </MenuFlyout>
-                </FlyoutBase.AttachedFlyout>
-            </Rectangle>
-            <TextBlock x:Name="RecrutamentoText" Text="Recrutamento" Canvas.Left="5" IsHitTestVisible="False"/>
-            <!--- Flyout Recrutamento -->
-            <Button Content="Turno" Name="Button_Turno" Click="Button_Mudar_Turno" Canvas.Left="-66" Canvas.Top="593"/>
             <!-- Player Info-->
             <Image  Source="Assets\Menus\MainMenuBackground2.jpg" Height="328" Canvas.Top="73" Width="143" Canvas.Left="-118" RequestedTheme="Default"></Image>
             <!-- Grid Menu-->
@@ -85,11 +57,7 @@
                     <Button x:Name="Status" Content="Status" Margin="0,0,-1,0" Width="97" Height="57" Click="Status_Click"/>
 
                     <Button x:Name="Recrut" Content="Recrutar" Margin="0,0,-1,0" Width="97" Height="47">
-                        <!--<FlyoutBase.AttachedFlyout >
-                            <MenuFlyout >
-                                <MenuFlyoutItem  Text="Warrior" Click="Recrutamento"/>
-                            </MenuFlyout>
-                        </FlyoutBase.AttachedFlyout>-->
+
                         <Button.Flyout>
                             <Flyout>
                                 <StackPanel>
@@ -103,31 +71,32 @@
                             </Flyout>
                         </Button.Flyout>
                     </Button>
-                    <Button x:Name="invent"  Content="itens" Margin="0,0,-1,0" Width="97" Height="59"/>
+                   
+                    <Button Content="Turno" x:Name="Button_Turno" Width="97" Height="59" Click="Button_Mudar_Turno" Canvas.Left="-66" Canvas.Top="593"/>
+                    <TextBlock x:Name="JogadorAtualTxt" Text="" />
                 </StackPanel>
 
             </Grid>
+            <TextBlock x:Name="TxtTurno" Canvas.Left="-86" Canvas.Top="88" Text="Turno 1" TextWrapping="Wrap" Height="28" Width="75" />
             <!-- Grid Menu-->
-            
+
             <!-- Flyout para o personagem-->
-            
+
         </Canvas>
     </ScrollViewer>
 
     <!-- Flyout para o personagem-->
     <Page.Resources>
-      
+
         <MenuFlyout x:Key="PersonFly" >
-          
-            <MenuFlyoutItem Text="attack">
 
-            </MenuFlyoutItem>
-            <MenuFlyoutItem Text="Pegar Item" Tapped="ObtemItem">
+            <MenuFlyoutItem Text="attack" IsTapEnabled="True" Click="GerarGridAtq"/>
 
-            </MenuFlyoutItem>
+
+            <MenuFlyoutItem x:Name="PegarItemFlyout" Text="Pegar Item" IsTapEnabled="True" Click="ObtemItem"/>
         </MenuFlyout>
-        
-        
+
+
     </Page.Resources>
     <!-- Flyout para o personagem-->
 

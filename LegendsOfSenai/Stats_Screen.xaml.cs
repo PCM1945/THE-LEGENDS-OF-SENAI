@@ -1,6 +1,10 @@
 ﻿using Legends_lib;
+using Legends_lib.Item;
+using Legends_lib.Item.Controls;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -32,24 +36,42 @@ namespace LegendsOfSenai
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
+            //binding dos itens
              JogadorAtual = (Jogador)e.Parameter;
             StackStatsBinding.DataContext = JogadorAtual;
             StatsGenerate();
+
             ListPersonagens.ItemsSource = JogadorAtual.Personagens;
+
+             ListItens.ItemsSource = JogadorAtual.Inventario;
+            // ListItens.ItemsSource = new ObservableCollection<Item> (JogadorAtual.Inventario);
+            JogadorAtual.Inventario.CollectionChanged += InventarioChanged;
+        }
+
+        private void InventarioChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            TxtItens.Text =""+ JogadorAtual.Inventario.Count;
+          //  ListPersonagens. = JogadorAtual.Personagens;
+
         }
 
         private void StatsGenerate()
         {
             TxtTropas.Text ="" + JogadorAtual.Personagens.Count;
             TxtItens.Text = "" + JogadorAtual.Inventario.Count;
-            // TxtVilas.Text = "" + JogadorAtual.Vilas.Count;
-            TxtVilas.Text = "Nao Implementado";
+            TxtGoldTurno.Text = "" + JogadorAtual.GoldTurno;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.GoBack();
+        }
+
+        private void EquiparItem(object sender, TappedRoutedEventArgs e)
+        {
+            Item ItemSelecionado = ListItens.SelectedItem as Item;
+            Personagem PersonSelecionado = ListPersonagens.SelectedItem as Personagem;
+            ItemControl.UsaItem(JogadorAtual,ItemSelecionado,PersonSelecionado);
         }
     }
 }

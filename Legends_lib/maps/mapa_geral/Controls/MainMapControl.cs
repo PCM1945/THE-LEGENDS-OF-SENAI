@@ -40,12 +40,23 @@ namespace Legends_lib
         {
             if (PodeAndar(posX, posY, mapa))
             {
-                if(valorSorteado > 0 && valorSorteado <= 3)
-                    return new Item.Item { Descricao = "Não Utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/minerais/diamante.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
-                else if (valorSorteado >= 4 && valorSorteado < 8)
-                    return new Item.Item { Descricao = "Arma", Nome = "ESPADA VORPAL", Tipo = EItens.Equipavel, UrlImage = "ms-appx:///Assets/itens/pedra.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+               // return new Item.Item { Descricao = "Não Utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png" };
+               if(valorSorteado == 2)
+                    return new Item.Item { Descricao = "Não Utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                else if (valorSorteado == 3)
+                    return new Item.Item { Descricao = "Recebe Dinheiro Ao Pegar", Nome = "DIAMANTE", Tipo = EItens.Gold, UrlImage = "ms-appx:///Assets/itens/minerais/diamante.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+               else if (valorSorteado == 4 || valorSorteado == 5)
+                    return new Item.Item { Descricao = "Recebe Dinheiro Ao Pegar", Nome = "RUBI", Tipo = EItens.Gold, UrlImage = "ms-appx:///Assets/itens/minerais/rubi.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                else if (valorSorteado == 6 || valorSorteado == 7)
+                    return new Item.Item { Descricao = "Recebe Dinheiro Ao Pegar", Nome = "OURO", Tipo = EItens.Gold, UrlImage = "ms-appx:///Assets/itens/minerais/ouro.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                else if (valorSorteado == 8)
+                    return new Item.Item { Descricao = "Cura em 30 sua vida atual", Nome = "POÇÃO CURA", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pocoes/poção_att+10.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                else if (valorSorteado == 9 || valorSorteado == 10)
+                    return new Item.Item { Descricao = "Aumenta em 20 sua vida Maxima", Nome = "POÇÃO VIDAMAX", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pocoes/poção_def+10.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                else if(valorSorteado%2 == 0)
+                    return new Item.Item { Descricao = "Aumenta em 1 o seu Atk Range e o Mov Range", Nome = "POÇÃO RANGE", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pocoes/poção_att+5.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
                 else
-                    return new Item.Item { Descricao = "Poção", Nome = "POÇÃO", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pocoes/poção_att+10.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
+                    return new Item.Item { Descricao = "Aumenta em 5 o dano", Nome = "POÇÃO DANO", Tipo = EItens.Consumivel, UrlImage = "ms-appx:///Assets/itens/pocoes/poção_def+5.png" };//DEVE SER ALTERADO QUANDO TROCAR A COLEÇÃO
             }
             else
                 return null;
@@ -97,7 +108,7 @@ namespace Legends_lib
             foreach (int[] casa in CasasNaoAndaveis){
                 Debug.WriteLine(" "+casa[0] + "  " + casa[1]);
             }
-         
+            Random valorSorteado = new Random();
             for (int x = 0; x < DimX; x++)
             {
                 for (int y = 0; y < DimY; y++)
@@ -105,7 +116,7 @@ namespace Legends_lib
                   
                     mapa.casa[x,y] = new Casa( x, y);
                     EhAdavel(mapa.casa[x,y],CasasNaoAndaveis);
-                    GeraItemNaCasa(x, y, mapa);
+                    GeraItemNaCasa(x, y, mapa,valorSorteado);
                 }
             }
 
@@ -129,15 +140,18 @@ namespace Legends_lib
 
         }
 
-        public void GeraItemNaCasa(int x, int y, Mapa map)
+        public void GeraItemNaCasa(int x, int y, Mapa map, Random valorSorteado)
         {
-            var valorSorteado = new Random().Next(0, 50);
-            if (valorSorteado <= 50)
+
+            ///var valorSorteado = new Random().Next(0, 100);
+            int VS = valorSorteado.Next(0, 100);
+            if ( VS <= 10)
+           // if ((valorSorteado < 35 &&valorSorteado>20 ) || (valorSorteado < 80 && valorSorteado > 60))
             {
                 if(!((x==1 && y==7 ) || (x==1 && y==8) || (x == 2 && y == 7) || (x == 2 && y == 8)) &&
                     !((x == 17 && y == 7) || (x == 17 && y == 8) || (x == 18 && y == 7) || (x == 18 && y == 8)))
                 {
-                    map.casa[x, y].Item = GeraItem(x, y, map, new Random().Next(0, 10));
+                    map.casa[x, y].Item = GeraItem(x, y, map, VS);
                 }
             }
         }

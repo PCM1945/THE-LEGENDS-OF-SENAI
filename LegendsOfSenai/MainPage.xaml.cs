@@ -40,7 +40,7 @@ namespace LegendsOfSenai
 
         private void Start_Button_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("aaaaaaaaaaaa");
+           // Debug.WriteLine("aaaaaaaaaaaa");
             this.Frame.Navigate(typeof(Tela1_Mapa));
          
         }
