@@ -201,9 +201,13 @@
     <Content Include="Assets\itens\minerais\rubi.png" />
     <Content Include="Assets\itens\pedra.png" />
     <Content Include="Assets\itens\pedra_do_mal.jpg" />
+    <Content Include="Assets\sounds_videos\battle_1.mp3" />
+    <Content Include="Assets\sounds_videos\history.mp3" />
+    <Content Include="Assets\sounds_videos\ingame_1.mp3" />
+    <Content Include="Assets\sounds_videos\ingame_2.mp3" />
+    <Content Include="Assets\sounds_videos\Intro Template.mp4" />
     <Content Include="Assets\Menus\MainMenuBackground.jpg" />
     <Content Include="Assets\Menus\MainMenuBackground2.jpg" />
-    <Content Include="Assets\MusicaMain.mp3" />
     <Content Include="Assets\telas\battle_BKv2.0.jpg" />
     <Content Include="Assets\telas\open_map.png" />
     <Content Include="Assets\characters\Warrrior_spt\humano\warrior.png" />

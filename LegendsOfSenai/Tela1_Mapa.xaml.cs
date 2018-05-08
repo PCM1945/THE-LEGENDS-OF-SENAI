@@ -41,13 +41,6 @@ namespace LegendsOfSenai
         List<Rectangle> Caminho;
         Rectangle UltimoRecSelecionado;
         private String RecrutSelec { get; set; }
-        public List<Item> Itens = //LISTA DE ITENS DISPONÍVEIS PARA SEREM COLOCADOS NA CASA
-            new List<Item>() {
-                /** para a primeira entrega manter apenas um item não utilizavel */
-               // new Item.Item { Descricao = "DESCRIÇÃO 1", Nome = "NOME 1", Tipo = EItens.Consumivel},
-               // new Item.Item { Descricao = "DESCRIÇÃO 2", Nome = "NOME 2", Tipo = EItens.Equipavel},
-                 new Item { Descricao = "Não utilizável", Nome = "PEDRA", Tipo = EItens.NaoUtilizavel, UrlImage = "ms-appx:///Assets/itens/pedra.png"},
-            };
 
         Dictionary<uint, Windows.UI.Xaml.Input.Pointer> pointers;
         public Tela1_Mapa()
@@ -64,7 +57,8 @@ namespace LegendsOfSenai
             {
                 JogadorControl.AddPlayer(a);
             }
-           // BtnPlayWav();
+            
+            BtnPlayWav();
             IniciarCastelos();
             PosicionarItens();
 
@@ -74,16 +68,24 @@ namespace LegendsOfSenai
             JogadorAtualTxt.Text = JogadorAtual.Nome;
 
         }
+
+
+
         private async void BtnPlayWav()
         {
             MediaElement mysong = new MediaElement();
+            
             Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
-            Windows.Storage.StorageFile file = await folder.GetFileAsync("MusicaMain.mp3");
+
+            Windows.Storage.StorageFolder soundsAndVideos = await folder.GetFolderAsync("sounds_videos");
+            Windows.Storage.StorageFile file = await soundsAndVideos.GetFileAsync("ingame_2.mp3");
+
             var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
             mysong.SetSource(stream, file.ContentType);
-           
-           mysong.Volume = 100;
+            mysong.IsLooping = true;
+            mysong.Volume = 100;
             mysong.Play();
+
         }
         private void IniciarCastelos()
         {
@@ -141,79 +143,80 @@ namespace LegendsOfSenai
             Debug.WriteLine("POSICAO NA MATRIZ");
             Debug.WriteLine(calcCasa.getPosCasa((int)ptrPt.Position.X));
             Debug.WriteLine(calcCasa.getPosCasa((int)ptrPt.Position.Y));*/
-        /*   for(int i = 0; i < 20; i++)
-            {
-                for(int j = 0; j < 20; j++)
-                {
-                    if (Map.casa[i, j].Personagem != null)
-                    {
-                        Debug.WriteLine("personagem NA MATRIZ");
-                        Debug.WriteLine(i);
-                        Debug.WriteLine(j);
-                    }
-                }
-            }*/
-          /*  if (!selecionou)//LEMBRAR DE TRATAR CLICKS FORA DA TELA!!!!!!!!!!!!!!!ATENÇÃO!!!!!!!!!!!IMPORTANTE!!!!
-            {
-                Debug.WriteLine("entrou");
-                if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null)
-                {
-                 
-                }
-            }
-            else
-            {
-                if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem == null && 
-                    Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel   &&
-                    PodeMover(calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)))
-                {
-                    
-                }
-                else if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null &&
-                    !JogadorAtual.Personagens.Contains(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem))
-                {
+         /*   for(int i = 0; i < 20; i++)
+             {
+                 for(int j = 0; j < 20; j++)
+                 {
+                     if (Map.casa[i, j].Personagem != null)
+                     {
+                         Debug.WriteLine("personagem NA MATRIZ");
+                         Debug.WriteLine(i);
+                         Debug.WriteLine(j);
+                     }
+                 }
+             }*/
+         /*  if (!selecionou)//LEMBRAR DE TRATAR CLICKS FORA DA TELA!!!!!!!!!!!!!!!ATENÇÃO!!!!!!!!!!!IMPORTANTE!!!!
+           {
+               Debug.WriteLine("entrou");
+               if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null)
+               {
+
+               }
+           }
+           else
+           {
+               if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X),calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem == null && 
+                   Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Andavel   &&
+                   PodeMover(calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)))
+               {
+
+               }
+               else if (Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem != null &&
+                   !JogadorAtual.Personagens.Contains(Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem))
+               {
 
 
 
-                    ControleBatalha.ordenarBatalha(selecionado, Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem);
-                    this.Frame.Navigate(typeof(BlankPage1));
-                    selecionou = false;
-                    ControleBatalha.vencedor = 1;
-                    if (ControleBatalha.vencedor == 1)//colocar oq acontece quando a batalha termina- ta apagando pela lista de jogadores, mas lembrar que se der bug é pq ele fica na casa(n sei como ta esse tratamento de imagem, caso seja buscado a cada turno coloque um 'OK' ao lado desse comentario e me avise);
-                    {
+                   ControleBatalha.ordenarBatalha(selecionado, Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].Personagem);
+                   this.Frame.Navigate(typeof(BlankPage1));
+                   selecionou = false;
+                   ControleBatalha.vencedor = 1;
+                   if (ControleBatalha.vencedor == 1)//colocar oq acontece quando a batalha termina- ta apagando pela lista de jogadores, mas lembrar que se der bug é pq ele fica na casa(n sei como ta esse tratamento de imagem, caso seja buscado a cada turno coloque um 'OK' ao lado desse comentario e me avise);
+                   {
 
-                        for (int aqd = 0; aqd < JogadorAtual.Personagens.Count; aqd++)
-                        {
-                            if (JogadorAtual.Personagens[aqd] == selecionado)
-                            {
-                                JogadorAtual.Personagens.RemoveAt(aqd);
-                                Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].local_imagem = null;
-                               
-                               
-                            }
+                       for (int aqd = 0; aqd < JogadorAtual.Personagens.Count; aqd++)
+                       {
+                           if (JogadorAtual.Personagens[aqd] == selecionado)
+                           {
+                               JogadorAtual.Personagens.RemoveAt(aqd);
+                               Map.casa[calcCasa.getPosCasa((int)ptrPt.Position.X), calcCasa.getPosCasa((int)ptrPt.Position.Y)].local_imagem = null;
 
-                        }
-                        Debug.WriteLine("sholaaaaaaaaaa" + JogadorAtual.Personagens.Count);*/
-                        /*foreach(Personagem a in JogadorAtual.Personagens)
-                        {
-                            if (a == selecionado)
-                            {
-                               
-                            }
-                        }*/
 
-                  /*  }
-                    else
-                    {
+                           }
 
-                    }
+                       }
+                       Debug.WriteLine("sholaaaaaaaaaa" + JogadorAtual.Personagens.Count);*/
+         /*foreach(Personagem a in JogadorAtual.Personagens)
+         {
+             if (a == selecionado)
+             {
 
-                }
-              
-               
-            }*/
-            
+             }
+         }*/
+
+            /*  }
+              else
+              {
+
+              }
+
+          }
+
+
+      }*/
+
         }
+        
         /// <summary>
         /// Checa se o personagem eh do jogador atual e se ele tem Range para o movimento
         /// </summary>
