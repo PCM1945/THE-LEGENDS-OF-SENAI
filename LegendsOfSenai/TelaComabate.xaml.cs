@@ -2,6 +2,7 @@
 using Legends_lib.Batalha;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -29,17 +30,38 @@ namespace LegendsOfSenai
         public BlankPage1()
         {
             this.InitializeComponent();
-            imgPlayer1 = ControleBatalha.personagem1.Imagem;
-            imgPlayer2 = ControleBatalha.personagem2.Imagem;
-            //imgPlayer1.Source = new System.Uri(ControleBatalha.personagem1.UrlImage);
+        
+          
             Batalha();
             
         }
         //teste 
         private void Batalha()// ATT AS INFS DE BATALHA
         {
-            Uri imgp= new Uri("ms-appx:Assets/characters/Mago_spt/humano/mago_lado_esq.png", UriKind.Absolute);
-            imgPlayer1.Source = new BitmapImage(imgp);
+            Uri imgp1=null;
+            Uri imgp2=null;
+            switch (ControleBatalha.personagem1.Nome) {
+                case "Guerreiro":
+                    imgp1= new Uri("ms-appx:Assets/characters/Warrrior_spt/humano/guerreiro/paldino-dir.png", UriKind.Absolute);
+                    break;
+                case "Esqueleto":
+                    imgp1 = new Uri("ms-appx:Assets/characters/Warrrior_spt/esqueleto/esqueleto guerreiro/soldado-esqueleto-parado dir.png", UriKind.Absolute);
+                    break;
+
+            }
+            switch (ControleBatalha.personagem2.Nome)
+            {
+                case "Guerreiro":
+                    imgp2 = new Uri("ms-appx:Assets/characters/Warrrior_spt/humano/guerreiro/paldino-esq.png", UriKind.Absolute);
+                    break;
+                case "Esqueleto":
+                    imgp2 = new Uri("ms-appx:Assets/characters/Warrrior_spt/esqueleto/esqueleto guerreiro/soldado esqueleto parado -esq.png", UriKind.Absolute);
+                    break;
+
+            }
+ 
+            imgPlayer1.Source = new BitmapImage(imgp1);
+            imgPlayer2.Source = new BitmapImage(imgp2);
             TextBlock_SelectionChanged();
             verificaVencedor();
         }
