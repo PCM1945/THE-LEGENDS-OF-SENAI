@@ -127,10 +127,10 @@
     <Compile Include="Main.cs" />
     <Compile Include="maps\mapa-batalha\MapaBatalha.cs" />
     <Compile Include="personagem\Esqueleto.cs" />
-    <Content Include="personagem\Guerreiro.cs" />
     <Compile Include="personagem\MovimentoController.cs" />
     <Compile Include="personagem\ObjetoDeJogo.cs" />
     <Compile Include="personagem\Personagem.cs" />
+    <Compile Include="personagem\Guerreiro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Legends_lib.rd.xml" />
   </ItemGroup>

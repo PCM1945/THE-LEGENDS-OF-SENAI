@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.ViewManagement;
 using System.Linq;
 using System.Threading.Tasks;
+using Legends_lib.personagem;
 
 namespace LegendsOfSenai
 {
