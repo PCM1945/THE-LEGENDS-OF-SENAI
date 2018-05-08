@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace Legends_lib
 {
-    public class Guerreiro : Personagem
+    public class Guerreiro :Personagem
     {
         
         public Guerreiro(int cordx,int cordy) : base() {
@@ -25,6 +25,7 @@ namespace Legends_lib
             PosX = cordx;
             PosY = cordy;
             Nome = "Guerreiro";
+       
         }
             
         

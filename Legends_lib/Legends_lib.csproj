@@ -119,13 +119,15 @@
     <Compile Include="maps\mapa_geral\Controls\calcCasa.cs" />
     <Compile Include="maps\mapa_geral\Controls\MainMapControl.cs" />
     <Compile Include="maps\mapa_geral\Mapa.cs" />
+    <Compile Include="personagem\Mago.cs" />
+    <Compile Include="personagem\Necromancer.cs" />
     <Compile Include="personagem\Controls\ControlsHabilidade.cs" />
     <Compile Include="item\Item.cs" />
     <Compile Include="jogador\Jogador.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="maps\mapa-batalha\MapaBatalha.cs" />
     <Compile Include="personagem\Esqueleto.cs" />
-    <Compile Include="personagem\Guerreiro.cs" />
+    <Content Include="personagem\Guerreiro.cs" />
     <Compile Include="personagem\MovimentoController.cs" />
     <Compile Include="personagem\ObjetoDeJogo.cs" />
     <Compile Include="personagem\Personagem.cs" />
