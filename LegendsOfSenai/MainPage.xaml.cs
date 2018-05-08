@@ -4,9 +4,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Core;
+using Windows.Media.Playback;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -27,25 +30,45 @@ namespace LegendsOfSenai
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        int x=20;
+        //bool _isPlaying;
         public MainPage()
         {
             this.InitializeComponent();
-            Debug.WriteLine(x);
-
-     
+            PlayOpening();
         }
 
-  
+        //private async void Play()
+        //{
+        //    _isPlaying = await PlayOpening();
+        //}
 
         private void Start_Button_Click(object sender, RoutedEventArgs e)
         {
-           // Debug.WriteLine("aaaaaaaaaaaa");
+            
             this.Frame.Navigate(typeof(Tela1_Mapa));
-         
+            
         }
 
+        private async Task<bool> PlayOpening()
+        {
+            
+            Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
 
-      
+            Windows.Storage.StorageFolder soundsAndVideos = await folder.GetFolderAsync("sounds_videos");
+            Windows.Storage.StorageFile file = await soundsAndVideos.GetFileAsync(@"Intro Template.mp4");
+
+            var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+            mysong.SetSource(stream, file.ContentType);
+            mysong.AutoPlay = true;
+            mysong.Volume = 100;
+
+            mysong.Play();
+
+            await Task.Delay(22800);
+            MainCanvas.Children.Remove(mysong);
+            Start_Button.Opacity = 100;
+            return true;
+        }
+
     }
 }
