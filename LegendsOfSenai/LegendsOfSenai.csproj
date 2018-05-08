@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Movimento.cs" />
     <Compile Include="Stats_Screen.xaml.cs">
       <DependentUpon>Stats_Screen.xaml</DependentUpon>
     </Compile>
