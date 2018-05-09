@@ -26,9 +26,11 @@ namespace LegendsOfSenai
     /// </summary>
     public sealed partial class BlankPage1 : Page
     {
-      //  Personagem aux1,aux2;
+        //  Personagem aux1,aux2;
+        public int turno;
         public BlankPage1()
         {
+            turno = 1;
             this.InitializeComponent();
         
           
@@ -52,7 +54,7 @@ namespace LegendsOfSenai
             switch (ControleBatalha.personagem2.Nome)
             {
                 case "Guerreiro":
-                    imgp2 = new Uri("ms-appx:Assets/characters/Warrrior_spt/humano/guerreiro/paldino-esq.png", UriKind.Absolute);
+                    imgp2 = new Uri("ms-appx:Assets/characters/Warrrior_spt/humano/guerreiro/paladino-esq.png", UriKind.Absolute);
                     break;
                 case "Esqueleto":
                     imgp2 = new Uri("ms-appx:Assets/characters/Warrrior_spt/esqueleto/esqueleto guerreiro/soldado esqueleto parado -esq.png", UriKind.Absolute);
@@ -96,16 +98,24 @@ namespace LegendsOfSenai
 
         private void botao_AtkBas2(object sender, RoutedEventArgs e)
         {
+            if (turno == 2)
+            {
+                ControleBatalha.personagem1.VidaAtual -= 10;
+                Batalha();//botar p deixar o botão meio transparente e ativar o outro
+                turno = 1;
+            }
             
-            ControleBatalha.personagem1.VidaAtual -= 10;
-            Batalha();
         }
 
         private void botao_AtkBas1(object sender, RoutedEventArgs e)
         {
+            if (turno == 1)
+            {
+                ControleBatalha.personagem2.VidaAtual -= 10;
+                Batalha();
+                turno = 2;
+            }
             
-            ControleBatalha.personagem2.VidaAtual -= 10;
-            Batalha();
         }
     }
 }

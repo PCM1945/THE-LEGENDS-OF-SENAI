@@ -34,7 +34,7 @@ namespace LegendsOfSenai
         public MainPage()
         {
             this.InitializeComponent();
-            PlayOpening();
+          //  PlayOpening();
         }
 
         //private async void Play()
