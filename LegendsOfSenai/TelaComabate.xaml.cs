@@ -30,10 +30,11 @@ namespace LegendsOfSenai
         public int turno;
         public BlankPage1()
         {
+        
             turno = 1;
             this.InitializeComponent();
-        
-          
+
+            AtkBas2.Opacity = 0;
             Batalha();
             
         }
@@ -103,6 +104,8 @@ namespace LegendsOfSenai
                 ControleBatalha.personagem1.VidaAtual -= 10;
                 Batalha();//botar p deixar o botão meio transparente e ativar o outro
                 turno = 1;
+                AtkBas2.Opacity = 0;
+                AtkBas1.Opacity = 1;
             }
             
         }
@@ -114,6 +117,8 @@ namespace LegendsOfSenai
                 ControleBatalha.personagem2.VidaAtual -= 10;
                 Batalha();
                 turno = 2;
+                AtkBas1.Opacity = 0;
+                AtkBas2.Opacity = 1;
             }
             
         }
