@@ -317,7 +317,23 @@ namespace LegendsOfSenai
                             }
                             // }
                             break;
-                          
+
+                        case "Mage":
+
+                            if (JogadorAtual.Aligment == "Order")
+                            {
+
+                                person = new Guerreiro(cast.Cordx, cast.Cordy);
+
+                            }
+                            else if (JogadorAtual.Aligment == "Chaos")
+                            {
+                                person = new Esqueleto(cast.Cordx, cast.Cordy);
+
+                            }
+                            
+                            break;
+
                     }
                     if (person != null) { 
                         if (JogadorAtual.Gold - person.Custo_Gold > 0)

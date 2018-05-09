@@ -11,7 +11,7 @@ namespace Legends_lib
 
         public Mago(int cordx, int cordy) : base()
         {
-            //UrlImage = "n achei";
+            UrlImage = "ms - appx:///Assets/characters/Mago_spt/humano/mago/mago_lado_dir.png";
 
             Custo_Gold = 250;
             Atq = 45;

@@ -11,7 +11,7 @@ namespace Legends_lib
 
         public Necromancer(int cordx, int cordy) : base()
         {
-            //UrlImage = "n achei";
+            UrlImage = "ms - appx:///Assets/characters/Mago_spt/esqueleto/necromancer/necriomancer-frente.png";
 
             Custo_Gold = 250;
             Atq = 45;
