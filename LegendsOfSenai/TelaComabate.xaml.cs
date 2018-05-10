@@ -83,6 +83,7 @@ namespace LegendsOfSenai
         }
 
         private void voltarMapa()
+            // quando personagem morre mapa perde referência do objeto
         {
             this.Frame.Navigate(typeof(Tela1_Mapa));
         }
