@@ -683,41 +683,25 @@ namespace LegendsOfSenai
 
             return;
         }
-        private void voltarMapa()
-        // quando personagem morre mapa perde referência do objeto
-        {
-            this.Frame.Navigate(typeof(Tela1_Mapa));
-        }
-
-        private void verificaVencedor(Jogador atual, Jogador outro)
-        {
-
-            if (ControleBatalha.personagem1.VidaAtual <= 0)
-            {
-                ControleBatalha.vencedor = 2;
-                voltarMapa();
-            }
-            if (ControleBatalha.personagem2.VidaAtual <= 0)
-            {
-                ControleBatalha.vencedor = 1;
-                voltarMapa();
-            }
-        }
+        
         private void AtacarPersonagem(object sender, TappedRoutedEventArgs e)
         {
             Rectangle rec = sender as Rectangle;
             ControleBatalha.ordenarBatalha(selecionado, Map.casa[calcCasa.getPosCasa((int)Canvas.GetLeft(rec)), calcCasa.getPosCasa((int)Canvas.GetTop(rec))].Personagem);
             this.Frame.Navigate(typeof(BlankPage1));
             HabilidadeJogador Hab=new HabilidadeJogador();
-            verificaVencedor(JogadorAtual, FilaJogador.First());
+
             if (ControleBatalha.vencedor == 1)
             {
-                //Hab.GanhaGold(JogadorAtual, ControleBatalha.personagem2);
-                JogadorAtual.Gold += 1000;
+                JogadorAtual.Gold += 100;
+
             }
             else if (ControleBatalha.vencedor == 2)
             {
-                //Hab.GanhaGold(FilaJogador.First(), ControleBatalha.personagem1);
+                Jogador aux;
+               aux= FilaJogador.Dequeue();
+                FilaJogador.Enqueue(JogadorAtual);
+                aux.Gold += 100;
                 
             }
             

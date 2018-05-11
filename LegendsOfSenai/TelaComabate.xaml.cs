@@ -98,6 +98,7 @@ namespace LegendsOfSenai
             }
             if (ControleBatalha.personagem2.VidaAtual <= 0)
             {
+                
                 ControleBatalha.vencedor = 1;
                 voltarMapa();
             }
