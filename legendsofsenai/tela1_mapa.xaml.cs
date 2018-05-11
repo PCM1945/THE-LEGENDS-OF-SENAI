@@ -693,12 +693,14 @@ namespace LegendsOfSenai
 
             if (ControleBatalha.vencedor == 1)
             {
-                Hab.GanhaGold(JogadorAtual, ControleBatalha.personagem2);
+                //Hab.GanhaGold(JogadorAtual, ControleBatalha.personagem2);
+                JogadorAtual.Gold += 100;
 
             }
             else if (ControleBatalha.vencedor == 2)
             {
-                Hab.GanhaGold(FilaJogador.First(), ControleBatalha.personagem1);
+                //Hab.GanhaGold(FilaJogador.First(), ControleBatalha.personagem1);
+                FilaJogador.First().Gold += 100;
                 
             }
             
