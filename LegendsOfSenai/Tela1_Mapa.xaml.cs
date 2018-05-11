@@ -59,7 +59,7 @@ namespace LegendsOfSenai
                 JogadorControl.AddPlayer(a);
             }
             //apagaraqui
-           // BtnPlayWav();
+            BtnPlayWav();
             IniciarCastelos();
             PosicionarItens();
 

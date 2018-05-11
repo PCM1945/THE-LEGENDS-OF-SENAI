@@ -43,7 +43,16 @@
                 <TextBlock x:Name="TxtItens" Text="" />
                 <TextBlock x:Name="TxtGoldTurno" Text="" />
             </StackPanel>
+            <Grid Padding="20" Grid.Column="0" Grid.Row="0" Margin="30,473,27,-224" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <TextBlock Text="DANO" HorizontalAlignment="Left" Margin="-25,-1,0,0" VerticalAlignment="Top" />
+                <Button x:Name="Habilidade_DANO" HorizontalAlignment="Left" Margin="30,0,0,-10" VerticalAlignment="Center" Width="29" Content="+" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50" Tapped="Button_Tapped_Dano"/>
 
+            </Grid>
+            <Grid Padding="20" Grid.Column="0" Grid.Row="0" Margin="130,473,102,-224" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <TextBlock Text="HP" HorizontalAlignment="Left" Margin="0,-1,0,0" VerticalAlignment="Top" />
+                <Button x:Name="Habilidade_HP" HorizontalAlignment="Left" Margin="30,0,0,-10" VerticalAlignment="Center" Width="29" Content="+" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50" Tapped="Button_Tapped_Dano"/>
+
+            </Grid>
 
         </Grid>
         <!-- Stats show-->
@@ -59,6 +68,12 @@
                         </StackPanel>
                     </DataTemplate>
                 </GridView.ItemTemplate>
+                <TextBlock Text="TextBlock" TextWrapping="Wrap"/>
+                <RichTextBlock>
+                    <Paragraph>
+                        <Run Text="RichTextBlock"/>
+                    </Paragraph>
+                </RichTextBlock>
             </GridView>
         </ScrollViewer>
 
@@ -75,11 +90,12 @@
             </ListView.ItemTemplate>
         </ListView>
         <Button x:Name="UsarItem" Content="Usar Item" Grid.Column="0" HorizontalAlignment="Left" Height="70" Width="100" Margin="239,651,-304,-683" Tapped="EquiparItem" Grid.Row="0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="24,5,0,0" Grid.Row="3" Text="HABILIDADES" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
         <!-- Itens -->
 
     </Grid>
 
     <!--Style ListView Horizontal-->
-    
-    
+
+
 </Page>

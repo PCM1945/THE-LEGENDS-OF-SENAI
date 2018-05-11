@@ -73,5 +73,17 @@ namespace LegendsOfSenai
             Personagem PersonSelecionado = ListPersonagens.SelectedItem as Personagem;
             ItemControl.UsaItem(JogadorAtual,ItemSelecionado,PersonSelecionado);
         }
+
+        private void Button_Tapped_HP(object sender, TappedRoutedEventArgs e)
+        {
+            var habilidadeSelecionada = JogadorAtual.Habilidades.Where(x => x.Nome.Equals(Habilidade_HP.Name));
+            new HabilidadeJogador().MudaNivelHabilidade(JogadorAtual, habilidadeSelecionada.First(), '+');
+        }
+
+        private void Button_Tapped_Dano(object sender, TappedRoutedEventArgs e)
+        {
+            var habilidadeSelecionada = JogadorAtual.Habilidades.Where(x => x.Nome.Equals(Habilidade_DANO.Name));
+            new HabilidadeJogador().MudaNivelHabilidade(JogadorAtual, habilidadeSelecionada.First(), '+');
+        }
     }
 }

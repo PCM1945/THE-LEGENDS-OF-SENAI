@@ -34,8 +34,51 @@ namespace LegendsOfSenai
         public MainPage()
         {
             this.InitializeComponent();
-          //  PlayOpening();
+            PlayOpening();
+            //LookHistory();
         }
+
+        /*private void LookHistory()
+        {
+            List<string> history = new List<string>()
+            {
+                @"Em um local tão tão distante, durante o
+                    século XXI, ainda pouco explorado, pela
+                    humanidade havia um local de treinamento
+                    de mitos ainda pouco conhecido pela sua
+                    formação de elite, o Centro Universitário 
+                    SENAI CIMATEC, mais conhecido como CUSC.",
+
+                @"A CUSC era formadora de membros de elite.
+                    Mas o que nem mesmo os integrantes sabiam 
+                    eram os possíveis efeitos colaterais.",
+
+                @"No século 2k17 um grupo de estudantes
+                    estrapolou os limites do treinamento CUSC 
+                    e começaram a apontar resultados nunca
+                    visto anteriormente. Tudo parecia bem...",
+                @".",
+                @".",
+                @".",
+                @"Até que um desses estudantes apresentou
+                    um surto e tornou-se uma lenda.
+                    Passados 379 anos 7 meses 27 dias 15 horas
+                    12 minutos e 57 segundos",
+                "a lenda se repete",
+                "CONTUDO...",
+                @"Muito mais forte que no passado
+                    agora os aprendizes da CUSC podem contaminar
+                    seus colegas e formar um exército...",
+                @"Cabe a esta batalha guiar o destino do mundo.",
+                @"Mitológicos mestres da CUSC... Ou Aprendizes
+                    de altíssimo desempenho? Quem guiará o futuro 
+                    deste lugar?",
+                @"Apenas o destino dirá!",
+                @"LEGENDS OF SENAI!",
+                @"FAÇA SUA LENDA"
+            };
+                
+        }*/
 
         //private async void Play()
         //{
@@ -49,7 +92,7 @@ namespace LegendsOfSenai
             
         }
 
-        private async Task<bool> PlayOpening()
+        private async void PlayOpening()
         {
             
             Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
@@ -67,7 +110,6 @@ namespace LegendsOfSenai
             await Task.Delay(22800);
             MainCanvas.Children.Remove(mysong);
             Start_Button.Opacity = 100;
-            return true;
         }
 
     }
