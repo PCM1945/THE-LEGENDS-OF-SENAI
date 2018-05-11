@@ -8,7 +8,7 @@
     mc:Ignorable="d" Width="1106" Height="771" >
 
     <ScrollViewer Height="650" >
-        <Canvas x:Name="mapa" Background="White" Width="800" Height="800" PointerPressed="Target_PointerPressed" >
+        <Canvas x:Name="mapa" Background="White" Width="800" Height="800"  >
 
 
 

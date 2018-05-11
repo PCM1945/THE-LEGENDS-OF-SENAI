@@ -55,29 +55,42 @@ namespace LegendsOfSenai
                     imgp1 = new Uri("ms-appx:Assets/characters/Mago_spt/humano/mago/mago_lado_dir.png", UriKind.Absolute);
                     break;
                 case "Necromancer":
-                    imgp1 = new Uri("ms-appx:Assets/characters/Mago_spt/esqueleto/necromancer/necromancer parado-lado.png");
+                    imgp1 = new Uri("ms-appx:Assets/characters/Mago_spt/esqueleto/necromancer/necromancer parado-lado.png", UriKind.Absolute);
                     break;
-
+                case "Arqueiro":
+                    imgp1 = new Uri("ms-appx:///Assets/characters/Arqueiro_spt/humano/paladino/paladino-frente.png", UriKind.Absolute);
+                    break;
+                case "Hunter":
+                    imgp1 = new Uri("ms-appx:///Assets/characters/Arqueiro_spt/esqueleto/esqueleto arqueiro/esqueleto arqueiro -frente.png", UriKind.Absolute);
+                    break;
+              
             }
             switch (ControleBatalha.personagem2.Nome)
             {
                 case "Guerreiro":
-                    imgp2 = new Uri("ms-appx:Assets/characters/Warrrior_spt/humano/guerreiro/paladino-esq.png", UriKind.Absolute);
+                    imgp2 = new Uri("ms-appx:Assets/characters/Warrrior_spt/humano/guerreiro/paldino-dir.png", UriKind.Absolute);
                     break;
                 case "Esqueleto":
-                    imgp2 = new Uri("ms-appx:Assets/characters/Warrrior_spt/esqueleto/esqueleto guerreiro/soldado esqueleto parado -esq.png", UriKind.Absolute);
+                    imgp2 = new Uri("ms-appx:Assets/characters/Warrrior_spt/esqueleto/esqueleto guerreiro/soldado-esqueleto-parado dir.png", UriKind.Absolute);
                     break;
                 case "Mago":
-                    imgp1 = new Uri("ms-appx:Assets/characters/Mago_spt/humano/mago/mago_lado_dir.png", UriKind.Absolute);
+                    imgp2 = new Uri("ms-appx:Assets/characters/Mago_spt/humano/mago/mago_lado_dir.png", UriKind.Absolute);
                     break;
                 case "Necromancer":
-                    imgp1 = new Uri("ms-appx:Assets/characters/Mago_spt/esqueleto/necromancer/necromancer parado-lado.png");
+                    imgp2 = new Uri("ms-appx:Assets/characters/Mago_spt/esqueleto/necromancer/necromancer parado-lado.png", UriKind.Absolute);
+                    break;
+                case "Arqueiro":
+                    imgp2 = new Uri("ms-appx:///Assets/characters/Arqueiro_spt/humano/paladino/paladino-frente.png", UriKind.Absolute);
+                    break;
+                case "Hunter":
+                    imgp2 = new Uri("ms-appx:///Assets/characters/Arqueiro_spt/esqueleto/esqueleto arqueiro/esqueleto arqueiro -frente.png", UriKind.Absolute);
                     break;
 
             }
 
             imgPlayer1.Source = new BitmapImage(imgp1);
             imgPlayer2.Source = new BitmapImage(imgp2);
+            
             TextBlock_SelectionChanged();
             verificaVencedor();
         }

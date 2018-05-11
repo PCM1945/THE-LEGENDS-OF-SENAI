@@ -47,7 +47,7 @@ namespace Legends_lib.Batalha
             return 0;
         }
 
-        public static List<Casa> PersonAtacaveis(Personagem per,Jogador JogAtual,Mapa map)
+        public static List<Casa> PersonAtacaveis(Personagem per,Jogador JogAtual,Mapa map, List<Castelo> CastelosInimigos)
         {
             List<Casa> CasasAndaveis = new List<Casa>();
 
@@ -68,6 +68,15 @@ namespace Legends_lib.Batalha
                         if(!(JogAtual.Personagens.Contains(map.casa[px + x, py + y].Personagem)))
                         CasasAndaveis.Add(map.casa[px + x, py + y]);
                         
+                    }
+                }
+            }
+            foreach (Castelo Cas in CastelosInimigos)
+            {
+                if (((Cas.Cordx)<px+rg)&&( Cas.Cordx> px-rg)) {
+                    if (((Cas.Cordy) < px + rg) && (Cas.Cordy > px - rg))
+                    {
+                        CasasAndaveis.Add(map.casa[Cas.Cordx,Cas.Cordy]);
                     }
                 }
             }
