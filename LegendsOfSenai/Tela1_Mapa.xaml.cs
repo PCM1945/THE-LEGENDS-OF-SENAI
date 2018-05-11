@@ -589,19 +589,40 @@ namespace LegendsOfSenai
             {
                 //TODA A PARTE DA ANIMACAO EM TESE VEM AQUI
                 //posição final 
-                Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
-                Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                try
+                {
+                    Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
+                    Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
+                }catch(NullReferenceException ex)
+                {
+
+                }
+                
                 await Task.Delay(250);
             }
-            
-         
-        
-            Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(rec))) * 40);
-            Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(rec))) * 40);
+
+
+            try
+            {
+                Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(rec))) * 40);
+                Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(rec))) * 40);
+            }catch(NullReferenceException a)
+            {
+
+            }
+          
 
             RemoverGridMovimento();
-            selecionado.Imagem.Opacity = 0.7;
-            selecionado.PodeMover = false;
+            try
+            {
+                selecionado.Imagem.Opacity = 0.7;
+                selecionado.PodeMover = false;
+            }
+            catch(NullReferenceException esd)
+            {
+
+            }
+            
             selecionado = null;
             selecionou = false;
             if (casaSelecionado!=null)
