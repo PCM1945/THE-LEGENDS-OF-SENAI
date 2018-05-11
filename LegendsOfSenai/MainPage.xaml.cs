@@ -49,7 +49,7 @@ namespace LegendsOfSenai
             
         }
 
-        private async Task<bool> PlayOpening()
+        private async void PlayOpening()
         {
             
             Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
@@ -67,7 +67,6 @@ namespace LegendsOfSenai
             await Task.Delay(22800);
             MainCanvas.Children.Remove(mysong);
             Start_Button.Opacity = 100;
-            return true;
         }
 
     }
