@@ -73,8 +73,8 @@ namespace Legends_lib.Batalha
             }
             foreach (Castelo Cas in CastelosInimigos)
             {
-                if (((Cas.Cordx)<px+rg)&&( Cas.Cordx> px-rg)) {
-                    if (((Cas.Cordy) < px + rg) && (Cas.Cordy > px - rg))
+                if (((Cas.Cordx)<=px+rg)&&( Cas.Cordx>= px-rg)) {
+                    if (((Cas.Cordy) <= py + rg) && (Cas.Cordy >= py - rg))
                     {
                         CasasAndaveis.Add(map.casa[Cas.Cordx,Cas.Cordy]);
                     }

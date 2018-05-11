@@ -569,15 +569,38 @@ namespace LegendsOfSenai
 
         private void GerarGridAtq(object sender, RoutedEventArgs e)
         {
-
+            if(selecionado.PodeAtacar == false)
+            {
+                return;
+            }
 
             foreach (Casa casa in ControleBatalha.PersonAtacaveis(selecionado,JogadorAtual, Map,FilaJogador.First().Castelos))
             {
+                bool Iscastle = false;
                 
-                
+                foreach(Castelo castelo in FilaJogador.First().Castelos)
+                {
+                    if(casa.PosX == castelo.Cordx && casa.PosY == castelo.Cordy)
+                    {
 
 
+                        Rectangle rec1 = new Rectangle();
+                        rec1.Fill = new SolidColorBrush(Windows.UI.Colors.Orange);
+                        rec1.Width = ObjetoDeJogo.DimXCasa;
+                        rec1.Height = ObjetoDeJogo.DimYCasa;
+                        rec1.Opacity = 0.4;
+                        rec1.Tapped += AtacarCastelo;
+                        rec1.IsRightTapEnabled = true;
+                        rec1.RightTapped += CancelarAtaque;
+                        mapa.Children.Add(rec1);
+                        Canvas.SetLeft(rec1, casa.PosX * 40);
+                        Canvas.SetTop(rec1, casa.PosY * 40);
+                        selecionado.GridMovimento.Add(rec1);
+                        Iscastle = true;
+                    }
+                }
 
+                if (!Iscastle){ 
                 Rectangle rec = new Rectangle();
                 rec.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
                 rec.Width = ObjetoDeJogo.DimXCasa;
@@ -590,12 +613,38 @@ namespace LegendsOfSenai
                 Canvas.SetLeft(rec, casa.PosX * 40);
                 Canvas.SetTop(rec, casa.PosY * 40);
                 selecionado.GridMovimento.Add(rec);
-
+                }
+                Iscastle =false;
             }
 
             return;
         }
-        
+
+        private void AtacarCastelo(object sender, TappedRoutedEventArgs e)
+        {
+            Rectangle rec = sender as Rectangle;
+            if (selecionado.PodeAtacar) { 
+            FilaJogador.First().VidaCastelo -= selecionado.Atq ;
+               selecionado.PodeAtacar = false;
+            }
+            if (FilaJogador.First().Aligment == "Order")
+            {
+                GoodBar.Value = FilaJogador.First().VidaCastelo;
+            }
+            else
+            {
+                BadBar.Value = FilaJogador.First().VidaCastelo;
+            }
+            if(FilaJogador.First().VidaCastelo <= 0)
+            {
+                this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Disabled;
+                this.Frame.Navigate(typeof(MainPage));
+            }
+            RemoverGridMovimento();
+            selecionado = null;
+        }
+
+
         private void AtacarPersonagem(object sender, TappedRoutedEventArgs e)
         {
             Rectangle rec = sender as Rectangle;
@@ -610,6 +659,7 @@ namespace LegendsOfSenai
             {
                 FilaJogador.First().Gold += 100;
             }
+            RemoverGridMovimento();
            /* if (ControleBatalha.vencedor == 1)
             {
                 //Hab.GanhaGold(JogadorAtual, ControleBatalha.personagem2);

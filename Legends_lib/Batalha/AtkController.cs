@@ -8,7 +8,7 @@ namespace Legends_lib.Batalha
 {
     public static class AtkController
     {
-        public static int Atacar(int atq,int vida, Jogador jogadorAlvo)
+        public static float Atacar(int atq,int vida, Jogador jogadorAlvo)
         {
             
             jogadorAlvo.VidaCastelo -= atq;

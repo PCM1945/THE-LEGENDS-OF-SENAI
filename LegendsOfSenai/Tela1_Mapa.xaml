@@ -78,6 +78,8 @@
 
             </Grid>
             <TextBlock x:Name="TxtTurno" Canvas.Left="-86" Canvas.Top="88" Text="Turno 1" TextWrapping="Wrap" Height="28" Width="75" />
+            <ProgressBar x:Name="GoodBar" Height="5" Width="80" Canvas.Left="40" Canvas.Top="360" Minimum="0" Maximum="1000" Value="1000" Background="Gray" />
+            <ProgressBar x:Name="BadBar" Height="5" Width="80" Canvas.Left="680" Canvas.Top="360" Minimum="0" Maximum="1000" Value="1000" Background="Gray" />
             <!-- Grid Menu-->
 
             <!-- Flyout para o personagem-->

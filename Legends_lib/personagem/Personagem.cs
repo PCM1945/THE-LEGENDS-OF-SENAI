@@ -28,14 +28,14 @@ namespace Legends_lib
         public String Nome { get; set; }
         public bool PodeMover { get; set; }
         public int AtqRange { get; set; }
-
+        public bool PodeAtacar { get; set; }
         public List<Rectangle> GridMovimento { get; set; }
 
         public Personagem()
         {
             PodeMover = false;
             GridMovimento = new List<Rectangle>();
-
+            PodeAtacar = false;
         }
      
         /// Cria a imagem no xaml, apos chamar a funcao, colocar personagem.Imagem no canvas
