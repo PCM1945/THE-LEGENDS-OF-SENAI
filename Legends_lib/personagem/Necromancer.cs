@@ -14,10 +14,10 @@ namespace Legends_lib
             UrlImage = "ms - appx:///Assets/characters/Mago_spt/esqueleto/necromancer/necriomancer-frente.png";
 
             Custo_Gold = 250;
-            Atq = 45;
-            VidaMax = 50;
+            Atq = 55;
+            VidaMax = 40;
             VidaAtual = VidaMax;
-            Mp = 85;
+            Mp = 75;
             Experiencia = 20;
             MovRange = 3;
             AtqRange = 3;

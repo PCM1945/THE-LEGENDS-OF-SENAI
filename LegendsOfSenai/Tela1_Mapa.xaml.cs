@@ -323,15 +323,31 @@ namespace LegendsOfSenai
                             if (JogadorAtual.Aligment == "Order")
                             {
 
-                                person = new Guerreiro(cast.Cordx, cast.Cordy);
+                                person = new Mago(cast.Cordx, cast.Cordy);
 
                             }
                             else if (JogadorAtual.Aligment == "Chaos")
                             {
-                                person = new Esqueleto(cast.Cordx, cast.Cordy);
+                                person = new Necromancer(cast.Cordx, cast.Cordy);
 
                             }
                             
+                            break;
+
+                        case "Archer":
+
+                            if (JogadorAtual.Aligment == "Order")
+                            {
+
+                                person = new Arqueiro(cast.Cordx, cast.Cordy);
+
+                            }
+                            else if (JogadorAtual.Aligment == "Chaos")
+                            {
+                                person = new Hunter(cast.Cordx, cast.Cordy);
+
+                            }
+
                             break;
 
                     }
@@ -667,13 +683,43 @@ namespace LegendsOfSenai
 
             return;
         }
+        private void voltarMapa()
+        // quando personagem morre mapa perde referência do objeto
+        {
+            this.Frame.Navigate(typeof(Tela1_Mapa));
+        }
 
+        private void verificaVencedor(Jogador atual, Jogador outro)
+        {
+
+            if (ControleBatalha.personagem1.VidaAtual <= 0)
+            {
+                ControleBatalha.vencedor = 2;
+                voltarMapa();
+            }
+            if (ControleBatalha.personagem2.VidaAtual <= 0)
+            {
+                ControleBatalha.vencedor = 1;
+                voltarMapa();
+            }
+        }
         private void AtacarPersonagem(object sender, TappedRoutedEventArgs e)
         {
             Rectangle rec = sender as Rectangle;
             ControleBatalha.ordenarBatalha(selecionado, Map.casa[calcCasa.getPosCasa((int)Canvas.GetLeft(rec)), calcCasa.getPosCasa((int)Canvas.GetTop(rec))].Personagem);
             this.Frame.Navigate(typeof(BlankPage1));
-            //
+            HabilidadeJogador Hab=new HabilidadeJogador();
+            verificaVencedor(JogadorAtual, FilaJogador.First());
+            if (ControleBatalha.vencedor == 1)
+            {
+                Hab.GanhaGold(JogadorAtual, ControleBatalha.personagem2);
+            }
+            else if (ControleBatalha.vencedor == 2)
+            {
+                Hab.GanhaGold(FilaJogador.First(), ControleBatalha.personagem2);
+            }
+            
+
         }
 
         private void CancelarAtaque(object sender, RightTappedRoutedEventArgs e)
