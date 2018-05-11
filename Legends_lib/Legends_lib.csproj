@@ -119,6 +119,8 @@
     <Compile Include="maps\mapa_geral\Controls\calcCasa.cs" />
     <Compile Include="maps\mapa_geral\Controls\MainMapControl.cs" />
     <Compile Include="maps\mapa_geral\Mapa.cs" />
+    <Compile Include="personagem\Arqueiro.cs" />
+    <Compile Include="personagem\Hunter.cs" />
     <Compile Include="personagem\Mago.cs" />
     <Compile Include="personagem\Necromancer.cs" />
     <Compile Include="personagem\Controls\ControlsHabilidade.cs" />
