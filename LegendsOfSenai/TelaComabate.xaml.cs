@@ -55,13 +55,7 @@ namespace LegendsOfSenai
                     imgp1 = new Uri("ms-appx:Assets/characters/Mago_spt/humano/mago/mago_lado_dir.png", UriKind.Absolute);
                     break;
                 case "Necromancer":
-                    imgp1 = new Uri("ms-appx:Assets/characters/Mago_spt/esqueleto/necromancer/necromancer parado-lado.png", UriKind.Absolute);
-                    break;
-                case "Arqueiro":
-                    imgp1 = new Uri("ms-appx:Assets/characters/Arqueiro_spt/humano/paladino/paldino-dir.png", UriKind.Absolute);
-                    break;
-                case "Hunter":
-                    imgp1 = new Uri("ms-appx:Assets/characters/Arqueiro_spt/esqueleto/esqueleto arqueiro/esqueleto arqueiro-parad0-dir.png", UriKind.Absolute);
+                    imgp1 = new Uri("ms-appx:Assets/characters/Mago_spt/esqueleto/necromancer/necromancer parado-lado.png");
                     break;
 
             }
@@ -74,16 +68,10 @@ namespace LegendsOfSenai
                     imgp2 = new Uri("ms-appx:Assets/characters/Warrrior_spt/esqueleto/esqueleto guerreiro/soldado esqueleto parado -esq.png", UriKind.Absolute);
                     break;
                 case "Mago":
-                    imgp1 = new Uri("ms-appx:Assets/characters/Mago_spt/humano/mago/mago_lado_esq.png", UriKind.Absolute);
+                    imgp1 = new Uri("ms-appx:Assets/characters/Mago_spt/humano/mago/mago_lado_dir.png", UriKind.Absolute);
                     break;
                 case "Necromancer":
-                    imgp1 = new Uri("ms-appx:Assets/characters/Mago_spt/esqueleto/necromancer/necromancer parado -esq.png", UriKind.Absolute);
-                    break;
-                case "Arqueiro":
-                    imgp1 = new Uri("ms-appx:Assets/characters/Arqueiro_spt/humano/paladino/paladino-esq.png", UriKind.Absolute);
-                    break;
-                case "Hunter":
-                    imgp1 = new Uri("ms-appx:Assets/characters/Arqueiro_spt/esqueleto/esqueleto arqueiro/esqueleto -parado-esq.png", UriKind.Absolute);
+                    imgp1 = new Uri("ms-appx:Assets/characters/Mago_spt/esqueleto/necromancer/necromancer parado-lado.png");
                     break;
 
             }
@@ -91,10 +79,29 @@ namespace LegendsOfSenai
             imgPlayer1.Source = new BitmapImage(imgp1);
             imgPlayer2.Source = new BitmapImage(imgp2);
             TextBlock_SelectionChanged();
-            
+            verificaVencedor();
         }
 
+        private void voltarMapa()
+            // quando personagem morre mapa perde referência do objeto
+        {
+            this.Frame.Navigate(typeof(Tela1_Mapa));
+        }
 
+        private void verificaVencedor()
+        {
+
+            if (ControleBatalha.personagem1.VidaAtual <= 0)
+            {
+                ControleBatalha.vencedor = 2;
+                voltarMapa();
+            }
+            if (ControleBatalha.personagem2.VidaAtual <= 0)
+            {
+                ControleBatalha.vencedor = 1;
+                voltarMapa();
+            }
+        }
 
         private void TextBlock_SelectionChanged()
         {
