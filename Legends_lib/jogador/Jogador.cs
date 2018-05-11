@@ -32,6 +32,7 @@ namespace Legends_lib
             VidaCastelo = 100;
             GoldTurno = 10;
             Aligment = Alig;
+            Habilidades = HabilidadeJogador.ListaHabilidadesJogador;
             
         }
 

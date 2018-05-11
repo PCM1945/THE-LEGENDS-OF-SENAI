@@ -16,7 +16,7 @@ namespace Legends_lib
                 CustoGold = 100,
                 Efeitos = new List<string>() { "AUMENTA O HP" },
                 NivelHabilidade = 1,
-                Nome = "BOOST DE HP",
+                Nome = "Habilidade_HP",
                 Status = true,
                 Tipo = TipoHabilidade.Passiva
             },
@@ -24,23 +24,13 @@ namespace Legends_lib
                 CustoGold = 100,
                 Efeitos = new List<string>() { "AUMENTA O DANO" },
                 NivelHabilidade = 1,
-                Nome = "BOOST DE DANO",
+                Nome = "Habilidade_DANO",
                 Status = true,
                 Tipo = TipoHabilidade.Passiva
-            },
-            new Habilidade{
-                CustoGold = 50,
-                Efeitos = new List<string>() { "DA DANO" },
-                NivelHabilidade = 1,
-                Nome = "SKILL DE DANO",
-                Status = true,
-                Tipo = TipoHabilidade.Ativa
-
             }
-
         };
 
-        public void MudaNivelHabilidade(Personagem enemy, Jogador j, Habilidade habilidadeSelecionada, char activity)
+        public void MudaNivelHabilidade(Jogador j, Habilidade habilidadeSelecionada, char activity)
         {
             switch (activity)
             {
@@ -69,10 +59,10 @@ namespace Legends_lib
                             }
 
                         }
-                        else if (habilidadeSelecionada.Nome.Equals(ListaHabilidadesJogador[2].Nome))
-                        {
-                            enemy.VidaAtual -= 20;
-                        }
+                        //else if (habilidadeSelecionada.Nome.Equals(ListaHabilidadesJogador[2].Nome))
+                        //{
+                        //    j.VidaCastelo.VidaAtual -= 20;
+                        //}
                     }
                     break;
             }
