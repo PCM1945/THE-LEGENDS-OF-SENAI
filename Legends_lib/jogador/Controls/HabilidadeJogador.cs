@@ -10,7 +10,7 @@ namespace Legends_lib
     {
         private const int MaxInvSize = 8;
 
-        public static List<Habilidade> ListaHabilidadesJogador = new List<Habilidade>() 
+        public static List<Habilidade> ListaHabilidadesJogador = new List<Habilidade>()
         {
             new Habilidade{
                 CustoGold = 100,
@@ -27,16 +27,25 @@ namespace Legends_lib
                 Nome = "BOOST DE DANO",
                 Status = true,
                 Tipo = TipoHabilidade.Passiva
+            },
+            new Habilidade{
+                CustoGold = 50,
+                Efeitos = new List<string>() { "DA DANO" },
+                NivelHabilidade = 1,
+                Nome = "SKILL DE DANO",
+                Status = true,
+                Tipo = TipoHabilidade.Ativa
+
             }
 
         };
 
-        public void MudaNivelHabilidade(Jogador j, Habilidade habilidadeSelecionada, char activity) 
+        public void MudaNivelHabilidade(Personagem enemy, Jogador j, Habilidade habilidadeSelecionada, char activity)
         {
             switch (activity)
             {
                 case '+':
-                    if(j.Gold >= habilidadeSelecionada.CustoGold)
+                    if (j.Gold >= habilidadeSelecionada.CustoGold)
                     {
                         j.Gold -= habilidadeSelecionada.CustoGold;
                         habilidadeSelecionada.NivelHabilidade += 1;
@@ -53,11 +62,16 @@ namespace Legends_lib
                         }
                         else if (habilidadeSelecionada.Nome.Equals(ListaHabilidadesJogador[1].Nome))
                         {
-                            foreach(var p in j.Personagens)
+                            foreach (var p in j.Personagens)
                             {
                                 p.Atq += 5;
                                 p.AtqRange += 1;
                             }
+
+                        }
+                        else if (habilidadeSelecionada.Nome.Equals(ListaHabilidadesJogador[2].Nome))
+                        {
+                            enemy.VidaAtual -= 20;
                         }
                     }
                     break;
@@ -72,11 +86,11 @@ namespace Legends_lib
 
         public string GanhaGold(Jogador j, Personagem enemy)
         {
-            j.Gold = enemy.Custo_Gold; //EXPERIÊNCIA DO OPONENTE É ADQUIRIDA PELO JOGADOR
-                                               // INIMIGO CARREGA EXPERIÊNCIA EM SEUS ATRIBUTOS
-            return "Adquiriu " + enemy.Custo_Gold;
-        }
-
+            j.Gold += enemy.Custo_Gold / 2; //EXPERIÊNCIA DO OPONENTE É ADQUIRIDA PELO JOGADOR
+                                            // INIMIGO CARREGA EXPERIÊNCIA EM SEUS ATRIBUTOS
+            return "Adquiriu " + enemy.Custo_Gold / 2;
+         
+    }
         public string GanhaItem(Jogador j, Item.Item i, Casa c)
         {
             if(j.Inventario.Count < MaxInvSize)

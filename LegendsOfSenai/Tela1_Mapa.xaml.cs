@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.ViewManagement;
 using System.Linq;
 using System.Threading.Tasks;
+using Legends_lib.personagem;
 
 namespace LegendsOfSenai
 {
@@ -57,8 +58,8 @@ namespace LegendsOfSenai
             {
                 JogadorControl.AddPlayer(a);
             }
-            
-            BtnPlayWav();
+            //apagaraqui
+           // BtnPlayWav();
             IniciarCastelos();
             PosicionarItens();
 
@@ -316,7 +317,23 @@ namespace LegendsOfSenai
                             }
                             // }
                             break;
-                          
+
+                        case "Mage":
+
+                            if (JogadorAtual.Aligment == "Order")
+                            {
+
+                                person = new Guerreiro(cast.Cordx, cast.Cordy);
+
+                            }
+                            else if (JogadorAtual.Aligment == "Chaos")
+                            {
+                                person = new Esqueleto(cast.Cordx, cast.Cordy);
+
+                            }
+                            
+                            break;
+
                     }
                     if (person != null) { 
                         if (JogadorAtual.Gold - person.Custo_Gold > 0)
@@ -574,51 +591,6 @@ namespace LegendsOfSenai
                 //posição final 
                 Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
                 Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
-
-                #region PEU A IDEIA É ESSA GetAnim É O MÉTODO QUE TROCARIA A IMAGEM. É NECESSÁRIO SABER QUAL A POSIÇÃO ATUAL A CADA PASSO E ATUALIZAR EM UM LOOP
-                //while(ExisteMovimento){
-                    //if((ProximaPosicao.X > PosicaoAtual.X) && (ProximaPosicao.Y == PosicaoAtual.Y))
-                    //{
-                    //    GetAnim(Movimento.direita);
-                    //}
-                    //if ((ProximaPosicao.X == PosicaoAtual.X) && (ProximaPosicao.Y > PosicaoAtual.Y))
-                    //{
-                    //    GetAnim(Movimento.cima);
-                    //}
-                    //if ((ProximaPosicao.X < PosicaoAtual.X) && (ProximaPosicao.Y == PosicaoAtual.Y))
-                    //{
-                    //    GetAnim(Movimento.baixo);
-                    //}
-                    //if ((ProximaPosicao.X == PosicaoAtual.X) && (ProximaPosicao.Y < PosicaoAtual.Y))
-                    //{
-                    //    GetAnim(Movimento.esquerda);
-                    //}
-                //}
-                #endregion
-                #region TA COMENTADO
-                /*switch ()
-                {
-                    case left:
-                        Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
-                        Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
-                        break;
-
-                    case up:
-                        Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
-                        Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
-                        break;
-                        Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
-                        Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
-                    case right:
-                        Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
-                        Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
-                        break;
-                    case down:
-                        Canvas.SetLeft(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetLeft(cas))) * 40);
-                        Canvas.SetTop(selecionado.Imagem, (calcCasa.getPosCasa((int)Canvas.GetTop(cas))) * 40);
-                        break;
-                }*/
-                #endregion
                 await Task.Delay(250);
             }
             

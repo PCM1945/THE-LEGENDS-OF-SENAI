@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Legends_lib
-{ 
-    public class Casa
+{
+    public partial class Casa
     {
         public bool Andavel { get; set; }
         public int PosX { get; set; }
@@ -22,6 +22,11 @@ namespace Legends_lib
             this.PosY = posY;
             this.Personagem = null;
             this.Item = Item;
+        }
+
+        enum Rec
+        {
+            left, right, up ,down
         }
 
         // fazer o metodo de alteração aleatoria 

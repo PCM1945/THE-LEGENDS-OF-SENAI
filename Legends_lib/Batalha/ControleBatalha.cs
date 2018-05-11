@@ -12,6 +12,7 @@ namespace Legends_lib.Batalha
 {
     public static class ControleBatalha
     {
+        
         public static Personagem personagem1 { get; set; }
         public static Personagem personagem2 { get; set; }
         public static Queue<Personagem> FilaBatalha = new Queue<Personagem>();
@@ -22,8 +23,11 @@ namespace Legends_lib.Batalha
             personagem1 = perso1;
             personagem2 = perso2;
             vencedor = 0;
+            //JogAtual.Personagens.Add(perso1);
+            //JogAtual.Personagens.Add(perso2);
             FilaBatalha.Enqueue(personagem1);
             FilaBatalha.Enqueue(personagem2);
+            
         }
 
         public static int BuscarVencedor()//COLOCAR OS GANHOS DE GOLD DE BATALHA
@@ -31,7 +35,9 @@ namespace Legends_lib.Batalha
             if (personagem1.VidaAtual <= 0)
             {
                 vencedor = 1;
+              //HabilidadeJogador.GanhaGold(JogAtual, personagem2);
                 return 1;
+                
             }
             if (personagem2.VidaAtual <= 0)
             {

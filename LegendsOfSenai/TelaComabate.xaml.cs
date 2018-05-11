@@ -26,40 +26,56 @@ namespace LegendsOfSenai
     /// </summary>
     public sealed partial class BlankPage1 : Page
     {
-      //  Personagem aux1,aux2;
+        //  Personagem aux1,aux2;
+        public int turno;
         public BlankPage1()
         {
+
+            turno = 1;
             this.InitializeComponent();
-        
-          
+
+            AtkBas2.Opacity = 0;
             Batalha();
-            
+
         }
         //teste 
         private void Batalha()// ATT AS INFS DE BATALHA
         {
-            Uri imgp1=null;
-            Uri imgp2=null;
-            switch (ControleBatalha.personagem1.Nome) {
+            Uri imgp1 = null;
+            Uri imgp2 = null;
+            switch (ControleBatalha.personagem1.Nome)
+            {
                 case "Guerreiro":
-                    imgp1= new Uri("ms-appx:Assets/characters/Warrrior_spt/humano/guerreiro/paldino-dir.png", UriKind.Absolute);
+                    imgp1 = new Uri("ms-appx:Assets/characters/Warrrior_spt/humano/guerreiro/paldino-dir.png", UriKind.Absolute);
                     break;
                 case "Esqueleto":
                     imgp1 = new Uri("ms-appx:Assets/characters/Warrrior_spt/esqueleto/esqueleto guerreiro/soldado-esqueleto-parado dir.png", UriKind.Absolute);
+                    break;
+                case "Mago":
+                    imgp1 = new Uri("ms-appx:Assets/characters/Mago_spt/humano/mago/mago_lado_dir.png", UriKind.Absolute);
+                    break;
+                case "Necromancer":
+                    imgp1 = new Uri("ms-appx:Assets/characters/Mago_spt/esqueleto/necromancer/necromancer parado-lado.png");
                     break;
 
             }
             switch (ControleBatalha.personagem2.Nome)
             {
                 case "Guerreiro":
-                    imgp2 = new Uri("ms-appx:Assets/characters/Warrrior_spt/humano/guerreiro/paldino-esq.png", UriKind.Absolute);
+                    imgp2 = new Uri("ms-appx:Assets/characters/Warrrior_spt/humano/guerreiro/paladino-esq.png", UriKind.Absolute);
                     break;
                 case "Esqueleto":
                     imgp2 = new Uri("ms-appx:Assets/characters/Warrrior_spt/esqueleto/esqueleto guerreiro/soldado esqueleto parado -esq.png", UriKind.Absolute);
                     break;
+                case "Mago":
+                    imgp1 = new Uri("ms-appx:Assets/characters/Mago_spt/humano/mago/mago_lado_dir.png", UriKind.Absolute);
+                    break;
+                case "Necromancer":
+                    imgp1 = new Uri("ms-appx:Assets/characters/Mago_spt/esqueleto/necromancer/necromancer parado-lado.png");
+                    break;
 
             }
- 
+
             imgPlayer1.Source = new BitmapImage(imgp1);
             imgPlayer2.Source = new BitmapImage(imgp2);
             TextBlock_SelectionChanged();
@@ -67,6 +83,7 @@ namespace LegendsOfSenai
         }
 
         private void voltarMapa()
+            // quando personagem morre mapa perde referência do objeto
         {
             this.Frame.Navigate(typeof(Tela1_Mapa));
         }
@@ -88,7 +105,7 @@ namespace LegendsOfSenai
 
         private void TextBlock_SelectionChanged()
         {
-            Hp1.Text = "HP: " +ControleBatalha.personagem1.VidaAtual.ToString();
+            Hp1.Text = "HP: " + ControleBatalha.personagem1.VidaAtual.ToString();
             Hp2.Text = "HP: " + ControleBatalha.personagem2.VidaAtual.ToString();
             Mp1.Text = "MP: " + ControleBatalha.personagem1.Mp.ToString();
             Mp2.Text = "MP: " + ControleBatalha.personagem2.Mp.ToString();
@@ -96,16 +113,31 @@ namespace LegendsOfSenai
 
         private void botao_AtkBas2(object sender, RoutedEventArgs e)
         {
-            
-            ControleBatalha.personagem1.VidaAtual -= 10;
-            Batalha();
+            if (turno == 2)
+            {
+                ControleBatalha.personagem1.VidaAtual -= 10;
+                Batalha();//botar p deixar o botão meio transparente e ativar o outro
+                turno = 1;
+                AtkBas2.Opacity = 0;
+                AtkBas1.Opacity = 1;
+            }
+
         }
 
         private void botao_AtkBas1(object sender, RoutedEventArgs e)
         {
-            
-            ControleBatalha.personagem2.VidaAtual -= 10;
-            Batalha();
+            if (turno == 1)
+            {
+                ControleBatalha.personagem2.VidaAtual -= 10;
+                Batalha();
+                turno = 2;
+                AtkBas1.Opacity = 0;
+                AtkBas2.Opacity = 1;
+            }
+
         }
+        
     }
 }
+    
+
