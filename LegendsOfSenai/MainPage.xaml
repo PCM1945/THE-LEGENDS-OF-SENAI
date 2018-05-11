@@ -25,7 +25,7 @@
 
         <MediaElement x:Name="mysong"
               Width="1366" HorizontalAlignment="Left" VerticalAlignment="Top" AutoPlay="False" Canvas.Left="-424" Height="768" Canvas.Top="-120"/>
-
+        
     </Canvas>
 
 </Page>
