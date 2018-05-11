@@ -11,28 +11,31 @@ namespace Legends_lib
         public static List<Habilidade> ListaHabilidadesJogador = new List<Habilidade>()
         {
             new Habilidade{
-                CustoGold = 0,
+                CustoGold = 20,
                 Efeitos = new List<string>() { "ATK 1" },
                 NivelHabilidade = 1,
                 Nome = "ATK 1",
                 Status = true, // status deve mudar conforme batalha
-                Tipo = TipoHabilidade.Ativa
+                Tipo = TipoHabilidade.Ativa,
+                Dano = 60
             },
             new Habilidade{
-                CustoGold = 0,
+                CustoGold = 10,
                 Efeitos = new List<string>() { "ATK 2" },
                 NivelHabilidade = 1,
                 Nome = "ATK 2",
                 Status = true, // status deve mudar conforme batalha
-                Tipo = TipoHabilidade.Ativa
+                Tipo = TipoHabilidade.Ativa,
+                Dano = 40 
             },
             new Habilidade{
-                CustoGold = 0,
+                CustoGold = 10,
                 Efeitos = new List<string>() { "ATK 3" },
                 NivelHabilidade = 1,
                 Nome = "ATK 3",
                 Status = true, // status deve mudar conforme batalha
-                Tipo = TipoHabilidade.Ativa
+                Tipo = TipoHabilidade.Ativa,
+                Dano = 20
             },
             new Habilidade{
                 CustoGold = 0,

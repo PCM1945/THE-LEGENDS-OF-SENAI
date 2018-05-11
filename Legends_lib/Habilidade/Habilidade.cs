@@ -11,5 +11,6 @@ namespace Legends_lib
         public bool Status { get; set; } //HABILIDADE PODE SER USADA
         public int NivelHabilidade { get; set; }
         public int CustoGold { get; set; }
+        public int Dano { get; set; }
     }
 }
