@@ -24,7 +24,7 @@
         <TextBlock Canvas.Left="329" Canvas.Top="254" Text="Nois" TextWrapping="Wrap" Height="53" Width="95" FontSize="24"/>
 
         <MediaElement x:Name="mysong"
-              Width="1920" AutoPlay="False" Canvas.Left="-708" Height="1080" Canvas.Top="-325"/>
+              Width="1366" HorizontalAlignment="Left" VerticalAlignment="Top" AutoPlay="False" Canvas.Left="-424" Height="768" Canvas.Top="-120"/>
 
     </Canvas>
 
