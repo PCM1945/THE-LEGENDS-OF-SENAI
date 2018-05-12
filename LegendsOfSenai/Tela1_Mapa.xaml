@@ -62,9 +62,9 @@
                             <Flyout>
                                 <StackPanel>
                                     <TextBlock Text="Recrute Uma tropa"  />
-                                    <RadioButton Content="Warrior" Tag="Warrior" GroupName="Recrutamento"  Checked="RadioButton_Checked" />
-                                    <RadioButton Content="Archer" Tag="Archer" GroupName="Recrutamento" Checked="RadioButton_Checked"/>
-                                    <RadioButton Content="Mage" Tag="Mage" GroupName="Recrutamento" Checked="RadioButton_Checked"/>
+                                    <RadioButton Content="Warrior (150)" Tag="Warrior" GroupName="Recrutamento"  Checked="RadioButton_Checked" />
+                                    <RadioButton Content="Archer (200)" Tag="Archer" GroupName="Recrutamento" Checked="RadioButton_Checked"/>
+                                    <RadioButton Content="Mage (250)" Tag="Mage" GroupName="Recrutamento" Checked="RadioButton_Checked"/>
                                     <RadioButton Content="??" Tag="??" GroupName="Recrutamento" Checked="RadioButton_Checked"/>
                                     <Button Content="Confirmar" Click="Recrutamento"/>
                                 </StackPanel>

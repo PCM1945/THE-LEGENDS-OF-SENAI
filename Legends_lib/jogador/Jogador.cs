@@ -29,7 +29,7 @@ namespace Legends_lib
             Castelos = new List<Castelo>();
             Personagens = new ObservableCollection<Personagem>();
             Inventario = new ObservableCollection<Item.Item> ();
-            VidaCastelo = 1000;
+            VidaCastelo = 100;
             GoldTurno = 10;
             Aligment = Alig;
             Habilidades = HabilidadeJogador.ListaHabilidadesJogador;
@@ -42,7 +42,7 @@ namespace Legends_lib
             {
                 person.MovUsados = person.MovRange;
                 person.Imagem.Opacity = 1;
-                person.VidaAtual -= 10;
+           
                 person.PodeAtacar = true;
             }
         }

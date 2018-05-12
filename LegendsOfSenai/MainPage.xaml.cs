@@ -34,11 +34,11 @@ namespace LegendsOfSenai
         public MainPage()
         {
             this.InitializeComponent();
-        //    PlayOpening();
+            //PlayOpening();
             //LookHistory();
         }
 
-        /*private void LookHistory()
+        private void LookHistory()
         {
             List<string> history = new List<string>()
             {
@@ -78,7 +78,7 @@ namespace LegendsOfSenai
                 @"FAÇA SUA LENDA"
             };
                 
-        }*/
+        }
 
         //private async void Play()
         //{
@@ -104,6 +104,7 @@ namespace LegendsOfSenai
             mysong.SetSource(stream, file.ContentType);
             mysong.AutoPlay = true;
             mysong.Volume = 100;
+            mysong.IsLooping = true;
 
             mysong.Play();
 
